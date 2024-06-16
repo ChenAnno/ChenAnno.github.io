@@ -39,7 +39,8 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 - **Graduate Researcher**  <img src="../images/WHU.png" alt="WHU Logo" width="40" style="vertical-align: middle;"/>  
   <span style="color: rgb(18, 87, 65);"> Wuhan University (WHU) </span>  
   August 2018 - July 2022    
-  Mainly focusing on <span style="background-color: rgb(255, 182, 193);">multimodal retrieval and generation</span>, particularly video-to-image retrieval and virtual try-on generation in e-commerce scenarios.  
+  Mainly focusing on <span style="background-color: rgb(255, 182, 193);">multimodal retrieval and generation</span>, particularly video-to-image retrieval and virtual try-on generation in e-commerce scenarios.
+  <span style="background-color: rgb(204, 255, 204);">GPA: 3.96/4.0, ranked 1st out of 272</span> in Computer Science and Technology. Focused on medical image analysis, awarded Wuhan University Outstanding Thesis and Wuhan University Outstanding Graduate honors.    
   Advisor: Dengyi Zhang  
 
 
