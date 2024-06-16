@@ -27,7 +27,7 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 - **Postgraduate Student**  <img src="../images/PKU.png" alt="PKU Logo" width="40" style="vertical-align: middle;"/>  
   <span style="color: rgb(255, 0, 0);"> MIPL Lab, Peking University (PKU) </span>  
   August 2022 - July 2025    
-  Mainly focusing on multimodal retrieval and generation, particularly video-to-image retrieval and virtual try-on generation in e-commerce scenarios. Relevant work has been published in AAAI, MM, and TOMM.
+  Mainly focusing on multimodal retrieval and generation, particularly video-to-image retrieval and virtual try-on generation in e-commerce scenarios. Relevant work has been published in AAAI, MM, and TOMM  
   Advisor: Yuxin Peng
 
 - **Intern**  
