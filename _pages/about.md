@@ -19,6 +19,7 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 
 [Email](mailto:chenyanzhe@stu.pku.edu.cn) / [Github](https://github.com/ChenAnno) / [Wechat](../images/wechat.png)
 
+---
 
 
 
@@ -38,6 +39,7 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
   [University Name], [Year]  
   Investigated the use of reinforcement learning in robotics. Published findings in top-tier conferences and journals.
 
+---
 
 
 
@@ -50,4 +52,6 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 - **Research Fellowship**  
   [Organization Name], [Year]  
   Awarded a prestigious research fellowship to support my doctoral studies in machine learning.
+
+---
 
