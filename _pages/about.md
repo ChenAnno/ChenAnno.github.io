@@ -32,9 +32,9 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
   Advisor: Yuxin Peng
 
 - **Intern**  <img src="../images/kwai.png" alt="Kwai Logo" width="40" style="vertical-align: middle;"/>  
-  <span style="color: rgb(255, 223, 186);"> Multimedia Understanding Team (MMU), Kwai Technology </span>  
+  <span style="color: rgb(210, 205, 30);"> Multimedia Understanding Team (MMU), Kwai Technology </span>  
   December 2022 - June 2025   
-  Independently completed the Kuaishou short video fine-grained product representation project, implemented in  <span style="background-color: rgb(255, 182, 193);">Kuaishou app's search/recommendation scenarios</span> , significantly boosting Gross Merchandise Volume (GMV).
+  Independently completed the Kuaishou short video fine-grained product representation project, implemented in  <span style="background-color: rgb(255, 223, 186);">Kuaishou app's search/recommendation scenarios</span> , significantly boosting Gross Merchandise Volume (GMV).
 
 - **Graduate Researcher**  <img src="../images/WHU.png" alt="WHU Logo" width="40" style="vertical-align: middle;"/>  
   <span style="color: rgb(18, 87, 65);"> Wuhan University (WHU) </span>  
