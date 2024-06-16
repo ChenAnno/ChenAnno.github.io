@@ -25,7 +25,7 @@ author:
   name             : "Yanzhe Chen (陈彦哲)"
   pronouns         : # example: "she/her"  
   bio              : "Postgraduate of Computer Science"
-  location         : "No. 128 Zhongguancun North Street\n\ Haidian District, Beijing, P. R. China"
+  location         : "No. 128 Zhongguancun North Street \n\ Haidian District, Beijing, China"
   employer         : "Peking University"
   uri              : # URL
   email            : "chenyanzhe@stu.pku.edu.cn" 
@@ -43,7 +43,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "https://github.com/ChenAnno"
+  github           : "ChenAnno"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
