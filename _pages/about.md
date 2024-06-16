@@ -34,7 +34,7 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 - **Intern**  <img src="../images/kwai.png" alt="Kwai Logo" width="40" style="vertical-align: middle;"/>  
   <span style="color: rgb(209, 105, 30);"> Multimedia Understanding Team (MMU), Kwai Technology </span>  
   December 2022 - June 2025   
-  Independently completed the Kuaishou short video fine-grained product representation project, implemented in  <span style="background-color: rgb(255, 223, 186);">Kuaishou app's search/recommendation scenarios</span> , significantly boosting Gross Merchandise Volume (GMV).
+  Independently completed the Kuaishou short video fine-grained product representation project, implemented in  <span style="background-color: rgb(255, 223, 186);">Kuaishou app's search/recommendation scenarios</span> , significantly boosting Gross Merchandise Volume (GMV).  
   Advisor: Huasong Zhong and Lele Cheng
 
 - **Graduate Researcher**  <img src="../images/WHU.png" alt="WHU Logo" width="40" style="vertical-align: middle;"/>  
