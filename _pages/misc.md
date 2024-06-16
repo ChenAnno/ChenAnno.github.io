@@ -17,8 +17,9 @@ redirect_from:
 ## Hobbies
 
 * Table tennis  
-* Tai Chi  
+* Tai Chi ("Cultivate the mind, strengthen the body.")  
 * Swimming
+* Writing
 
 
 ## Language Skills
