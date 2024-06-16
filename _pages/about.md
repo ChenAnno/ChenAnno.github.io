@@ -28,18 +28,17 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 - **Postgraduate Student**  <img src="../images/PKU.png" alt="PKU Logo" width="40" style="vertical-align: middle;"/>  
   <span style="color: rgb(154, 3, 2);"> MIPL Lab, Peking University (PKU) </span>  
   August 2022 - July 2025    
-  Mainly focusing on <span style="background-color: rgb(255, 182, 193);">multimodal retrieval and generation</span>, particularly video-to-image retrieval and virtual try-on generation in e-commerce scenarios. Relevant work has been published in AAAI, ACM MM, and TOMM.  
+  Mainly focusing on <span style="background-color: rgb(255, 182, 193);">multimodal retrieval and generation</span>, particularly video-to-image retrieval, composed image retrieval, and virtual try-on generation in e-commerce scenarios. Relevant work has been published in AAAI, ACM MM, and TOMM.  
   Advisor: Yuxin Peng
 
 - **Intern**  <img src="../images/kwai.png" alt="Kwai Logo" width="40" style="vertical-align: middle;"/>  
-  <span style="color: rgb(252, 72, 6);"> Multimedia Understanding Team (MMU), Kwai Technology </span>  
+  <span style="color: rgb(255, 223, 186);"> Multimedia Understanding Team (MMU), Kwai Technology </span>  
   December 2022 - June 2025   
-  Worked on developing machine learning models for natural language processing tasks. Collaborated with a team of researchers to deploy models in production environments.
+  Independently completed the Kuaishou short video fine-grained product representation project, implemented in  <span style="background-color: rgb(255, 182, 193);">Kuaishou app's search/recommendation scenarios</span> , significantly boosting Gross Merchandise Volume (GMV).
 
 - **Graduate Researcher**  <img src="../images/WHU.png" alt="WHU Logo" width="40" style="vertical-align: middle;"/>  
   <span style="color: rgb(18, 87, 65);"> Wuhan University (WHU) </span>  
   August 2018 - July 2022    
-  Mainly focusing on <span style="background-color: rgb(255, 182, 193);">multimodal retrieval and generation</span>, particularly video-to-image retrieval and virtual try-on generation in e-commerce scenarios.
   <span style="background-color: rgb(204, 255, 204);">GPA: 3.96/4.0, ranked 1st out of 272</span> in Computer Science and Technology. Focused on medical image analysis, awarded Wuhan University Outstanding Thesis and Wuhan University Outstanding Graduate honors.    
   Advisor: Dengyi Zhang  
 
