@@ -49,11 +49,11 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 
 ## Selected Awards
 
-- China National Scholarship, 2020.
+- China National Scholarship, 2020   
 
-- Champion of the Disaster Scene Description and Indexing Task at TREC 2022.
+- Champion of the Disaster Scene Description and Indexing Task at TREC 2022  
 
-- Wuhan University Outstanding Thesis and Wuhan University Outstanding Graduate honors, 2022.
+- Wuhan University Outstanding Thesis and Wuhan University Outstanding Graduate honors, 2022  
 
 
 
