@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Yanzhe Chen (陈彦哲)"
+title: "Biography"
 author_profile: true
 redirect_from: 
   - /about/
