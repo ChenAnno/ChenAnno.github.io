@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Yanzhe Chen (陈彦哲)"
+title                    : "Home"
 title_separator          : "-"
 name                     : &name "Yanzhe Chen (陈彦哲)"
 description              : &description "personal description"
