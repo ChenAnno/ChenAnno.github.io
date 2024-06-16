@@ -31,8 +31,9 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
   Mainly focusing on <span style="background-color: rgb(255, 182, 193);">multimodal retrieval and generation</span>, particularly video-to-image retrieval and virtual try-on generation in e-commerce scenarios. Relevant work has been published in AAAI, ACM MM, and TOMM  
   Advisor: Yuxin Peng
 
-- **Intern**  
-  [Company Name], [Year]  
+- **Intern**  <img src="../images/kwai.png" alt="Kwai Logo" width="40" style="vertical-align: middle;"/>  
+  <span style="color: rgb(252, 72, 6);"> Multimedia Understanding Team (MMU), Kwai Technology </span>  
+  December 2022 - June 2025   
   Worked on developing machine learning models for natural language processing tasks. Collaborated with a team of researchers to deploy models in production environments.
 
 - **Graduate Researcher**  
