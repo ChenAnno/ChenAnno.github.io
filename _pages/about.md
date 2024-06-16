@@ -17,7 +17,7 @@ I am very fortunate to be advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl
 
 You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZHE.pdf).
 
-[Email](mailto:chenyanzhe@stu.pku.edu.cn) / [Github](https://github.com/ChenAnno) / [Wechat](../images/wechat.png)
+<!-- [Email](mailto:chenyanzhe@stu.pku.edu.cn) / [Github](https://github.com/ChenAnno) / [Wechat](../images/wechat.png) -->
 
 
 
