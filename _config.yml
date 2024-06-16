@@ -12,7 +12,7 @@ title                    : "Yanzhe Chen (陈彦哲)"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "personal description"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://chenanno.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
 
@@ -21,7 +21,7 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "images/cyz_profile.png"
+  avatar           : "cyz_profile.png"
   name             : "Yanzhe Chen (陈彦哲)"
   pronouns         : # example: "she/her"  
   bio              : "Postgraduate of Computer Science"
