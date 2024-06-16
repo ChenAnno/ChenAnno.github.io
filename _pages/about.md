@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-# Biography
+## Biography
 
 I am a second-year master's student, set to graduate in the summer of 2025, from [Academy for Advanced Interdisciplinary Studies (AAIS)](http://www.aais.pku.edu.cn/), [Peking University](https://www.pku.edu.cn/). 
 
@@ -22,7 +22,7 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 
 ---
 
-# Experience
+## Experience
 
 - **Postgraduate Student**  <img src="../images/PKU.png" alt="PKU Logo" width="40" style="vertical-align: middle;"/>  
   <span style="color: rgb(255, 0, 0);"> MIPL Lab, Peking University (PKU) </span>  
@@ -40,7 +40,7 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 
 ---
 
-# Selected Awards
+## Selected Awards
 
 - **Best Paper Award**  
   [Conference Name], [Year]  
