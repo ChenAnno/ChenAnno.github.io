@@ -30,5 +30,5 @@ redirect_from:
 ## Service
 
 * The monitor during postgraduate study  
-* The commissary in charge of study during graduate study
+* The commissary in charge of study during undergraduate study
 
