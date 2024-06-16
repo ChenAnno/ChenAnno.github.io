@@ -24,8 +24,7 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
 
 # Experience
 
-- <img src="../images/PKU.png" alt="PKU Logo" width="100"/>
-  **Research Assistant**  
+- <img src="../images/PKU.png" alt="PKU Logo" width="40"/>  **Research Assistant**  
   [University Name], [Year] - Present  
   Conducting cutting-edge research in deep learning algorithms for image and video analysis. Developing novel techniques to improve object detection and recognition.
 
