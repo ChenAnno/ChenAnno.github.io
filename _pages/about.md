@@ -37,7 +37,7 @@ You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/CV_CHENYANZH
   Independently completed the Kuaishou short video fine-grained product representation project, implemented in  <span style="background-color: rgb(255, 223, 186);">Kuaishou app's search/recommendation scenarios</span> , significantly boosting Gross Merchandise Volume (GMV).  
   Mentor: Huasong Zhong and Lele Cheng
 
-- **Graduate Researcher**  <img src="../images/WHU.png" alt="WHU Logo" width="40" style="vertical-align: middle;"/>  
+- **Undergraduate Student**  <img src="../images/WHU.png" alt="WHU Logo" width="40" style="vertical-align: middle;"/>  
   <span style="color: rgb(18, 87, 65);"> Wuhan University (WHU) </span>  
   August 2018 - July 2022    
   <span style="background-color: rgb(204, 255, 204);">GPA: 3.96/4.0, ranked 1st out of 272</span> in Computer Science and Technology. Focused on medical image analysis, awarded Wuhan University Outstanding Thesis.    
