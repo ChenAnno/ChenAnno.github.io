@@ -13,9 +13,6 @@ I am a second-year master's student, set to graduate in the summer of 2025, from
 
 I am very fortunate to be advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl/pengyuxin/) of [MIPL Lab](http://39.108.48.32/mipl/home/) from [Wangxuan Institute of Computer Technology](https://www.wict.pku.edu.cn/), Peking University.
 
-My current research mainly focuses on **multi-modal representation and generation**, particularly video-to-image retrieval, multi-modal fusion retrieval, and virtual try-on generation. These works have been published in **AAAI'24**, **ACM MM'23**, and **TOMM'24**, with a paper currently under review at **NeurIPS'24**.
-
-
 You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/1_CV_YanzheChen.pdf).
 
 <!-- [Email](mailto:chenyanzhe@stu.pku.edu.cn) / [Github](https://github.com/ChenAnno) / [Wechat](../images/wechat.png) -->
