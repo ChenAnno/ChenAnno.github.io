@@ -1,4 +1,4 @@
----
+markma---
 permalink: /
 title: "Yanzhe Chen (陈彦哲)"
 author_profile: true
@@ -15,7 +15,7 @@ I am very fortunate to be advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl
 
 My current research mainly focuses on **multi-modal representation and generation**, particularly video-to-image retrieval, multi-modal fusion retrieval, and virtual try-on generation. These works have been published in **AAAI'24**, **ACM MM'23**, and **TOMM'24**, with a paper currently under review at **NeurIPS'24**.
 
-During my Ph.D., my research interests include **video understanding, multi-modal, and AIGC**. I am particularly interested in exploring <span style="background-color: rgb(82, 172, 199);">efficient modality aggregation, optimized model architectures, and close integration with real-world scenarios</span>, which I believe are essential technological foundations for a universal AI assistant.
+During my Ph.D., my research interests include **video understanding**, **multi-modal**, and **AIGC**. I am particularly interested in exploring <span style="background-color: lightblue;">efficient modality aggregation, optimized model architectures, and close integration with real-world scenarios</span>, which I believe are essential technological foundations for a universal AI assistant.
 
 You can find my CV here: [Yanzhe Chen's Curriculum Vitae](../assets/1_CV_YanzheChen.pdf).
 
