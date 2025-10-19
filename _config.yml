@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Anno Yanzhe Chen"
-description              : "AnnoYanzheChen's Homepage"
+description              : # 
 repository               : "ChenAnno/ChenAnno.github.io"
 google_scholar_stats_use_cdn : true
 
