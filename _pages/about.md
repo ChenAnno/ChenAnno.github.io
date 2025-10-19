@@ -60,6 +60,8 @@ Code2Video is an agentic, code-centric framework that generates high-quality edu
 
 
 - [MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval](https://openreview.net/pdf?id=gXyWbl71n1), **Yanzhe Chen**, Zhiwen Yang, Jinglin Xu, Yuxin Peng. **ICLR 2025**
+- [FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795), **Yanzhe Chen**, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng. **AAAI 2024**
+- [Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval](https://dl.acm.org/doi/abs/10.1145/3581783.3612408), **Yanzhe Chen**, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng. **ACM MM 2023**
 
 
 # 🏫 Educations
