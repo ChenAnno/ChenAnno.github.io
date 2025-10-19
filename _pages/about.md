@@ -50,14 +50,16 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 </p>
 
 </div>
+</div>
 
 
+- [MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval](https://openreview.net/pdf?id=gXyWbl71n1), **Yanzhe Chen**, Zhiwen Yang, Jinglin Xu, Yuxin Peng. **ICLR 2025**
 
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
 
 # 🏫 Educations
 - *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+
 
 # 🎖 Honors
 - *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
