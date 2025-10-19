@@ -21,8 +21,8 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Lorem ipsum"
-  avatar           : "images/android-chrome-512x512.png"
+  name             : "Anno Yanzhe Chen"
+  avatar           : "images/self-annochen.png"
   bio              : "PhD student at NUS, focusing on Multi-modal, Robotics and Agent"
   location         : "Singapore & Beijing, China"
   employer         :
