@@ -43,7 +43,7 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 
 **Yanzhe Chen†**, [Kevin QH Lin](https://qhlin.me/), Mike Z. Shou.
 
-[Project](https://showlab.github.io/Code2Video/) | [Paper](https://arxiv.org/abs/2510.01174) | [Code](https://github.com/showlab/Code2Video) | [Dataset](https://huggingface.co/datasets/YanzheChen/MMMC) | [Twitter](https://x.com/KevinQHLin/status/1974199353695941114)
+[[Project]](https://showlab.github.io/Code2Video/) [[Paper]](https://arxiv.org/abs/2510.01174) | [[Code]](https://github.com/showlab/Code2Video) | [[Dataset]](https://huggingface.co/datasets/YanzheChen/MMMC) | [[Twitter]](https://x.com/KevinQHLin/status/1974199353695941114)
 
 </div>
 </div>
