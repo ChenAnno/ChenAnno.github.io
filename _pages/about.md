@@ -63,15 +63,19 @@ Code2Video is an agentic, code-centric framework that generates high-quality edu
 
 
 # 🏫 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2025.08 - now*, Ph.D., School of Computer (SoC), National University of Singapore.
+- *2022.09 - 2025.06*, Master, Academy for Advanced Interdisciplinary Studies (AAIS), Peking University.
+- *2018.09 - 2022.06*, Undergraduate, School of Computer Science, Wuhan University. 
 
 
 # 🎖 Honors
-- *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2025*, Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
+- *2024*, Merit Student, Peking University
+- *2024*, Leo KoGuan Scholarship
+- *2022*, Outstanding undergraduate graduates, Wuhan University
+- *2020*, National Scholarship
 
 
 
 # 📖 Service
-- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+- Conference Reviewer: NeurIPS, ICLR, CVPR, ICCV, AAAI, MM, etc.
