@@ -31,8 +31,8 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 
 
 # 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- 2025 Oct: Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
+- 2025 Aug: Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
 
 # 📝 Publications 
 
@@ -42,15 +42,11 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 [Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)
 
 **Yanzhe Chen†**, [Kevin QH Lin](https://qhlin.me/), Mike Z. Shou.
-
-[[Project]](https://showlab.github.io/Code2Video/) [[Paper]](https://arxiv.org/abs/2510.01174) | [[Code]](https://github.com/showlab/Code2Video) | [[Dataset]](https://huggingface.co/datasets/YanzheChen/MMMC) | [[Twitter]](https://x.com/KevinQHLin/status/1974199353695941114)
-
 <p>
 <a href="https://showlab.github.io/Code2Video/"><img src="https://img.shields.io/badge/🌐%20Project-Page-brightgreen" alt="Project Page" /></a>
 <a href="https://arxiv.org/abs/2510.01174"><img src="https://img.shields.io/badge/📄%20Paper-PDF-red" alt="PDF" /></a>
 <a href="https://huggingface.co/datasets/YanzheChen/MMMC"><img src="https://img.shields.io/badge/🤗%20Dataset-Hugging%20Face-yellow" alt="Hugging Face" /></a>
 <a href="https://github.com/showlab/Code2Video"><img src="https://img.shields.io/badge/💻%20Code-GitHub-blue" alt="Code" /></a>
-<a href="https://twitter.com/YourUsername"><img src="https://img.shields.io/badge/🐦%20Follow-Twitter-1DA1F2" alt="Twitter" /></a>
 </p>
 
 </div>
