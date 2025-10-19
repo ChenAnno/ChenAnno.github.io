@@ -43,7 +43,7 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 
 [Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)
 
-**Yanzhe Chen** †, [Kevin QH Lin †](https://qhlin.me/), [Mike Z. Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
+**Yanzhe Chen** †, Kevin QH Lin †, Mike Z. Shou.
 
 Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points. Unlike pixel-based text-to-video models, our approach leverages executable Manim code to ensure clarity, coherence, and reproducibility.
 
