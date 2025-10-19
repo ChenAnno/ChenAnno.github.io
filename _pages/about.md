@@ -23,7 +23,7 @@ I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.c
 
 Previously, I have interned at TikTok and Kuaishou.
 
-My research interests include Multimodality, AI Agents, and Robotics.
+My research interests include Multi-modal, Robotics, and AI Agents.
 
 I’m open to collaborations and discussions. Feel free to drop me an email!
 
@@ -36,15 +36,15 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint 2025</div><img src='images/code2video.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+[Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)
 
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+**Yanzhe Chen†**, [Kevin QH Lin](https://qhlin.me/), Mike Z. Shou.
 
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+[Project](https://showlab.github.io/Code2Video/) | [Paper](https://arxiv.org/abs/2510.01174) | [Code](https://github.com/showlab/Code2Video) | [Dataset](https://huggingface.co/datasets/YanzheChen/MMMC) | [Twitter](https://x.com/KevinQHLin/status/1974199353695941114)
+
 </div>
 </div>
 
