@@ -45,8 +45,17 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 
 [[Project]](https://showlab.github.io/Code2Video/) [[Paper]](https://arxiv.org/abs/2510.01174) | [[Code]](https://github.com/showlab/Code2Video) | [[Dataset]](https://huggingface.co/datasets/YanzheChen/MMMC) | [[Twitter]](https://x.com/KevinQHLin/status/1974199353695941114)
 
+<p>
+<a href="https://showlab.github.io/Code2Video/"><img src="https://img.shields.io/badge/🌐%20Project-Page-brightgreen" alt="Project Page" /></a>
+<a href="https://arxiv.org/abs/2510.01174"><img src="https://img.shields.io/badge/📄%20Paper-PDF-red" alt="PDF" /></a>
+<a href="https://huggingface.co/datasets/YanzheChen/MMMC"><img src="https://img.shields.io/badge/🤗%20Dataset-Hugging%20Face-yellow" alt="Hugging Face" /></a>
+<a href="https://github.com/showlab/Code2Video"><img src="https://img.shields.io/badge/💻%20Code-GitHub-blue" alt="Code" /></a>
+<a href="https://twitter.com/YourUsername"><img src="https://img.shields.io/badge/🐦%20Follow-Twitter-1DA1F2" alt="Twitter" /></a>
+</p>
+
 </div>
-</div>
+
+
 
 - [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
 
