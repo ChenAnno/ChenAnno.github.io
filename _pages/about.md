@@ -19,7 +19,7 @@ redirect_from:
 
 # 👨🏻‍🎓 Biography
 
-I am currently a Ph.D. student at the [Show Lab](https://sites.google.com/view/showlab/home), <span style="color: #163C78;">National Univeristy of Singapore</span>, advised by [Prof. Mike Shou Zheng](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
+I am currently a Ph.D. student at the [Show Lab](https://sites.google.com/view/showlab/home), <span style="color: #163C78;">National Univeristy of Singapore</span>, advised by [Prof. Mike Zheng Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
 
 I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.cn/) at <span style="color: #881C16;">Peking University</span>, where I was fortunate to be advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl/pengyuxin/). 
 
@@ -43,7 +43,7 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 
 [Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)
 
-**Yanzhe Chen** †, [Kevin QH Lin †](https://qhlin.me/), Mike Z. Shou.
+**Yanzhe Chen** †, [Kevin QH Lin †](https://qhlin.me/), [Mike Z. Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
 
 Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points. Unlike pixel-based text-to-video models, our approach leverages executable Manim code to ensure clarity, coherence, and reproducibility.
 
