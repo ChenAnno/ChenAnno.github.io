@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Anno Yanzhe Chen"
-description              : # 
+description              : "PhD student at NUS, focusing on Multi-modal, Robotics and Agent"
 repository               : "ChenAnno/ChenAnno.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -23,7 +23,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Anno Yanzhe Chen"
   avatar           : "images/self-annochen.png"
-  bio              : "PhD student at NUS, focusing on Multi-modal, Robotics and Agent"
+  bio              : "陈彦哲"
   location         : "Singapore & Beijing, China"
   employer         :
   pubmed           : 
