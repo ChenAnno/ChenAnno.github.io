@@ -36,18 +36,22 @@ I’m open to collaborations and discussions. Feel free to drop me an email!
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint 2025</div><img src='images/code2video.png' alt="sym" width="80%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint 2025</div><img src='images/code2video.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)
 
-**Yanzhe Chen†**, [Kevin QH Lin†](https://qhlin.me/), Mike Z. Shou.
+**Yanzhe Chen †**, [Kevin QH Lin †](https://qhlin.me/), Mike Z. Shou.
+
+Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points. Unlike pixel-based text-to-video models, our approach leverages executable Manim code to ensure clarity, coherence, and reproducibility.
+
 <p>
 <a href="https://showlab.github.io/Code2Video/"><img src="https://img.shields.io/badge/🌐%20Project-Page-brightgreen" alt="Project Page" /></a>
 <a href="https://arxiv.org/abs/2510.01174"><img src="https://img.shields.io/badge/📄%20Paper-PDF-red" alt="PDF" /></a>
 <a href="https://huggingface.co/datasets/YanzheChen/MMMC"><img src="https://img.shields.io/badge/🤗%20Dataset-Hugging%20Face-yellow" alt="Hugging Face" /></a>
 <a href="https://github.com/showlab/Code2Video"><img src="https://img.shields.io/badge/💻%20Code-GitHub-blue" alt="Code" /></a>
 </p>
+
 
 </div>
 </div>
