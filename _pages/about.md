@@ -61,6 +61,7 @@ Code2Video is an agentic, code-centric framework that generates high-quality edu
 
 - [MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval](https://openreview.net/pdf?id=gXyWbl71n1), **Yanzhe Chen**, Zhiwen Yang, Jinglin Xu, Yuxin Peng. **ICLR 2025**
 - [FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795), **Yanzhe Chen**, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng. **AAAI 2024**
+- [SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback](https://dl.acm.org/doi/10.1145/3640345), **Yanzhe Chen**, Jiahuan Zhou and Yuxin Peng, **TOMM 2024**
 - [Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval](https://dl.acm.org/doi/abs/10.1145/3581783.3612408), **Yanzhe Chen**, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng. **ACM MM 2023**
 
 
@@ -74,10 +75,10 @@ Code2Video is an agentic, code-centric framework that generates high-quality edu
 - *2025*, Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
 - *2024*, Merit Student, Peking University
 - *2024*, Leo KoGuan Scholarship
-- *2022*, Outstanding undergraduate graduates, Wuhan University
+- *2022*, Outstanding Undergraduate Graduate, Wuhan University
 - *2020*, National Scholarship
 
 
 
 # 📖 Service
-- Conference Reviewer: NeurIPS, ICLR, CVPR, ICCV, AAAI, MM, etc.
+- Conference Reviewer: NeurIPS, ICLR, CVPR, ICCV, AAAI, ACM MM, etc.
