@@ -25,7 +25,7 @@ I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.c
 
 Previously, I have interned at TikTok and Kuaishou.
 
-My research interests include Multi-modal, Robotics, and AI Agents.
+My research interests include Multi-modal, Embodied AI, and Agents.
 
 I’m open to collaborations and discussions. Feel free to drop me an [email](mailto:chenyanzhe@u.nus.edu)!
 
