@@ -33,6 +33,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 
 # 🔥 News
+- 2026 Jan: We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026.
 - 2025 Nov: [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by [AAAI 2026](https://aaai.org/conference/aaai/aaai-26/).
 - 2025 Oct: Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
 - 2025 Aug: Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
