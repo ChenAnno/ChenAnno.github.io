@@ -19,7 +19,7 @@ redirect_from:
 
 # 👨🏻‍🎓 Biography
 
-I am currently a Ph.D. student at the [Show Lab](https://sites.google.com/view/showlab/home), <span style="color: #D08130;">National Univeristy of Singapore</span>, advised by [Prof. Mike Zheng Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
+I am currently a Ph.D. student at the [Show Lab](https://sites.google.com/view/showlab/home), <span style="color: #D08130;">National University of Singapore</span>, advised by [Prof. Mike Zheng Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
 
 I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.cn/) at <span style="color: #A62B24;">Peking University</span>, where I was fortunate to be advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl/pengyuxin/). 
 
@@ -34,10 +34,11 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='news'></span>
 # 🔥 News
-- 2026 Jan: We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026.
-- 2025 Nov: [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by [AAAI 2026](https://aaai.org/conference/aaai/aaai-26/).
-- 2025 Oct: Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
-- 2025 Aug: Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
+- [2026.05] [Code2Video]([https://arxiv.org/abs/2508.17890](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
+- [2026.01] We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026 🎉
+- [2025.11] [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by AAAI 2026 🎉
+- [2025.10] Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
+- [2025.08] Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
 
 <span class='anchor' id='publications'></span>
 # 📝 Publications
