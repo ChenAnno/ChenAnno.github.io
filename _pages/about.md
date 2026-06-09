@@ -67,7 +67,7 @@ Code2Video is an agentic, code-centric framework that generates high-quality edu
 - [Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval](https://dl.acm.org/doi/abs/10.1145/3581783.3612408), **Yanzhe Chen**, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng. **ACM MM 2023**
 
 
-# 🏫 Educations
+# 🏫 Education
 - *2025.08 - now*, Ph.D., School of Computer (SoC), <span style="color: #D08130;">National Univeristy of Singapore</span>.
 - *2022.09 - 2025.06*, Master, Academy for Advanced Interdisciplinary Studies (AAIS), <span style="color: #A62B24;">Peking University</span>.
 - *2018.09 - 2022.06*, Undergraduate, School of Computer Science, <span style="color: #34777B;">Wuhan University</span>. 
