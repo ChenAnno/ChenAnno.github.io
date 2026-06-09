@@ -34,7 +34,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='news'></span>
 # 🔥 News
-- [2026.05] [Code2Video]([https://arxiv.org/abs/2508.17890](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
+- [2026.05] [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
 - [2026.01] We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026 🎉
 - [2025.11] [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by AAAI 2026 🎉
 - [2025.10] Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
