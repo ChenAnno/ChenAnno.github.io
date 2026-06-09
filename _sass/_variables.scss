@@ -111,8 +111,9 @@ $text-color                 : $dark-gray;
 $border-color               : #D9DADD;
 
 /* 莫兰迪主色调 */
-$primary-color              : #6E9ECF; // 柔和偏亮的蓝
-$info-color                 : #4FA0E5; // 明快、清透的亮浅蓝色，视觉焦点
+$primary-color              : #6E8B79; // 柔和的鼠尾草绿/浅墨绿，用于次要强调
+$info-color                 : #3F5E4D; // 舒服的墨绿色，沉稳耐看，作为主要的链接色与视觉焦点
+/* 状态颜色保持莫兰迪感 */
 $success-color              : #9CB4A1; 
 $warning-color              : #D4AC74; 
 $danger-color               : #C48A8A;
@@ -141,8 +142,8 @@ $xing-color                 : #006567;
 
 /* links */
 $link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 15%); // 悬停时略微加深一点点，保证白色背景上的可读性
-$link-color-visited         : #86A3BE; // 访问过后的颜色回到偏灰的莫兰迪蓝，作为区分
+$link-color-hover           : mix(#000, $link-color, 15%); // 悬停时略微加深，内敛且有点击反馈
+$link-color-visited         : #72857A; // 访问过后的颜色退回到极具高级灰调的枯绿色，做出功能区分
 $masthead-link-color        : $text-color;
 $masthead-link-color-hover  : $info-color;
 
