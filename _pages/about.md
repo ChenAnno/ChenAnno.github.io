@@ -32,13 +32,15 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
 
+<span class='anchor' id='news'></span>
 # 🔥 News
 - 2026 Jan: We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026.
 - 2025 Nov: [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by [AAAI 2026](https://aaai.org/conference/aaai/aaai-26/).
 - 2025 Oct: Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
 - 2025 Aug: Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
 
-# 📝 Publications 
+<span class='anchor' id='publications'></span>
+# 📝 Publications
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint 2025</div><img src='images/code2video.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -67,12 +69,14 @@ Code2Video is an agentic, code-centric framework that generates high-quality edu
 - [Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval](https://dl.acm.org/doi/abs/10.1145/3581783.3612408), **Yanzhe Chen**, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng. **ACM MM 2023**
 
 
+<span class='anchor' id='education'></span>
 # 🏫 Education
 - *2025.08 - now*, Ph.D., School of Computer (SoC), <span style="color: #D08130;">National Univeristy of Singapore</span>.
 - *2022.09 - 2025.06*, Master, Academy for Advanced Interdisciplinary Studies (AAIS), <span style="color: #A62B24;">Peking University</span>.
 - *2018.09 - 2022.06*, Undergraduate, School of Computer Science, <span style="color: #34777B;">Wuhan University</span>. 
 
 
+<span class='anchor' id='honors'></span>
 # 🎖 Honors
 - *2025*, Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
 - *2024*, Merit Student, Peking University
@@ -81,6 +85,6 @@ Code2Video is an agentic, code-centric framework that generates high-quality edu
 - *2020*, National Scholarship
 
 
-
+<span class='anchor' id='service'></span>
 # 📖 Service
 - Conference Reviewer: NeurIPS, ICLR, CVPR, ICCV, AAAI, ACM MM, etc.
