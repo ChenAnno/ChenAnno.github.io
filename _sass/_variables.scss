@@ -92,38 +92,61 @@ $type-size-8                : 0.625em;  // ~10px
 // $youtube-color              : #bb0000;
 // $xing-color                 : #006567;
 
-/* 莫兰迪配色方案 */
-$gray                       : #8C929D; // 带有灰蓝调的中间色
-$dark-gray                  : #4A4E54; // 更柔和的深灰色作为主文本
-$darker-gray                : #36393E;
-$light-gray                 : #EBEBEB; // 柔和的浅灰背景
-$lighter-gray               : #F5F5F7; // 近乎白色的灰
+/*
+   Colors
+   ========================================================================== */
 
-$body-color                 : #FAFAFA; // 替换纯白，使用略带暖调或灰调的柔和背景
+/* 莫兰迪基础灰调 */
+$gray                       : #8C929D;
+$dark-gray                  : #4A4E54;
+$darker-gray                : #36393E;
+$light-gray                 : #EBEBEB;
+$lighter-gray               : #F5F5F7;
+
+$body-color                 : #FAFAFA;
 $background-color           : #FAFAFA;
 $code-background-color      : $lighter-gray;
 $code-background-color-dark : $light-gray;
 $text-color                 : $dark-gray;
 $border-color               : #D9DADD;
 
-// 主题色/链接色：选择莫兰迪蓝/雾霾蓝
+/* 莫兰迪主色调 */
 $primary-color              : #798A9C; 
-$info-color                 : #6B8296; // 替换原本高饱和的 #224b8d
+$info-color                 : #6B8296; 
+
+/* 补齐被遗漏的状态颜色，并转为莫兰迪风格 */
+$success-color              : #9CB4A1; // 莫兰迪灰绿
+$warning-color              : #D4AC74; // 莫兰迪暖棕
+$danger-color               : #C48A8A; // 莫兰迪灰红
+
+/* brands (社交媒体图标品牌色，保持原样) */
+$behance-color              : #1769FF;
+$dribbble-color             : #ea4c89;
+$facebook-color             : #3b5998;
+$flickr-color               : #ff0084;
+$foursquare-color           : #0072b1;
+$github-color               : #171516;
+$google-plus-color          : #dd4b39;
+$instagram-color            : #517fa4;
+$lastfm-color               : #d51007;
+$linkedin-color             : #007bb6;
+$pinterest-color            : #cb2027;
+$rss-color                  : #fa9b39;
+$soundcloud-color           : #ff3300;
+$stackoverflow-color        : #fe7a15;
+$tumblr-color               : #32506d;
+$twitter-color              : #55acee;
+$vimeo-color                : #1ab7ea;
+$vine-color                 : #00bf8f;
+$youtube-color              : #bb0000;
+$xing-color                 : #006567;
 
 /* links */
 $link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 15%); // 降低悬停时的反差，显得更内敛
+$link-color-hover           : mix(#000, $link-color, 15%);
 $link-color-visited         : $primary-color;
 $masthead-link-color        : $text-color;
 $masthead-link-color-hover  : $info-color;
-
-
-/* links */
-$link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 25%);
-$link-color-visited         : mix(#fff, $link-color, 25%);
-$masthead-link-color        : $primary-color;
-$masthead-link-color-hover  : mix(#000, $primary-color, 25%);
 
 
 /*
