@@ -110,8 +110,10 @@ $code-background-color-dark : $light-gray;
 $text-color                 : $dark-gray;
 $border-color               : #D9DADD;
 
-$primary-color              : #8AB8E6; // 比主链接色稍微深一点的蓝，用于辅助边框或次要元素，增加页面层次
-$info-color                 : #A8D1FB; // 用户指定的 RGB(168, 209, 251)，作为核心视觉焦点
+$primary-color              : #7EA8D8; // 稍微加深的辅助蓝，用于次要元素
+$info-color                 : #4A86C4; // 加深后的主链接色，清晰度极高，明快而不刺眼
+
+/* 状态颜色保持和谐 */
 $success-color              : #A3C9A8; 
 $warning-color              : #E0C59F; 
 $danger-color               : #D6A3A3;
@@ -140,8 +142,8 @@ $xing-color                 : #006567;
 
 /* links */
 $link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 20%); // 悬停时稍微加深（混入20%黑），提供清晰的点击反馈，并保证对比度
-$link-color-visited         : #B4C7D9; // 访问后的颜色变为带有一点灰调的雾霾蓝，不抢夺未点击链接的视觉焦点
+$link-color-hover           : mix(#000, $link-color, 15%); // 悬停时略微加深，交互反馈更稳重
+$link-color-visited         : #7892B0; // 访问后的颜色变为极具质感的雾霾深蓝
 $masthead-link-color        : $text-color;
 $masthead-link-color-hover  : $info-color;
 
