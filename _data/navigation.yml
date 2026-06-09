@@ -1,19 +1,13 @@
-# main links links
 main:
   - title: "Biography"
     url: "/#about-me"
-
   - title: "News"
-    url: "/#-news"
-
+    url: "/#news"
   - title: "Publications"
-    url: "/#-publications"
-  
-  - title: "Educations"
-    url: "/#-educations"
-  
+    url: "/#publications"
+  - title: "Education"
+    url: "/#education"
   - title: "Honors"
-    url: "/#-honors"
-
+    url: "/#honors"
   - title: "Service"
-    url: "/#-service"
+    url: "/#service"
