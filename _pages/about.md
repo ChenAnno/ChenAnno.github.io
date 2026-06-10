@@ -43,7 +43,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 <span class='anchor' id='publications'></span>
 # 📝 Publications
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint 2025</div><img src='images/code2video.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICML 2026</div><img src='images/code2video.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)
