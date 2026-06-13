@@ -13,22 +13,10 @@ $paragraph-indent           : false; // true, false (default)
 $indent-var                 : 0.5em;
 
 /* 核心修改：引入跨平台现代系统字体栈 */
-$sans-serif                 : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$serif                      : Georgia, "Times New Roman", Times, serif;
-$monospace                  : "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$sans-serif                 : "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif                      : "Hoefler Text", Georgia, "Times New Roman", serif; // 同样启用了 Mac 上极其优雅的 Hoefler Text
+$monospace                  : "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
 
-/* sans serif typefaces */
-$sans-serif-narrow          : $sans-serif;
-$helvetica                  : "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-/* serif typefaces */
-$georgia                    : Georgia, serif;
-$times                      : Times, serif;
-$bodoni                     : "Bodoni MT", serif;
-$calisto                    : "Calisto MT", serif;
-$garamond                   : Garamond, serif;
-
-/* 字体分配：正文和标题统一使用干净的无衬线字体 */
 $global-font-family         : $sans-serif;
 $header-font-family         : $sans-serif;
 $caption-font-family        : $serif;
