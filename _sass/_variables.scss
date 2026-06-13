@@ -1,17 +1,16 @@
-/*
-   Typography
+/* ==========================================================================
+   Variables
    ========================================================================== */
 
+/* Typography */
 $doc-font-size              : 15;
 $paragraph-indent           : false;
 $indent-var                 : 0.5em;
 
-/* Modern System Fonts */
 $sans-serif                 : "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
 $serif                      : "Hoefler Text", Georgia, "Times New Roman", serif;
 $monospace                  : "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
 
-/* Required Theme Variables (Do not remove) */
 $sans-serif-narrow          : $sans-serif;
 $helvetica                  : "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia                    : Georgia, serif;
@@ -24,7 +23,6 @@ $global-font-family         : $sans-serif;
 $header-font-family         : $sans-serif;
 $caption-font-family        : $serif;
 
-/* type scale */
 $type-size-1                : 2.441em;
 $type-size-2                : 1.953em;
 $type-size-3                : 1.4em;
@@ -33,3 +31,85 @@ $type-size-5                : 1em;
 $type-size-6                : 1em;
 $type-size-7                : 0.6875em;
 $type-size-8                : 0.625em;
+
+/* Colors */
+$gray                       : #8C929D;
+$dark-gray                  : #4A4E54;
+$darker-gray                : #36393E;
+$light-gray                 : #EBEBEB;
+$lighter-gray               : #F5F5F7;
+
+$body-color                 : #FAFAFA;
+$background-color           : #FAFAFA;
+$code-background-color      : $lighter-gray;
+$code-background-color-dark : $light-gray;
+$text-color                 : $dark-gray;
+$border-color               : #D9DADD;
+
+$primary-color              : #7EA8D8;
+$info-color                 : #4A86C4;
+
+$success-color              : #A3C9A8;
+$warning-color              : #E0C59F;
+$danger-color               : #D6A3A3;
+
+/* Brands */
+$behance-color              : #1769FF;
+$dribbble-color             : #ea4c89;
+$facebook-color             : #3b5998;
+$flickr-color               : #ff0084;
+$foursquare-color           : #0072b1;
+$github-color               : #171516;
+$google-plus-color          : #dd4b39;
+$instagram-color            : #517fa4;
+$lastfm-color               : #d51007;
+$linkedin-color             : #007bb6;
+$pinterest-color            : #cb2027;
+$rss-color                  : #fa9b39;
+$soundcloud-color           : #ff3300;
+$stackoverflow-color        : #fe7a15;
+$tumblr-color               : #32506d;
+$twitter-color              : #55acee;
+$vimeo-color                : #1ab7ea;
+$vine-color                 : #00bf8f;
+$youtube-color              : #bb0000;
+$xing-color                 : #006567;
+
+/* Links */
+$link-color                 : $info-color;
+$link-color-hover           : mix(#000, $link-color, 15%);
+$link-color-visited         : #7892B0;
+$masthead-link-color        : $text-color;
+$masthead-link-color-hover  : $info-color;
+
+/* Breakpoints */
+@include breakpoint-set("to ems", true);
+
+$small                      : 600px !default;
+$medium                     : 768px !default;
+$medium-wide                : 900px !default;
+$large                      : 925px !default;
+$x-large                    : 1280px !default;
+
+/* Grid */
+$right-sidebar-width-narrow : 0px;
+$right-sidebar-width        : 0px;
+$right-sidebar-width-wide   : 0px;
+
+$susy: (
+  columns: 12,
+  column-width: 120px,
+  gutters: 1/4,
+  math: fluid,
+  output: float,
+  gutter-position: after,
+  container: $large,
+  global-box-sizing: border-box,
+);
+
+/* Other */
+$border-radius              : 4px;
+$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$global-transition          : all 0.2s ease-in-out;
