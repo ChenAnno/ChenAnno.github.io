@@ -7,13 +7,14 @@ $doc-font-size              : 15;
 $paragraph-indent           : false;
 $indent-var                 : 0.5em;
 
-$sans-serif                 : "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serif                      : "Hoefler Text", Georgia, "Times New Roman", serif;
-$monospace                  : "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+/* Native System Font Stack */
+$sans-serif                 : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$serif                      : Georgia, "Times New Roman", serif;
+$monospace                  : SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 $sans-serif-narrow          : $sans-serif;
-$helvetica                  : "Helvetica Neue", Helvetica, Arial, sans-serif;
-$georgia                    : Georgia, serif;
+$helvetica                  : $sans-serif;
+$georgia                    : $serif;
 $times                      : Times, serif;
 $bodoni                     : "Bodoni MT", serif;
 $calisto                    : "Calisto MT", serif;
