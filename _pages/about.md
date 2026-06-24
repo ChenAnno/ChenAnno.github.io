@@ -62,29 +62,33 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
   </div>
 </div>
 
+<br>
+
 ---
 
-## 🤖 Agent
+## 📚 All Publications
+
+### 🤖 Agent
 
 *(New works coming soon...)*
 
----
+<br>
 
-## 🦾 Robotics
+### 🦾 Robotics
 
 *(New works coming soon...)*
 
----
+<br>
 
-## 🖼️ Multimedia
+### 🖼️ Multimedia
 
-- **[MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval](https://openreview.net/pdf?id=gXyWbl71n1)** <br> *ICLR 2025* &nbsp;\|&nbsp; [📄 PDF](https://openreview.net/pdf?id=gXyWbl71n1) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Zhiwen Yang, Jinglin Xu, Yuxin Peng</span>
+- **MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval** <br> *ICLR 2025* &nbsp;\|&nbsp; [📄 PDF](https://openreview.net/pdf?id=gXyWbl71n1) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Zhiwen Yang, Jinglin Xu, Yuxin Peng</span>
 
-- **[FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795)** <br> *AAAI 2024* &nbsp;\|&nbsp; [📄 PDF](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng</span>
+- **FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval** <br> *AAAI 2024* &nbsp;\|&nbsp; [📄 PDF](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng</span>
 
-- **[SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback](https://dl.acm.org/doi/10.1145/3640345)** <br> *TOMM 2024* &nbsp;\|&nbsp; [🔗 ACM DL](https://dl.acm.org/doi/10.1145/3640345) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Jiahuan Zhou, Yuxin Peng</span>
+- **SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback** <br> *TOMM 2024* &nbsp;\|&nbsp; [📄 PDF](https://dl.acm.org/doi/10.1145/3640345) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Jiahuan Zhou, Yuxin Peng</span>
 
-- **[Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval](https://dl.acm.org/doi/abs/10.1145/3581783.3612408)** <br> *ACM MM 2023* &nbsp;\|&nbsp; [🔗 ACM DL](https://dl.acm.org/doi/abs/10.1145/3581783.3612408) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng</span>
+- **Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval** <br> *ACM MM 2023* &nbsp;\|&nbsp; [📄 PDF](https://dl.acm.org/doi/abs/10.1145/3581783.3612408) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng</span>
 
 
 <span class='anchor' id='education'></span>
