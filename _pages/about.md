@@ -25,7 +25,7 @@ I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.c
 
 Previously, I have interned at TikTok and Kuaishou.
 
-My research interests include *Agent*, *Robotics*, and *Multimedia*.
+My research interests include **Agent**, **Robotics**, and **Multimedia**.
 
 I’m open to collaborations and discussions. Feel free to drop me an [email](mailto:chenyanzhe@u.nus.edu)!
 
@@ -41,33 +41,48 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 - [2025.08] Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
 
 <span class='anchor' id='publications'></span>
-# 📝 Publications
+# 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICML 2026</div><img src='images/code2video.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
+### ⭐ Selected Publications
 
-[Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div><img src='images/code2video.png' alt="Code2Video" width="240" style="border-radius: 4px;"></div>
+  </div>
+  <div class='paper-box-text' markdown="1">
 
-**Yanzhe Chen** †, Kevin QH Lin †, Mike Z. Shou.
+**[Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)** <br> *ICML 2026* <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>*, Kevin QH Lin*, Mike Z. Shou</span>  
 
-Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points. Unlike pixel-based text-to-video models, our approach leverages executable Manim code to ensure clarity, coherence, and reproducibility.
+<span style="color: #4A86C4; font-style: italic;">Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points.</span>
 
-<p>
-<a href="https://showlab.github.io/Code2Video/"><img src="https://img.shields.io/badge/🌐%20Project-Page-brightgreen" alt="Project Page" /></a>
-<a href="https://arxiv.org/abs/2510.01174"><img src="https://img.shields.io/badge/📄%20Paper-PDF-red" alt="PDF" /></a>
-<a href="https://huggingface.co/datasets/YanzheChen/MMMC"><img src="https://img.shields.io/badge/🤗%20Dataset-Hugging%20Face-yellow" alt="Hugging Face" /></a>
-<a href="https://github.com/showlab/Code2Video"><img src="https://img.shields.io/badge/💻%20Code-GitHub-blue" alt="Code" /></a>
-</p>
+[🌐 Project](https://showlab.github.io/Code2Video/) &nbsp;&nbsp;•&nbsp;&nbsp; [📄 PDF](https://arxiv.org/abs/2510.01174) &nbsp;&nbsp;•&nbsp;&nbsp; [💻 Code](https://github.com/showlab/Code2Video) &nbsp;&nbsp;•&nbsp;&nbsp; [🤗 Dataset](https://huggingface.co/datasets/YanzheChen/MMMC)
 
-
-</div>
+  </div>
 </div>
 
+---
 
-- [MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval](https://openreview.net/pdf?id=gXyWbl71n1), **Yanzhe Chen**, Zhiwen Yang, Jinglin Xu, Yuxin Peng. **ICLR 2025**
-- [FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795), **Yanzhe Chen**, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng. **AAAI 2024**
-- [SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback](https://dl.acm.org/doi/10.1145/3640345), **Yanzhe Chen**, Jiahuan Zhou and Yuxin Peng, **TOMM 2024**
-- [Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval](https://dl.acm.org/doi/abs/10.1145/3581783.3612408), **Yanzhe Chen**, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng. **ACM MM 2023**
+### 🤖 Agent
+
+*(New works coming soon...)*
+
+---
+
+### 🦾 Robotics
+
+*(New works coming soon...)*
+
+---
+
+### 🖼️ Multimedia
+
+- **[MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval](https://openreview.net/pdf?id=gXyWbl71n1)** <br> *ICLR 2025* &nbsp;\|&nbsp; [📄 PDF](https://openreview.net/pdf?id=gXyWbl71n1) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Zhiwen Yang, Jinglin Xu, Yuxin Peng</span>
+
+- **[FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795)** <br> *AAAI 2024* &nbsp;\|&nbsp; [📄 PDF](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng</span>
+
+- **[SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback](https://dl.acm.org/doi/10.1145/3640345)** <br> *TOMM 2024* &nbsp;\|&nbsp; [🔗 ACM DL](https://dl.acm.org/doi/10.1145/3640345) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Jiahuan Zhou, Yuxin Peng</span>
+
+- **[Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval](https://dl.acm.org/doi/abs/10.1145/3581783.3612408)** <br> *ACM MM 2023* &nbsp;\|&nbsp; [🔗 ACM DL](https://dl.acm.org/doi/abs/10.1145/3581783.3612408) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng</span>
 
 
 <span class='anchor' id='education'></span>
