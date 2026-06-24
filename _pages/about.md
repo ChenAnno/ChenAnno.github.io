@@ -45,13 +45,15 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 ### ⭐ Selected Publications
 
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div><img src='images/code2video.png' alt="Code2Video" width="240" style="border-radius: 4px;"></div>
+<div style="display: flex; flex-wrap: wrap; gap: 4%; align-items: flex-start; margin-bottom: 2rem;">
+  <div style="flex: 2; min-width: 200px;">
+    <img src='images/code2video.png' alt="Code2Video" style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
   </div>
-  <div class='paper-box-text' markdown="1">
+  <div style="flex: 3; min-width: 300px;" markdown="1">
 
-**[Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)** <br> *ICML 2026* <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>*, Kevin QH Lin*, Mike Z. Shou</span>  
+**[Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)** <br> 
+*ICML 2026* <br> 
+<span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Kevin QH Lin<sup>*</sup>, Mike Z. Shou</span>  
 
 <span style="color: #4A86C4; font-style: italic;">Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points.</span>
 
