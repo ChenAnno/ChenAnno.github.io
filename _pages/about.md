@@ -45,7 +45,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 ## ⭐ Selected Publications
 
-<div style="display: flex; flex-wrap: wrap; gap: 4%; align-items: flex-start; margin-bottom: 2rem;">
+<div style="display: flex; flex-wrap: wrap; gap: 4%; align-items: center; margin-bottom: 2rem;">
   <div style="flex: 2; min-width: 200px;">
     <img src='images/code2video.png' alt="Code2Video" style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
   </div>
@@ -82,13 +82,13 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 ### 🖼️ Multimedia
 
-- **MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval** <br> *ICLR 2025* &nbsp;\|&nbsp; [📄 PDF](https://openreview.net/pdf?id=gXyWbl71n1) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Zhiwen Yang, Jinglin Xu, Yuxin Peng</span>
+- **MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval** <br> <b style="color: #4A86C4;">ICLR 2025</b> &nbsp;\|&nbsp; [📄 PDF](https://openreview.net/pdf?id=gXyWbl71n1) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Zhiwen Yang, Jinglin Xu, Yuxin Peng</span>
 
-- **FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval** <br> *AAAI 2024* &nbsp;\|&nbsp; [📄 PDF](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng</span>
+- **FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval** <br> <b style="color: #4A86C4;">AAAI 2024</b> &nbsp;\|&nbsp; [📄 PDF](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng</span>
 
-- **SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback** <br> *TOMM 2024* &nbsp;\|&nbsp; [📄 PDF](https://dl.acm.org/doi/10.1145/3640345) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Jiahuan Zhou, Yuxin Peng</span>
+- **SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback** <br> <b style="color: #4A86C4;">TOMM 2024</b> &nbsp;\|&nbsp; [📄 PDF](https://dl.acm.org/doi/10.1145/3640345) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Jiahuan Zhou, Yuxin Peng</span>
 
-- **Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval** <br> *ACM MM 2023* &nbsp;\|&nbsp; [📄 PDF](https://dl.acm.org/doi/abs/10.1145/3581783.3612408) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng</span>
+- **Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval** <br> <b style="color: #4A86C4;">ACM MM 2023</b> &nbsp;\|&nbsp; [📄 PDF](https://dl.acm.org/doi/abs/10.1145/3581783.3612408) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng</span>
 
 
 <span class='anchor' id='education'></span>
