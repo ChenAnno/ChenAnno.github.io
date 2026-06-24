@@ -8,6 +8,25 @@ redirect_from:
   - /about.html
 ---
 
+<style>
+  a, .page__content a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+
+  a:hover, .page__content a:hover {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+  u, ins {
+    text-decoration: none !important;
+    border-bottom: 1px solid #8C929D !important; /* 这里用莫兰迪灰调，和你的名字颜色一致 */
+  }
+</style>
+
+
 {% if site.google_scholar_stats_use_cdn %}
 {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
 {% else %}
@@ -92,18 +111,17 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='education'></span>
 # 🏫 Education
-- [2025.08 - now]: Ph.D., School of Computer (SoC), <span style="color: #D08130;">National Univeristy of Singapore</span>.
-- [2022.09 - 2025.06]: Master, Academy for Advanced Interdisciplinary Studies (AAIS), <span style="color: #A62B24;">Peking University</span>.
-- [2018.09 - 2022.06]: Undergraduate, School of Computer Science, <span style="color: #34777B;">Wuhan University</span>. 
-
+- \[2025.08 - now\]: Ph.D., School of Computer (SoC), <span style="color: #D08130;">National University of Singapore</span>.
+- \[2022.09 - 2025.06\]: Master, Academy for Advanced Interdisciplinary Studies (AAIS), <span style="color: #A62B24;">Peking University</span>.
+- \[2018.09 - 2022.06\]: Undergraduate, School of Computer Science, <span style="color: #34777B;">Wuhan University</span>.
 
 <span class='anchor' id='honors'></span>
 # 🎖 Honors
-- [2025], Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
-- [2024], Merit Student, Peking University
-- [2024], Leo KoGuan Scholarship
-- [2022], Outstanding Undergraduate Graduate, Wuhan University
-- [2020], National Scholarship
+- [2025]: Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
+- [2024]: Merit Student, Peking University
+- [2024]: Leo KoGuan Scholarship
+- [2022]: Outstanding Undergraduate Graduate, Wuhan University
+- [2020]: National Scholarship
 
 
 <span class='anchor' id='service'></span>
