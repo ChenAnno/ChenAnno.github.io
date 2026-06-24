@@ -55,7 +55,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 *ICML 2026* <br> 
 <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Kevin QH Lin<sup>*</sup>, Mike Z. Shou</span>  
 
-<span style="color: #4A86C4; font-style: italic;">Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points.</span>
+<span style="color: #A62B24;">Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points.</span>
 
 [🌐 Project](https://showlab.github.io/Code2Video/) &nbsp;&nbsp;•&nbsp;&nbsp; [📄 PDF](https://arxiv.org/abs/2510.01174) &nbsp;&nbsp;•&nbsp;&nbsp; [💻 Code](https://github.com/showlab/Code2Video) &nbsp;&nbsp;•&nbsp;&nbsp; [🤗 Dataset](https://huggingface.co/datasets/YanzheChen/MMMC)
 
