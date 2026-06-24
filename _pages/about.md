@@ -53,11 +53,11 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='news'></span>
 # 🔥 News
-- [2026.05] [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
-- [2026.01] We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026 🎉
-- [2025.11] [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by AAAI 2026 🎉
-- [2025.10] Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
-- [2025.08] Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
+- \[2026.05\] [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
+- \[2026.01\] We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026 🎉
+- \[2025.11\] [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by AAAI 2026 🎉
+- \[2025.10\] Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
+- \[2025.08\] Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
 
 <span class='anchor' id='publications'></span>
 # 📝 Publications 
@@ -117,11 +117,11 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='honors'></span>
 # 🎖 Honors
-- [2025]: Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
-- [2024]: Merit Student, Peking University
-- [2024]: Leo KoGuan Scholarship
-- [2022]: Outstanding Undergraduate Graduate, Wuhan University
-- [2020]: National Scholarship
+- \[2025\]: Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
+- \[2024\]: Merit Student, Peking University
+- \[2024\]: Leo KoGuan Scholarship
+- \[2022\]: Outstanding Undergraduate Graduate, Wuhan University
+- \[2020\]: National Scholarship
 
 
 <span class='anchor' id='service'></span>
