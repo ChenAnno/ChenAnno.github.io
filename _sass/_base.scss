@@ -118,6 +118,7 @@ blockquote {
 /* links */
 
 a {
+  text-decoration: none; /* ✨ 新增：全局移除所有链接的下划线 */
   
   &:focus {
     @extend %tab-focus;
@@ -126,6 +127,7 @@ a {
   &:hover,
   &:active {
     outline: 0;
+    text-decoration: none; /* ✨ 新增：确保鼠标悬浮和点击时也不会出现下划线 */
   }
 }
 
