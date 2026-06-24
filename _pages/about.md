@@ -43,7 +43,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 <span class='anchor' id='publications'></span>
 # 📝 Publications 
 
-### ⭐ Selected Publications
+## ⭐ Selected Publications
 
 <div style="display: flex; flex-wrap: wrap; gap: 4%; align-items: flex-start; margin-bottom: 2rem;">
   <div style="flex: 2; min-width: 200px;">
@@ -64,19 +64,19 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 ---
 
-### 🤖 Agent
+## 🤖 Agent
 
 *(New works coming soon...)*
 
 ---
 
-### 🦾 Robotics
+## 🦾 Robotics
 
 *(New works coming soon...)*
 
 ---
 
-### 🖼️ Multimedia
+## 🖼️ Multimedia
 
 - **[MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval](https://openreview.net/pdf?id=gXyWbl71n1)** <br> *ICLR 2025* &nbsp;\|&nbsp; [📄 PDF](https://openreview.net/pdf?id=gXyWbl71n1) <br> <span style="color: #8C929D;"><u>**Yanzhe Chen**</u>, Zhiwen Yang, Jinglin Xu, Yuxin Peng</span>
 
