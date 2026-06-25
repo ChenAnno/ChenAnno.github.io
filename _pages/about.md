@@ -40,7 +40,7 @@ redirect_from:
 
 I am currently a Second-year Ph.D. student at the [Show Lab](https://sites.google.com/view/showlab/home), <span style="color: #E67C46;">National University of Singapore</span>, advised by [Prof. Mike Zheng Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
 
-I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.cn/) at <span style="color: #A62B24;">Peking University</span>, where I was fortunate to be advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl/pengyuxin/). 
+I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.cn/) at <span style="color: #A62B24;">Peking University</span>, advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl/pengyuxin/). 
 
 Previously, I have interned at TikTok and Kuaishou.
 
