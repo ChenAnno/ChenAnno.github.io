@@ -81,7 +81,6 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
   </div>
 </div>
 
-<br>
 
 ---
 
@@ -93,7 +92,6 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 - **PaperDoctor: Evidence-Grounded and Actionable Feedback for Scientific Papers in Progress** <br> <b style="color: #A62B24;">ICMLW AI4S 2026</b> &nbsp;\|&nbsp; [📄 Paper](https://openreview.net/pdf?id=Xxot90rctA) <br> <span style="color: #8C929D;">Kevin Qinghong Lin, Siyuan Hu, Pan Lu, Yu Chen, <u><b>Yanzhe Chen</b></u>, Owen Queen, Yupeng Chen, Jialin Yu, Junchi Yu, Zifeng Ding, Yuanfeng Ji, Sheng Liu, Jindong Gu, Linjie Li, Mike Zheng Shou, Philip Torr, James Zou</span>
 
-<br>
 
 ### 🦾 Robotics
 
@@ -101,7 +99,6 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 - **ActionMap: Robot Policy Learning via Voxel Action Heatmap** <br> <b style="color: #A62B24;">Arxiv 2026</b> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/pdf/2606.06904) <br> <span style="color: #8C929D;">Pei Yang<sup>*</sup>, Hai Ci<sup>*</sup>, <u><b>Yanzhe Chen</b></u><sup>*</sup>, Qi Lv, Han Cai, Mike Zheng Shou</span>
 
-<br>
 
 ### 🖼️ Multimedia
 
