@@ -120,11 +120,11 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='honors'></span>
 # 🎖 Honors
-- `2025` Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
-- `2024` Merit Student, Peking University
-- `2024` Leo KoGuan Scholarship
-- `2022` Outstanding Undergraduate Graduate, Wuhan University
-- `2020` National Scholarship
+- `2025.06` Outstanding Graduate of the Wangxuan Institute of Computer Technology, Peking University
+- `2024.11` Merit Student, Peking University
+- `2024.11` Leo KoGuan Scholarship
+- `2022.06` Outstanding Undergraduate Graduate, Wuhan University
+- `2020.11` National Scholarship
 
 
 <span class='anchor' id='service'></span>
