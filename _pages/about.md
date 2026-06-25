@@ -70,12 +70,13 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
   </div>
   <div style="flex: 3; min-width: 300px;" markdown="1">
 
-**[Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)** <b style="color: #4A86C4;">ICML 2026</b> <br>
+**[Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)** <br>
+<b style="color: #A62B24;">ICML 2026</b> <br>
 <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Kevin QH Lin<sup>*</sup>, Mike Zheng Shou</span>  
 
 <span style="color: #A62B24;">Code2Video is an agentic, code-centric framework that generates high-quality educational videos from knowledge points.</span>
 
-[🌐 Project](https://showlab.github.io/Code2Video/) &nbsp;&nbsp;•&nbsp;&nbsp; [📄 PDF](https://arxiv.org/abs/2510.01174) &nbsp;&nbsp;•&nbsp;&nbsp; [💻 Code](https://github.com/showlab/Code2Video) &nbsp;&nbsp;•&nbsp;&nbsp; [🤗 Dataset](https://huggingface.co/datasets/YanzheChen/MMMC)
+[🌐 Project](https://showlab.github.io/Code2Video/) &nbsp;&nbsp;•&nbsp;&nbsp; [📄 Paper](https://arxiv.org/abs/2510.01174) &nbsp;&nbsp;•&nbsp;&nbsp; [💻 Code](https://github.com/showlab/Code2Video) &nbsp;&nbsp;•&nbsp;&nbsp; [🤗 Dataset](https://huggingface.co/datasets/YanzheChen/MMMC)
 
   </div>
 </div>
@@ -88,25 +89,31 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 ### 🤖 Agent
 
-*(New works coming soon...)*
+- **Code2Video: A Code-centric Paradigm for Educational Video Generation** <br> <b style="color: #A62B24;">ICML 2026</b> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/abs/2510.01174) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Kevin QH Lin<sup>*</sup>, Mike Zheng Shou</span>  
+
+- **PaperDoctor: Evidence-Grounded and Actionable Feedback for Scientific Papers in Progress** <br> <b style="color: #A62B24;">ICMLW AI4S 2026</b> &nbsp;\|&nbsp; [📄 Paper](https://openreview.net/pdf?id=Xxot90rctA) <br> <span style="color: #8C929D;">Kevin Qinghong Lin, Siyuan Hu, Pan Lu, Yu Chen, <u><b>Yanzhe Chen</b></u>, Owen Queen, Yupeng Chen, Jialin Yu, Junchi Yu, Zifeng Ding, Yuanfeng Ji, Sheng Liu, Jindong Gu, Linjie Li, Mike Zheng Shou, Philip Torr, James Zou</span>
 
 <br>
 
 ### 🦾 Robotics
 
-*(New works coming soon...)*
+- **Escaping the Diversity Trap in Robotic Manipulation via Anchor-Centric Adaptation** <br> <b style="color: #A62B24;">ICML 2026</b> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/pdf/2605.07381) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Kevin Yuchen Ma, Qi Lv, Yiqi Lin, Zechen Bai, Chen Gao, Mike Zheng Shou</span>
+
+- **ActionMap: Robot Policy Learning via Voxel Action Heatmap** <br> <b style="color: #A62B24;">Arxiv 2026</b> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/pdf/2606.06904) <br> <span style="color: #8C929D;">Pei Yang<sup>*</sup>, Hai Ci<sup>*</sup>, <u><b>Yanzhe Chen</b></u><sup>*</sup>, Qi Lv, Han Cai, Mike Zheng Shou</span>
 
 <br>
 
 ### 🖼️ Multimedia
 
-- **MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval** <br> <b style="color: #4A86C4;">ICLR 2025</b> &nbsp;\|&nbsp; [📄 PDF](https://openreview.net/pdf?id=gXyWbl71n1) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Zhiwen Yang, Jinglin Xu, Yuxin Peng</span>
+- **UniAPO: Unified Multimodal Automated Prompt Optimization** <br> <b style="color: #A62B24;">AAAI 2026</b> &nbsp;\|&nbsp; [📄 Paper](https://ojs.aaai.org/index.php/AAAI/article/view/40151) <br> <span style="color: #8C929D;">Qipeng Zhu<sup>*</sup>, <u><b>Yanzhe Chen</b></u><sup>*</sup>, Huasong Zhong<sup>*</sup>, Jie Chen, Yan Li, Zhixin Zhang, Junping Zhang, Zhenheng Yang</span>  
 
-- **FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval** <br> <b style="color: #4A86C4;">AAAI 2024</b> &nbsp;\|&nbsp; [📄 PDF](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng</span>
+- **MAI: A Multi-turn Aggregation-Iteration Model for Composed Image Retrieval** <br> <b style="color: #A62B24;">ICLR 2025</b> &nbsp;\|&nbsp; [📄 Paper](https://openreview.net/pdf?id=gXyWbl71n1) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Zhiwen Yang, Jinglin Xu, Yuxin Peng</span>  
 
-- **SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback** <br> <b style="color: #4A86C4;">TOMM 2024</b> &nbsp;\|&nbsp; [📄 PDF](https://dl.acm.org/doi/10.1145/3640345) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Jiahuan Zhou, Yuxin Peng</span>
+- **FashionERN: Enhance-and-Refine Network for Composed Fashion Image Retrieval** <br> <b style="color: #A62B24;">AAAI 2024</b> &nbsp;\|&nbsp; [📄 Paper](https://ojs.aaai.org/index.php/AAAI/article/view/27885/27795) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Jiahuan Zhou, Lele Cheng</span>  
 
-- **Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval** <br> <b style="color: #4A86C4;">ACM MM 2023</b> &nbsp;\|&nbsp; [📄 PDF](https://dl.acm.org/doi/abs/10.1145/3581783.3612408) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng</span>
+- **SPIRIT: Style-guided Patch Interaction for Fashion Image Retrieval with Text Feedback** <br> <b style="color: #A62B24;">TOMM 2024</b> &nbsp;\|&nbsp; [📄 Paper](https://dl.acm.org/doi/10.1145/3640345) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Jiahuan Zhou, Yuxin Peng</span>  
+
+- **Real20M: A Large-scale E-commerce Dataset for Cross-domain Retrieval** <br> <b style="color: #A62B24;">ACM MM 2023</b> &nbsp;\|&nbsp; [📄 Paper](https://dl.acm.org/doi/abs/10.1145/3581783.3612408) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Huasong Zhong, Xiangteng He, Yuxin Peng, Lele Cheng</span>  
 
 
 <span class='anchor' id='education'></span>
