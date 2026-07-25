@@ -129,6 +129,6 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='service'></span>
 # 📖 Service
-- Conference Reviewer: NeurIPS, ICLR, CVPR, ICCV, AAAI, ACM MM, etc.
+- Conference Reviewer: NeurIPS, ICML, ICLR, CVPR, AAAI, ACM MM, etc.
 
 <br>
