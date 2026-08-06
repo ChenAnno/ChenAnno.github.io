@@ -89,7 +89,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 - **Code2Video: A Code-centric Paradigm for Educational Video Generation** <br> <span style="color: #E67C46;">ICML 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/abs/2510.01174) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Kevin Qinghong Lin<sup>*</sup>, Mike Zheng Shou</span>  
 
-- **PaperDoctor: Evidence-Grounded and Actionable Feedback for Scientific Papers in Progress** <br> <span style="color: #E67C46;">ICMLW AI4S 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://openreview.net/pdf?id=Xxot90rctA) <br> <span style="color: #8C929D;">Kevin Qinghong Lin, Siyuan Hu, Pan Lu, Yu Chen, <u><b>Yanzhe Chen</b></u>, Owen Queen, Yupeng Chen, Jialin Yu, Junchi Yu, Zifeng Ding, Yuanfeng Ji, Sheng Liu, Jindong Gu, Linjie Li, Mike Zheng Shou, Philip Torr, James Zou</span>
+- **PaperDoctor: Evidence-Grounded and Actionable Feedback for Scientific Papers in Progress** <br> <span style="color: #E67C46;">ICMLW AI4S 2026 · Best Poster Award</span> &nbsp;\|&nbsp; [📄 Paper](https://openreview.net/pdf?id=Xxot90rctA) <br> <span style="color: #8C929D;">Kevin Qinghong Lin, Siyuan Hu, Pan Lu, Yu Chen, <u><b>Yanzhe Chen</b></u>, Owen Queen, Yupeng Chen, Jialin Yu, Junchi Yu, Zifeng Ding, Yuanfeng Ji, Sheng Liu, Jindong Gu, Linjie Li, Mike Zheng Shou, Philip Torr, James Zou</span>
 
 
 ### 🦾 Robotics
