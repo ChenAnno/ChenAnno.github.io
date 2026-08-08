@@ -130,6 +130,6 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 <span class='anchor' id='service'></span>
 # 📖 Service
 - Conference Reviewer: NeurIPS, ICML, ICLR, AAAI, ACM MM, etc.
-- Teaching Assistant: NUS EE4309
+- Teaching Assistant: [NUS EE4309 Robot Perception](https://nusmods.com/courses/EE4309/robot-perception)
 
 <br>
