@@ -56,7 +56,6 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 - `2026.05` [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
 - `2026.01` We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026 🎉
 - `2025.11` [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by AAAI 2026 🎉
-- `2025.10` Check out our newest work on creative video generation: [Code2Video](https://showlab.github.io/Code2Video/)!
 - `2025.08` Joined [Show Lab @ NUS](https://sites.google.com/view/showlab/home) to start my Ph.D. journey!
 
 <span class='anchor' id='publications'></span>
@@ -95,6 +94,8 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 ### 🦾 Robotics
 
 - **Escaping the Diversity Trap in Robotic Manipulation via Anchor-Centric Adaptation** <br> <span style="color: #E67C46;">ICML 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/pdf/2605.07381) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Kevin Yuchen Ma, Qi Lv, Yiqi Lin, Zechen Bai, Chen Gao, Mike Zheng Shou</span>
+
+- **Supervise What Survives: Geometry-Guided VLA Adaptation from Synthetic Robot Videos** <br> <span style="color: #E67C46;">CoRL 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/pdf/2606.24448) <br> <span style="color: #8C929D;">Danze Chen, <u><b>Yanzhe Chen</b></u>, Qiming Huang, Zhijun Cao, Chen Gao, Mike Zheng Shou</span>
 
 - **ActionMap: Robot Policy Learning via Voxel Action Heatmap** <br> <span style="color: #E67C46;">Arxiv 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/pdf/2606.06904) <br> <span style="color: #8C929D;">Pei Yang<sup>*</sup>, Hai Ci<sup>*</sup>, <u><b>Yanzhe Chen</b></u><sup>*</sup>, Qi Lv, Han Cai, Mike Zheng Shou</span>
 
