@@ -51,6 +51,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='news'></span>
 # 🔥 News
+- `2026.09` Check out our [Show-Harness](https://showlab.github.io/Show-Harness/): Just a VLM Agent Can Play Robots 🤖
 - `2026.05` [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
 - `2026.01` We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026 🎉
 - `2025.11` [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by AAAI 2026 🎉
@@ -63,7 +64,23 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <div style="display: flex; flex-wrap: wrap; gap: 4%; align-items: center; margin-bottom: 2rem;">
   <div style="flex: 2; min-width: 200px;">
-    <img src='images/code2video.png' alt="Code2Video" style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <video src='images/show-harness.mp4' poster='images/show-harness-poster.jpg' autoplay muted loop playsinline controls style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></video>
+  </div>
+  <div style="flex: 3; min-width: 300px;" markdown="1">
+
+**[Show-Harness: Just a VLM Agent Can Play Robots](https://showlab.github.io/Show-Harness/)** <br>
+<span style="color: #E67C46;">Arxiv 2026</span> <br>
+<span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zechen Bai<sup>*</sup>, Zhijun Cao<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Qinghong Lin, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Qiming Huang, Mike Zheng Shou</span>  
+<span style="color: #A62B24;">Show-Harness is an embodied harness that lets VLMs “play” robots through a compact semantic action interface.</span>
+
+[🌐 Project](https://showlab.github.io/Show-Harness/) &nbsp;&nbsp;•&nbsp;&nbsp; [📄 Paper](https://arxiv.org/abs/2609.10522) &nbsp;&nbsp;•&nbsp;&nbsp; [💻 Code](https://github.com/showlab/Show-Harness) &nbsp;&nbsp;•&nbsp;&nbsp; [🤗 Models](https://huggingface.co/showlab/Show-Harness-VLMs) &nbsp;&nbsp;•&nbsp;&nbsp; [🤗 Dataset](https://huggingface.co/datasets/showlab/Show-Harness-Data)
+
+  </div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 4%; align-items: center; margin-bottom: 2rem;">
+  <div style="flex: 2; min-width: 200px;">
+    <video src='images/code2video.mp4' poster='images/code2video-poster.jpg' autoplay muted loop playsinline controls style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></video>
   </div>
   <div style="flex: 3; min-width: 300px;" markdown="1">
 
@@ -90,6 +107,8 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 
 ### 🦾 Robotics
+
+- **Show-Harness: Just a VLM Agent Can Play Robots** <br> <span style="color: #E67C46;">Arxiv 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/abs/2609.10522) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zechen Bai<sup>*</sup>, Zhijun Cao<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Qinghong Lin, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Qiming Huang, Mike Zheng Shou</span>
 
 - **Escaping the Diversity Trap in Robotic Manipulation via Anchor-Centric Adaptation** <br> <span style="color: #E67C46;">ICML 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/pdf/2605.07381) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Kevin Yuchen Ma, Qi Lv, Yiqi Lin, Zechen Bai, Chen Gao, Mike Zheng Shou</span>
 
