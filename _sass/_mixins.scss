@@ -3,11 +3,9 @@
    ========================================================================== */
 
 %tab-focus {
-  /* Default*/
-  outline: thin dotted $warning-color;
-  /* Webkit*/
-  outline: 5px auto $warning-color;
-  outline-offset: -2px;
+  /* Indicate focus with a color change instead of an outline box */
+  outline: none;
+  color: $link-color-hover;
 }
 
 /*
