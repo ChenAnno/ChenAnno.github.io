@@ -26,6 +26,32 @@ redirect_from:
   }
 </style>
 
+<script>
+  /* Videos with class "lazy-video" use preload="none", so nothing is downloaded until they scroll into view and start playing. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var videos = document.querySelectorAll('video.lazy-video');
+    function start(v) {
+      if (v.played.length) return;
+      v.muted = true;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+    if (!('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(videos, start);
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+          start(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    Array.prototype.forEach.call(videos, function (v) { observer.observe(v); });
+  });
+</script>
+
 
 {% if site.google_scholar_stats_use_cdn %}
 {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
@@ -64,7 +90,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <div style="display: flex; flex-wrap: wrap; gap: 4%; align-items: center; margin-bottom: 2rem;">
   <div style="flex: 2; min-width: 200px;">
-    <video src='images/show-harness.mp4' poster='images/show-harness-poster.jpg' autoplay muted loop playsinline controls style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></video>
+    <video class="lazy-video" src='images/show-harness.mp4' poster='images/show-harness-poster.jpg' preload="none" muted loop playsinline controls style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></video>
   </div>
   <div style="flex: 3; min-width: 300px;" markdown="1">
 
@@ -80,7 +106,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <div style="display: flex; flex-wrap: wrap; gap: 4%; align-items: center; margin-bottom: 2rem;">
   <div style="flex: 2; min-width: 200px;">
-    <video src='images/code2video.mp4' poster='images/code2video-poster.jpg' autoplay muted loop playsinline controls style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></video>
+    <video class="lazy-video" src='images/code2video.mp4' poster='images/code2video-poster.jpg' preload="none" muted loop playsinline controls style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></video>
   </div>
   <div style="flex: 3; min-width: 300px;" markdown="1">
 
