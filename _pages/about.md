@@ -83,7 +83,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='news'></span>
 # 🔥 News
-- `2026.09` Released **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** — [Project Page](https://showlab.github.io/Show-Harness/) · [Code](https://github.com/showlab/Show-Harness)
+- `2026.09` We released **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** ([Page](https://showlab.github.io/Show-Harness/), [Code](https://github.com/showlab/Show-Harness)), an embodied harness enabling frontier and lightweight models to play robots 🦾
 - `2026.05` [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
 - `2026.01` We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026 🎉
 - `2025.11` [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by AAAI 2026 🎉
