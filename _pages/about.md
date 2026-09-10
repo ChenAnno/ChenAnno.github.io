@@ -24,6 +24,12 @@ redirect_from:
     text-decoration: none !important;
     border-bottom: 1px solid #8C929D !important;
   }
+
+  /* Colored "Show" in Show-Harness */
+  .show-S { color: #669ED3; }
+  .show-h { color: #67A651; }
+  .show-o { color: #D85E5D; }
+  .show-w { color: #F3AA68; }
 </style>
 
 <script>
@@ -77,7 +83,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='news'></span>
 # 🔥 News
-- `2026.09` Check out our [Show-Harness](https://showlab.github.io/Show-Harness/): Just a VLM Agent Can Play Robots 🤖
+- `2026.09` Released **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** — [Project Page](https://showlab.github.io/Show-Harness/) · [Code](https://github.com/showlab/Show-Harness)
 - `2026.05` [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by ICML 2026 🎉
 - `2026.01` We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026 🎉
 - `2025.11` [UniAPO](https://arxiv.org/abs/2508.17890) got accepted by AAAI 2026 🎉
@@ -94,7 +100,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
   </div>
   <div style="flex: 3; min-width: 300px;" markdown="1">
 
-**[Show-Harness: Just a VLM Agent Can Play Robots](https://showlab.github.io/Show-Harness/)** <br>
+**<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness: Just a VLM Agent Can Play Robots** <br>
 <span style="color: #E67C46;">Arxiv 2026</span> <br>
 <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zechen Bai<sup>*</sup>, Zhijun Cao<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Qinghong Lin, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Qiming Huang, Mike Zheng Shou</span>  
 <span style="color: #A62B24;">Show-Harness is an embodied harness that lets VLMs “play” robots through a compact semantic action interface.</span>
@@ -110,7 +116,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
   </div>
   <div style="flex: 3; min-width: 300px;" markdown="1">
 
-**[Code2Video: A Code-centric Paradigm for Educational Video Generation](https://showlab.github.io/Code2Video/)** <br>
+**Code2Video: A Code-centric Paradigm for Educational Video Generation** <br>
 <span style="color: #E67C46;">ICML 2026</span> <br>
 <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Kevin Qinghong Lin<sup>*</sup>, Mike Zheng Shou</span>  
 <span style="color: #A62B24;">Code2Video is an agentic, code-centric framework that generates high-quality educational videos from tutorial topics.</span>
@@ -135,6 +141,8 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 ### 🦾 Robotics
 
 - **Show-Harness: Just a VLM Agent Can Play Robots** <br> <span style="color: #E67C46;">Arxiv 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/abs/2609.10522) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zechen Bai<sup>*</sup>, Zhijun Cao<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Qinghong Lin, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Qiming Huang, Mike Zheng Shou</span>
+
+- **Where Success Breaks: Failure-Boundary Learning for Robust Vision-Language-Action Models** <br> <span style="color: #E67C46;">CoRL 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/abs/2609.06114) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zhijun Cao<sup>*</sup>, Mike Zheng Shou</span>
 
 - **Escaping the Diversity Trap in Robotic Manipulation via Anchor-Centric Adaptation** <br> <span style="color: #E67C46;">ICML 2026</span> &nbsp;\|&nbsp; [📄 Paper](https://arxiv.org/pdf/2605.07381) <br> <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u>, Kevin Yuchen Ma, Qi Lv, Yiqi Lin, Zechen Bai, Chen Gao, Mike Zheng Shou</span>
 
