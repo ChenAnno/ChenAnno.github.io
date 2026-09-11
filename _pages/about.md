@@ -103,7 +103,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness: Just a VLM Agent Can Play Robots** <br>
 <span style="color: #E67C46;">Arxiv 2026</span> <br>
 <span style="color: #8C929D;"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zechen Bai<sup>*</sup>, Zhijun Cao<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Qinghong Lin, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Qiming Huang, Mike Zheng Shou</span>  
-<span style="color: #A62B24;">Show-Harness is an embodied harness that lets VLMs “play” robots through a compact semantic action interface.</span>
+<span style="color: #A62B24;">Show-Harness is an embodied harness that lets VLMs "play" robots through a compact semantic action interface.</span>
 
 [🌐 Project](https://showlab.github.io/Show-Harness/) &nbsp;&nbsp;•&nbsp;&nbsp; [📄 Paper](https://arxiv.org/abs/2609.10522) &nbsp;&nbsp;•&nbsp;&nbsp; [💻 Code](https://github.com/showlab/Show-Harness) &nbsp;&nbsp;•&nbsp;&nbsp; [🤗 Models](https://huggingface.co/showlab/Show-Harness-VLMs) &nbsp;&nbsp;•&nbsp;&nbsp; [🤗 Dataset](https://huggingface.co/datasets/showlab/Show-Harness-Data)
 
