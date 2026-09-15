@@ -78,7 +78,7 @@ Previously, I have interned at TikTok and Kuaishou.
 
 My research interests include **Agent**, **Robotics**, and **Multimedia**.
 
-I’m open to collaborations and discussions. Feel free to drop me an [email](mailto:chenyanzhe@u.nus.edu)!
+I’m open to collaborations and discussions. Feel free to drop me an [email](mailto:chenyanzhe@u.nus.edu)~
 
 
 <span class='anchor' id='news'></span>
