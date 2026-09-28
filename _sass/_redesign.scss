@@ -1,9 +1,9 @@
 /* ==========================================================================
    REDESIGN
-   Visual language after caozhijun.top: Charis SIL throughout, a Morandi
-   blue-gray palette, white rounded cards, a floating pill navigation, a News
-   timeline card, and a visitor map + footer at the bottom. The template's
-   left profile sidebar is kept.
+   Visual language after caozhijun.top: Charis SIL throughout, soft blue-gray
+   neutrals with clear blue accents, white rounded cards, a floating pill
+   navigation, a News timeline card, and a visitor map + footer at the bottom.
+   The template's left profile sidebar is kept.
 
    Imported last in assets/css/main.scss, so it overrides the template
    partials instead of editing them. Fonts are declared in
@@ -11,10 +11,12 @@
    ========================================================================== */
 
 :root {
-  --accent:   #4d6e8a;   /* Morandi haze blue: dates, subtitles, selected states */
-  --heading:  #34526b;   /* one step darker: section titles, News border */
+  /* The blues were a grayer Morandi haze blue (#4d6e8a); brightened because
+     they did not stand out. Keep text blues at 4.5:1 or more on --bg. */
+  --accent:   #3071b5;   /* clear blue: dates, subtitles, selected states */
+  --heading:  #224b77;   /* one step darker: section titles, News border */
   --high:     #c4876e;   /* terracotta: venues, co-first stars */
-  --link:     #5c8299;
+  --link:     #3374b3;
   --rule:     #c9d3dd;
   --hairline: #e8edf2;   /* dividers inside cards */
   --subtle:   #7b8794;   /* secondary text */
@@ -870,7 +872,7 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
 
   &[aria-pressed="true"] {
     border-color: var(--accent);
-    background: #eaf0f5;
+    background: #e7eff9;
     color: var(--accent);
   }
 }

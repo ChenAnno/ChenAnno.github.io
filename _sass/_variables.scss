@@ -35,8 +35,9 @@ $type-size-6                : 1em;
 $type-size-7                : 0.6875em;
 $type-size-8                : 0.625em;
 
-/* Colors: Morandi blue-gray palette (from caozhijun.top). The redesign's own tokens
-   live as CSS custom properties in _redesign.scss and mirror these values. */
+/* Colors: blue-gray neutrals (from caozhijun.top) with clear blue accents. The
+   redesign's own tokens live as CSS custom properties in _redesign.scss and
+   mirror these values. */
 $gray                       : #7b8794;
 $dark-gray                  : #4A4E54;
 $darker-gray                : #36393E;
@@ -50,8 +51,8 @@ $code-background-color-dark : $light-gray;
 $text-color                 : #232a31;
 $border-color               : #dbe3eb;
 
-$primary-color              : #4d6e8a;
-$info-color                 : #5c8299;
+$primary-color              : #3071b5;
+$info-color                 : #3374b3;
 
 $success-color              : #A3C9A8;
 $warning-color              : #E0C59F;
