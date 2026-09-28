@@ -70,11 +70,12 @@ body {
    wide screens a line of body text ran to ~1000px. A grid keeps the sidebar at
    a fixed width and caps the content column near 880px.
 
-   The page sits a little left of center (48px on wide screens): a light
+   The page sits a little left of center (24px on wide screens): a light
    sidebar on the left and the heavy content column on the right otherwise make
-   it feel right-weighted. The nav follows so the two stay on one axis.
+   it feel right-weighted. 48px was too far. The nav follows so the two stay on
+   one axis. 644px = half of the 1240px max-width + the 24px shift.
    unquote() keeps Ruby Sass from evaluating CSS max() as its own max(). */
-$page-shift-margin: unquote("max(0px, calc(50% - 668px))");
+$page-shift-margin: unquote("max(0px, calc(50% - 644px))");
 
 @include breakpoint($large) {
   #main {
