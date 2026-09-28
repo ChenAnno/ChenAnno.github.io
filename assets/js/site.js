@@ -77,8 +77,57 @@
   btn.addEventListener('click', function () {
     var open = card.classList.toggle('news-open');
     btn.textContent = open ? 'Show less ↑' : 'Show all news ↓';
+    list.dispatchEvent(new Event('scroll'));
   });
   list.parentNode.insertBefore(btn, list.nextSibling);
+})();
+
+/* News list: on wide screens it scrolls inside the card (see _redesign.scss);
+   fade its bottom edge while there is more below. */
+(function () {
+  var list = document.querySelector('.news-card ul');
+  if (!list) return;
+
+  function fade() {
+    list.classList.toggle('news-fade', list.scrollHeight - list.scrollTop - list.clientHeight > 2);
+  }
+
+  list.addEventListener('scroll', fade, { passive: true });
+  window.addEventListener('resize', fade);
+  fade();
+})();
+
+/* Nav: the link of the section currently in view turns orange (.is-current).
+   A section counts as current once its title has scrolled up past the pill;
+   at the very bottom of the page the last section wins. */
+(function () {
+  var items = [];
+  Array.prototype.forEach.call(document.querySelectorAll('#site-nav a[href*="#"]'), function (a) {
+    if (a.parentNode.classList.contains('masthead__menu-home-item')) return;
+    var target = document.getElementById(a.getAttribute('href').split('#')[1]);
+    if (target) items.push({ link: a, target: target });
+  });
+  if (!items.length) return;
+
+  var pending = false;
+  function update() {
+    pending = false;
+    var current = null;
+    items.forEach(function (item) {
+      if (item.target.getBoundingClientRect().top <= 140) current = item;
+    });
+    if (window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 2) {
+      current = items[items.length - 1];
+    }
+    items.forEach(function (item) {
+      item.link.classList.toggle('is-current', item === current);
+    });
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!pending) { pending = true; window.requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
 })();
 
 /* GitHub star counts: a link with data-gh-stars="owner/repo" gets "★ 1.2k"
