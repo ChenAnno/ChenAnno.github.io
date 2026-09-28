@@ -68,7 +68,14 @@ body {
 /* ---------- Layout ----------
    The template floats Susy columns sized in proportion to the window, so on
    wide screens a line of body text ran to ~1000px. A grid keeps the sidebar at
-   a fixed width and caps the content column near 880px. */
+   a fixed width and caps the content column near 880px.
+
+   The page sits a little left of center (48px on wide screens): a light
+   sidebar on the left and the heavy content column on the right otherwise make
+   it feel right-weighted. The nav follows so the two stay on one axis.
+   unquote() keeps Ruby Sass from evaluating CSS max() as its own max(). */
+$page-shift-margin: unquote("max(0px, calc(50% - 668px))");
+
 @include breakpoint($large) {
   #main {
     display: grid;
@@ -76,6 +83,8 @@ body {
     column-gap: 64px;
     max-width: 1240px;
     margin-top: 16px;
+    margin-left: $page-shift-margin;
+    margin-right: auto;
     padding-left: 32px;
     padding-right: 32px;
 
@@ -127,8 +136,10 @@ body {
 .masthead__inner-wrap {
   padding: 0 16px;
 
-  @include breakpoint($x-large) {
+  @include breakpoint($large) {
     max-width: 1240px;
+    margin-left: $page-shift-margin;
+    margin-right: auto;
   }
 }
 
@@ -455,7 +466,7 @@ body {
    bottom edge while more is below), so Selected Publications stays on the
    first screen. */
 .news-card {
-  margin: 0;
+  margin: 0 0 12px;   /* like the other cards, so every gap before a section title is equal */
   padding: 14px 24px;
   border: 2px solid var(--heading);
   border-radius: 18px;
@@ -745,7 +756,7 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* All Publications: tabs (First & Co-first / Collaborations) on the left and
+/* All Publications: tabs (First & Co-first / Collaborations / All) on the left and
    topic chips on the right, built by site.js from the markup below them. */
 .pub-toolbar {
   display: flex;
@@ -1150,9 +1161,14 @@ body {
 }
 
 /* The footer sits at the bottom of the content column: a rule, the visitor map,
-   then the copyright lines, all on the column's center axis. */
+   then the copyright lines, all on the column's center axis.
+   The space above the rule is padding, not margin: the footer clears the
+   floated .page__content, and clearance swallowed the margin (the rule ended
+   up about 12px under the Service card). 40px here plus the last card's 12px
+   margin matches the 52px between the other sections. */
 .site-footer {
   clear: both;
+  padding-top: 40px;
 }
 
 .site-footer__inner {
@@ -1160,7 +1176,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin: 48px 0 0;
+  margin: 0;
   padding: 32px 0 44px;
   border-top: 1px solid var(--rule);
   color: var(--subtle);
@@ -1281,11 +1297,6 @@ body {
   .pub-chip {
     padding: 4px 10px;
     font-size: 13px;
-  }
-
-  /* e.g. "First & Co-first Author" -> "First & Co-first" on a phone */
-  .wide-only {
-    display: none;
   }
 
   .edu-card {

@@ -186,157 +186,148 @@
   });
 })();
 
-/* All Publications: tabs + topic filter.
-   Inside .pub-tabs, each `### Title` heading and the .pub-list after it become one
-   tab and its panel. List items carry their topics as data-topics="agent robotics"
-   (kramdown `- {: data-topics="…"}`); a paper may have several. The topic chips
-   filter whichever tab is showing and keep their choice when the tab changes.
-   Without this script both lists simply show under their headings. */
+/* All Publications: one list, sorted once for everyone (see CLAUDE.md). Each item
+   carries its group, data-group="first" | "collab", and its topics,
+   data-topics="agent robotics" (kramdown `- {: data-group="…" data-topics="…"}`).
+   The tabs choose a group (or All), the chips a topic, and only matching papers
+   are shown. The shown papers are then regrouped on a year timeline: a paper's
+   year is its data-year, or else the last year in its venue ("ICML 2026").
+   Without this script the whole list simply shows. */
 (function () {
   var box = document.querySelector('.pub-tabs');
-  if (!box) return;
+  var list = box && box.querySelector('.pub-list');
+  if (!list) return;
 
+  var GROUPS = [
+    ['first', 'First & Co-first'],
+    ['collab', 'Collaborations'],
+    ['all', 'All'],
+  ];
   var TOPICS = [
     ['agent', '🤖 Agent'],
     ['robotics', '🦾 Robotics'],
     ['multimedia', '🖼️ Multimedia'],
   ];
+  var items = Array.prototype.slice.call(list.querySelectorAll('li'));
 
+  // year label for every item; CSS shows it only on the first shown paper of a year
+  items.forEach(function (li) {
+    var year = li.getAttribute('data-year');
+    if (!year) {
+      var found = (li.querySelector('.venue') || li).textContent.match(/(?:19|20)\d\d/g) || [];
+      year = found.length ? found[found.length - 1] : '';
+      li.setAttribute('data-year', year);
+    }
+    var label = document.createElement('span');
+    label.className = 'pub-year';
+    label.setAttribute('aria-hidden', 'true');
+    label.textContent = year;
+    li.insertBefore(label, li.firstChild);
+  });
+
+  var empty = document.createElement('p');
+  empty.className = 'pub-empty';
+  empty.textContent = 'No papers under this topic yet.';
+  empty.hidden = true;
+  list.appendChild(empty);
+  list.id = 'pub-list';
+  list.setAttribute('role', 'tabpanel');
+
+  // toolbar: group tabs on the left, topic chips on the right
   var toolbar = document.createElement('div');
   toolbar.className = 'pub-toolbar';
   var tablist = document.createElement('div');
   tablist.className = 'pub-tablist';
   tablist.setAttribute('role', 'tablist');
-  toolbar.appendChild(tablist);
-
-  var tabs = [], panels = [];
-  Array.prototype.forEach.call(box.querySelectorAll('h3'), function (heading, i) {
-    var panel = heading.nextElementSibling;
-    while (panel && !panel.classList.contains('pub-list')) panel = panel.nextElementSibling;
-    if (!panel) return;
-
+  var tabs = GROUPS.map(function (g, i) {
     var tab = document.createElement('button');
     tab.type = 'button';
     tab.className = 'pub-tab';
-    tab.id = 'pub-tab-' + i;
+    tab.id = 'pub-tab-' + g[0];
     tab.setAttribute('role', 'tab');
-    tab.setAttribute('aria-controls', 'pub-panel-' + i);
-    Array.prototype.forEach.call(heading.childNodes, function (node) {
-      tab.appendChild(node.cloneNode(true));
-    });
-
-    panel.id = 'pub-panel-' + i;
-    panel.setAttribute('role', 'tabpanel');
-    panel.setAttribute('aria-labelledby', tab.id);
-    var empty = document.createElement('p');
-    empty.className = 'pub-empty';
-    empty.textContent = 'No papers under this topic yet.';
-    empty.hidden = true;
-    panel.appendChild(empty);
-    heading.hidden = true;
-
+    tab.setAttribute('aria-controls', list.id);
+    tab.setAttribute('data-group', g[0]);
+    tab.textContent = g[1];
     tablist.appendChild(tab);
-    tabs.push(tab);
-    panels.push(panel);
+    return tab;
   });
-  if (!tabs.length) return;
+  toolbar.appendChild(tablist);
 
-  // topic chips: "All" plus every topic that at least one paper uses
   var used = {};
-  Array.prototype.forEach.call(box.querySelectorAll('.pub-list li[data-topics]'), function (li) {
-    li.getAttribute('data-topics').split(/\s+/).forEach(function (t) { used[t] = true; });
+  items.forEach(function (li) {
+    (li.getAttribute('data-topics') || '').split(/\s+/).forEach(function (t) { if (t) used[t] = true; });
   });
   var filter = document.createElement('div');
   filter.className = 'pub-filter';
   filter.setAttribute('role', 'group');
   filter.setAttribute('aria-label', 'Filter by topic');
-  var chips = [];
-  [['all', 'All']].concat(TOPICS.filter(function (t) { return used[t[0]]; })).forEach(function (t) {
+  var chips = [['all', 'All']].concat(TOPICS.filter(function (t) { return used[t[0]]; })).map(function (t) {
     var chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'pub-chip';
     chip.setAttribute('data-topic', t[0]);
     chip.textContent = t[1];
     filter.appendChild(chip);
-    chips.push(chip);
+    return chip;
   });
   toolbar.appendChild(filter);
 
-  // Year timeline: a paper's year is its data-year, or else the last year in its
-  // venue ("ICML 2026"). Every item gets a label; CSS shows it only on the first
-  // shown paper of each year.
-  panels.forEach(function (panel) {
-    Array.prototype.forEach.call(panel.querySelectorAll('li'), function (li) {
-      var year = li.getAttribute('data-year');
-      if (!year) {
-        var found = (li.querySelector('.venue') || li).textContent.match(/(?:19|20)\d\d/g) || [];
-        year = found.length ? found[found.length - 1] : '';
-        li.setAttribute('data-year', year);
-      }
-      var label = document.createElement('span');
-      label.className = 'pub-year';
-      label.setAttribute('aria-hidden', 'true');
-      label.textContent = year;
-      li.insertBefore(label, li.firstChild);
-    });
-  });
+  var group = GROUPS[0][0], topic = 'all';
 
-  var current = 'all';
-  function applyFilter() {
-    chips.forEach(function (c) {
-      c.setAttribute('aria-pressed', c.getAttribute('data-topic') === current ? 'true' : 'false');
-    });
-    panels.forEach(function (panel) {
-      var shown = [];
-      Array.prototype.forEach.call(panel.querySelectorAll('li'), function (li) {
-        var topics = (li.getAttribute('data-topics') || '').split(/\s+/);
-        var on = current === 'all' || topics.indexOf(current) >= 0;
-        li.hidden = !on;
-        if (on) shown.push(li);
-      });
-      panel.querySelector('.pub-empty').hidden = shown.length > 0;
-
-      // regroup the shown papers by year, and mark the ends of the timeline
-      var prevYear = null;
-      shown.forEach(function (li, i) {
-        var year = li.getAttribute('data-year');
-        li.classList.toggle('is-year-first', year !== prevYear);
-        li.classList.toggle('is-first', i === 0);
-        li.classList.toggle('is-last', i === shown.length - 1);
-        prevYear = year;
-      });
-    });
-  }
-
-  function select(k, focus) {
-    tabs.forEach(function (tab, i) {
-      var on = i === k;
+  function apply() {
+    tabs.forEach(function (tab) {
+      var on = tab.getAttribute('data-group') === group;
       tab.setAttribute('aria-selected', on ? 'true' : 'false');
       tab.tabIndex = on ? 0 : -1;
-      panels[i].hidden = !on;
+      if (on) list.setAttribute('aria-labelledby', tab.id);
     });
-    if (focus) tabs[k].focus();
+    chips.forEach(function (chip) {
+      chip.setAttribute('aria-pressed', chip.getAttribute('data-topic') === topic ? 'true' : 'false');
+    });
+
+    var shown = items.filter(function (li) {
+      var topics = (li.getAttribute('data-topics') || '').split(/\s+/);
+      return (group === 'all' || li.getAttribute('data-group') === group) &&
+             (topic === 'all' || topics.indexOf(topic) >= 0);
+    });
+    items.forEach(function (li) { li.hidden = shown.indexOf(li) < 0; });
+    empty.hidden = shown.length > 0;
+
+    // regroup the shown papers by year, and mark the ends of the timeline
+    var prevYear = null;
+    shown.forEach(function (li, i) {
+      var year = li.getAttribute('data-year');
+      li.classList.toggle('is-year-first', year !== prevYear);
+      li.classList.toggle('is-first', i === 0);
+      li.classList.toggle('is-last', i === shown.length - 1);
+      prevYear = year;
+    });
   }
 
   tabs.forEach(function (tab, i) {
-    tab.addEventListener('click', function () { select(i); });
+    tab.addEventListener('click', function () {
+      group = tab.getAttribute('data-group');
+      apply();
+    });
     tab.addEventListener('keydown', function (e) {
       var step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
       if (!step) return;
       e.preventDefault();
-      select((i + step + tabs.length) % tabs.length, true);
+      var next = tabs[(i + step + tabs.length) % tabs.length];
+      group = next.getAttribute('data-group');
+      apply();
+      next.focus();
     });
   });
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
-      current = chip.getAttribute('data-topic');
-      applyFilter();
+      topic = chip.getAttribute('data-topic');
+      apply();
     });
   });
 
   box.insertBefore(toolbar, box.firstChild);
-  select(0);
-  applyFilter();
+  apply();
 })();
 
 /* Total views in the footer: busuanzi fills #busuanzi_value_site_pv with a plain
