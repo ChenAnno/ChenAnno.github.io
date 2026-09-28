@@ -97,13 +97,12 @@
   fade();
 })();
 
-/* Nav: the link of the section currently in view turns orange (.is-current).
+/* Nav: the link of the section currently in view turns blue (.is-current).
    A section counts as current once its title has scrolled up past the pill;
    at the very bottom of the page the last section wins. */
 (function () {
   var items = [];
   Array.prototype.forEach.call(document.querySelectorAll('#site-nav a[href*="#"]'), function (a) {
-    if (a.parentNode.classList.contains('masthead__menu-home-item')) return;
     var target = document.getElementById(a.getAttribute('href').split('#')[1]);
     if (target) items.push({ link: a, target: target });
   });

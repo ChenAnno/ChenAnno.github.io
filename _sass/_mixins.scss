@@ -3,9 +3,9 @@
    ========================================================================== */
 
 %tab-focus {
-  /* Indicate focus with a color change instead of an outline box */
+  /* No outline box. _redesign.scss shows keyboard focus as a color change
+     through :focus-visible; a color here would stick to every clicked link. */
   outline: none;
-  color: $link-color-hover;
 }
 
 /*

@@ -50,6 +50,29 @@
   color-scheme: light;
 }
 
+/* Hover feedback only where a pointer really hovers: on touch screens :hover
+   sticks to whatever was tapped last, which left tapped links orange.
+   hover-focus adds keyboard focus through :focus-visible. A mouse click does
+   not trigger :focus-visible, so a clicked link no longer stays orange (with
+   plain :focus it did, because the link keeps focus after the click). */
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin hover-focus {
+  @include hover {
+    @content;
+  }
+
+  &:focus-visible {
+    @content;
+  }
+}
+
 html {
   font-size: 16px;
   background-color: var(--bg);
@@ -177,16 +200,18 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
         display: none;
       }
 
-      &:hover,
-      &:focus {
+      /* The section currently in view (set by site.js while scrolling). Blue
+         like a selected tab: orange only ever means the pointer is on it, so
+         a clicked item does not look stuck in its hover state. Listed before
+         the hover rule so hovering the current item still turns it orange. */
+      &.is-current {
+        color: var(--accent);
+      }
+
+      @include hover-focus {
         color: var(--hover);
         background: var(--hover-tint);
         box-shadow: none;
-      }
-
-      /* the section currently in view (set by site.js while scrolling) */
-      &.is-current {
-        color: var(--hover);
       }
     }
   }
@@ -195,10 +220,6 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
      pull the pill left so the two never overlap. */
   button:not(.hidden) ~ .visible-links {
     margin-left: 0;
-  }
-
-  .masthead__menu-item--lg {
-    padding-right: 0;
   }
 
   button {
@@ -241,14 +262,19 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
       font-size: var(--fs-sm);
       font-weight: 700;
 
-      &:hover,
-      &:focus {
-        color: var(--hover);
-        background: var(--hover-tint);
+      /* cancel the template's hover colors, which would stick after a tap */
+      &:hover {
+        color: var(--fg);
+        background: none;
       }
 
       &.is-current {
+        color: var(--accent);
+      }
+
+      @include hover-focus {
         color: var(--hover);
+        background: var(--hover-tint);
       }
     }
   }
@@ -292,7 +318,7 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
     box-shadow: 0 8px 24px var(--glass-cast);
     transition: transform .35s ease, box-shadow .35s ease;
 
-    &:hover {
+    @include hover {
       transform: scale(1.03);
       box-shadow: 0 12px 30px rgba(35, 52, 70, .14);
     }
@@ -344,8 +370,12 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
       font-size: var(--fs-sm);
       transition: color .18s ease;
 
-      &:hover,
-      &:focus {
+      /* the template's hover underline would stick after a tap */
+      &:hover {
+        text-decoration: none;
+      }
+
+      @include hover-focus {
         color: var(--hover);
         text-decoration: underline;
         text-underline-offset: 2px;
@@ -370,8 +400,12 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
     background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
     transition: color .2s ease, background-size .25s ease;
 
-    &:hover,
-    &:focus {
+    /* the template's hover underline would stick after a tap */
+    &:hover {
+      text-decoration: none;
+    }
+
+    @include hover-focus {
       color: var(--hover);
       text-decoration: none;
       background-size: 100% 1px;
@@ -452,12 +486,14 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
   transition: border-color .22s ease, box-shadow .22s ease;
 }
 
-.pub-card:hover,
-.pub-list:hover,
-.edu-card:hover,
-.info-card:hover {
-  border-color: var(--rule);
-  box-shadow: var(--card-lift);
+@media (hover: hover) {
+  .pub-card:hover,
+  .pub-list:hover,
+  .edu-card:hover,
+  .info-card:hover {
+    border-color: var(--rule);
+    box-shadow: var(--card-lift);
+  }
 }
 
 /* ---------- News ----------
@@ -510,8 +546,10 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
       }
     }
 
-    &:hover > code:first-child {
-      color: var(--hover);
+    @include hover {
+      > code:first-child {
+        color: var(--hover);
+      }
     }
   }
 
@@ -587,8 +625,7 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
   font-size: var(--fs-xs);
   cursor: pointer;
 
-  &:hover,
-  &:focus {
+  @include hover-focus {
     color: var(--hover);
     text-decoration: underline;
   }
@@ -618,9 +655,11 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
   }
 }
 
-.pub-card:hover .pub-thumb {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(35, 52, 70, .10);
+@media (hover: hover) {
+  .pub-card:hover .pub-thumb {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(35, 52, 70, .10);
+  }
 }
 
 /* One gap value spaces title, authors, venue, summary and links evenly */
@@ -650,8 +689,10 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
   transition: color .2s ease;
 }
 
-.pub-card:hover .pub-title {
-  color: var(--hover);
+@media (hover: hover) {
+  .pub-card:hover .pub-title {
+    color: var(--hover);
+  }
 }
 
 /* The one-line summary: plain dark text whose key phrases (<mark>) are set in
@@ -737,8 +778,7 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
   /* bracket links change color only; no sliding underline under the brackets */
   background: none;
 
-  &:hover,
-  &:focus {
+  @include hover-focus {
     color: var(--hover);
     text-decoration: none;
   }
@@ -792,12 +832,11 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
   cursor: pointer;
   transition: background .2s ease, color .2s ease;
 
-  &:hover,
-  &:focus {
+  @include hover-focus {
     color: var(--hover);
   }
 
-  /* after :hover so the selected tab keeps its white text */
+  /* after the hover rule so the selected tab keeps its white text */
   &[aria-selected="true"] {
     background: var(--accent);
     color: #fff;
@@ -824,8 +863,7 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
   cursor: pointer;
   transition: color .2s ease, border-color .2s ease, background .2s ease;
 
-  &:hover,
-  &:focus {
+  @include hover-focus {
     border-color: var(--hover);
     color: var(--hover);
   }
@@ -899,7 +937,7 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
       transition: border-color .2s ease, background .2s ease;
     }
 
-    &:hover {
+    @include hover {
       > strong {
         color: var(--hover);
       }
@@ -915,9 +953,11 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
     background: var(--accent);
   }
 
-  li.is-year-first:hover::after {
-    border-color: var(--hover);
-    background: var(--hover);
+  @media (hover: hover) {
+    li.is-year-first:hover::after {
+      border-color: var(--hover);
+      background: var(--hover);
+    }
   }
 
   /* more room above each new year; its label and dot move down with it */
@@ -1031,8 +1071,10 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
   transition: transform .3s ease;
 }
 
-.edu-card:hover .edu-logo {
-  transform: scale(1.06);
+@media (hover: hover) {
+  .edu-card:hover .edu-logo {
+    transform: scale(1.06);
+  }
 }
 
 .edu-body {
@@ -1074,8 +1116,10 @@ $page-shift-margin: unquote("max(0px, calc(50% - 644px))");
     }
   }
 
-  li:hover .h {
-    color: var(--hover);
+  @media (hover: hover) {
+    li:hover .h {
+      color: var(--hover);
+    }
   }
 }
 

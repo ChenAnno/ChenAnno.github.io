@@ -184,8 +184,7 @@
     color: $masthead-link-color;
     text-decoration: none;
 
-    &:hover,
-    &:focus {
+    &:hover {
       color: $masthead-link-color-hover;
     }
   }
