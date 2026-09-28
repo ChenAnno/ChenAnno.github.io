@@ -2,7 +2,12 @@
 {% assign month = site.time | date: "%b" %}
 <footer class="site-footer">
   <div class="site-footer__inner">
+    {% include visitor-map.html %}
     <span>Copyright © {{ site.author.name }}. All Rights Reserved.</span>
     <span>Last Update: {% if month == "May" %}May{% else %}{{ month }}.{% endif %} {{ site.time | date: "%Y" }}</span>
+    <!-- Total views from busuanzi (不蒜子), counted per site; site.js shows the line
+         once the number has arrived. -->
+    <span class="site-views" hidden>Total Views: <span id="busuanzi_value_site_pv"></span></span>
   </div>
 </footer>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>

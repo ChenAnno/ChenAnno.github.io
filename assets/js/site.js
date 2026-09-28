@@ -262,20 +262,49 @@
   });
   toolbar.appendChild(filter);
 
+  // Year timeline: a paper's year is its data-year, or else the last year in its
+  // venue ("ICML 2026"). Every item gets a label; CSS shows it only on the first
+  // shown paper of each year.
+  panels.forEach(function (panel) {
+    Array.prototype.forEach.call(panel.querySelectorAll('li'), function (li) {
+      var year = li.getAttribute('data-year');
+      if (!year) {
+        var found = (li.querySelector('.venue') || li).textContent.match(/(?:19|20)\d\d/g) || [];
+        year = found.length ? found[found.length - 1] : '';
+        li.setAttribute('data-year', year);
+      }
+      var label = document.createElement('span');
+      label.className = 'pub-year';
+      label.setAttribute('aria-hidden', 'true');
+      label.textContent = year;
+      li.insertBefore(label, li.firstChild);
+    });
+  });
+
   var current = 'all';
   function applyFilter() {
     chips.forEach(function (c) {
       c.setAttribute('aria-pressed', c.getAttribute('data-topic') === current ? 'true' : 'false');
     });
     panels.forEach(function (panel) {
-      var shown = 0;
+      var shown = [];
       Array.prototype.forEach.call(panel.querySelectorAll('li'), function (li) {
         var topics = (li.getAttribute('data-topics') || '').split(/\s+/);
         var on = current === 'all' || topics.indexOf(current) >= 0;
         li.hidden = !on;
-        if (on) shown++;
+        if (on) shown.push(li);
       });
-      panel.querySelector('.pub-empty').hidden = shown > 0;
+      panel.querySelector('.pub-empty').hidden = shown.length > 0;
+
+      // regroup the shown papers by year, and mark the ends of the timeline
+      var prevYear = null;
+      shown.forEach(function (li, i) {
+        var year = li.getAttribute('data-year');
+        li.classList.toggle('is-year-first', year !== prevYear);
+        li.classList.toggle('is-first', i === 0);
+        li.classList.toggle('is-last', i === shown.length - 1);
+        prevYear = year;
+      });
     });
   }
 
@@ -310,12 +339,11 @@
   applyFilter();
 })();
 
-/* Site statistics under the map: busuanzi fills #busuanzi_value_site_pv and
-   #busuanzi_value_site_uv with plain numbers. Show the block only once a number
-   has arrived (if the counter service is down it stays hidden), with thousands
-   separators. */
+/* Total views in the footer: busuanzi fills #busuanzi_value_site_pv with a plain
+   number. Show the line only once the number has arrived (if the counter service
+   is down it stays hidden), with thousands separators. */
 (function () {
-  var box = document.querySelector('.site-stats');
+  var box = document.querySelector('.site-views');
   if (!box) return;
   var values = box.querySelectorAll('[id^="busuanzi_value_"]');
 

@@ -455,14 +455,10 @@ body {
    bottom edge while more is below), so Selected Publications stays on the
    first screen. */
 .news-card {
-  margin: 28px 0 0;
-  padding: 16px 24px 14px;
+  margin: 0;
+  padding: 14px 24px;
   border: 2px solid var(--heading);
   border-radius: 18px;
-
-  h1 {
-    margin: 0 0 6px;
-  }
 
   ul {
     margin: 0;
@@ -522,17 +518,50 @@ body {
 }
 
 @include breakpoint($large) {
-  .news-card ul {
-    max-height: 160px;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
-    scrollbar-color: var(--rule) transparent;
+  .news-card {
+    padding-right: 14px;
   }
 
+  /* A styled ::-webkit-scrollbar is always drawn (macOS overlay scrollbars would
+     hide until scrolling), so Chrome, Edge and Safari show a permanent scrollbar;
+     Firefox keeps its own. The standard scrollbar-* properties must stay off
+     this element: Chrome ignores ::-webkit-scrollbar when they are set. */
+  .news-card ul {
+    max-height: 160px;
+    padding-right: 12px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--hairline);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--rule);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--hover);
+    }
+  }
+
+  /* Fade the text at the bottom while more is below (site.js toggles the
+     class). The second mask layer keeps the 6px scrollbar strip opaque. */
   .news-card ul.news-fade {
-    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 32px), transparent);
-    mask-image: linear-gradient(to bottom, #000 calc(100% - 32px), transparent);
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 32px), transparent), linear-gradient(#000, #000);
+    -webkit-mask-size: calc(100% - 6px) 100%, 6px 100%;
+    -webkit-mask-position: left top, right top;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 32px), transparent), linear-gradient(#000, #000);
+    mask-size: calc(100% - 6px) 100%, 6px 100%;
+    mask-position: left top, right top;
+    mask-repeat: no-repeat;
   }
 }
 
@@ -809,10 +838,14 @@ body {
   display: none !important;
 }
 
-/* All Publications lists: entries split by hairlines */
+/* All Publications: a year timeline inside each card. site.js labels every
+   paper with its year and marks the first shown paper of each year
+   (.is-year-first) and the ends of the list (.is-first / .is-last). The year
+   hangs in a left column; a hairline runs down beside the papers with a dot
+   level with each title, filled for the first paper of a year. */
 .pub-list {
   margin: 0 0 12px;
-  padding: 2px 22px;
+  padding: 10px 22px;
 
   ul {
     margin: 0;
@@ -821,21 +854,89 @@ body {
   }
 
   li {
+    position: relative;
     margin: 0;
-    padding: 14px 0;
+    padding: 10px 0 10px 104px;
     font-size: var(--fs-md);
     line-height: 1.55;
     animation: pub-in .35s ease both;
 
-    &:hover > strong {
-      color: var(--hover);
+    /* the timeline */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 84px;
+      width: 1px;
+      background: var(--card-b);
+    }
+
+    /* the dot, centered on the title's first line (10px padding + half of 26px) */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 19px;
+      left: 80px;
+      width: 9px;
+      height: 9px;
+      border: 2px solid var(--rule);
+      border-radius: 50%;
+      background: var(--card);
+      box-sizing: border-box;
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    &:hover {
+      > strong {
+        color: var(--hover);
+      }
+
+      &::after {
+        border-color: var(--hover);
+      }
     }
   }
 
-  /* a divider above every shown item that follows another shown item, so a
-     filtered list never starts with a stray line */
-  li:not([hidden]) ~ li:not([hidden]) {
-    border-top: 1px solid var(--hairline);
+  li.is-year-first::after {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  li.is-year-first:hover::after {
+    border-color: var(--hover);
+    background: var(--hover);
+  }
+
+  /* more room above each new year; its label and dot move down with it */
+  li.is-year-first:not(.is-first) {
+    padding-top: 28px;
+
+    &::after {
+      top: 37px;
+    }
+
+    .pub-year {
+      top: 28px;
+    }
+  }
+
+  /* the line starts at the first dot and ends at the last one */
+  li.is-first::before {
+    top: 23px;
+  }
+
+  li.is-last::before {
+    bottom: auto;
+    height: 23px;
+  }
+
+  li.is-last.is-year-first:not(.is-first)::before {
+    height: 41px;
+  }
+
+  li.is-first.is-last::before {
+    display: none;
   }
 
   strong {
@@ -843,6 +944,24 @@ body {
     font-weight: 700;
     transition: color .2s ease;
   }
+}
+
+.pub-year {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 64px;
+  color: var(--heading);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 26px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.pub-list li.is-year-first .pub-year {
+  display: block;
 }
 
 /* replayed whenever a tab or topic chip brings an item back from display: none */
@@ -967,65 +1086,56 @@ body {
 }
 
 /* ---------- Visitor map and footer ---------- */
+/* The map sits in the footer, between its top rule and the copyright lines,
+   drawn as a dot matrix like caozhijun.top. The widget paints land (its cl
+   parameter) on an ocean of page color (co = --bg); a screen of page color with
+   round holes lies over that painting, so land shows only through the holes.
+   The visitor markers are the widget's SVG layer and stay above the screen. */
 .visitor-map {
-  /* .page__content is floated by the template; without this the map would
-     slide up to the top of the column */
-  clear: both;
-  width: 80%;
-  max-width: 640px;
-  margin: 0 auto;
-  padding-top: 64px;
+  overflow: hidden;
+  aspect-ratio: 2.2;   /* the widget draws at 2.04; this trims the empty southern ocean */
+  width: 72%;
+  max-width: 620px;
+  margin: 0 auto 20px;
 
-  /* mapmyvisitors bakes (inactive) zoom buttons into the bottom-left corner of
-     its background image; cover them with the page color. The buttons scale
-     with the map, so the patch is sized in percent. */
   .mapmyvisitors-map::after {
     content: "";
     position: absolute;
-    left: 0;
+    top: 0;
+    right: 0;
     bottom: 0;
-    width: 6%;
-    height: 21%;
-    background: var(--bg);
-  }
-}
-
-/* Total views under the map (busuanzi). Hidden until site.js has the number,
-   so a failed counter shows nothing rather than a blank. */
-.site-stats {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0 0;
-
-  &[hidden] {
-    display: none;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* layer 1 covers the inactive zoom buttons mapmyvisitors bakes into the
+       bottom-left corner (they scale with the map, hence percent);
+       layer 2 is the dotted screen */
+    background-image:
+      linear-gradient(var(--bg), var(--bg)),
+      radial-gradient(circle, transparent 1.1px, var(--bg) 1.6px);
+    background-position: left bottom, 0 0;
+    background-size: 6% 21%, 4px 4px;
+    background-repeat: no-repeat, repeat;
   }
 
-  .stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 28px;
+  .jvectormap-container {
+    z-index: 1;
   }
 
-  .stat + .stat {
-    border-left: 1px solid var(--rule);
+  /* markers in the site palette: the widget draws older visits red and recent
+     ones orange */
+  circle {
+    stroke: rgba(43, 42, 41, .35);
+    stroke-width: 1px;
+    fill-opacity: .9;
   }
 
-  .n {
-    color: var(--heading);
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    font-variant-numeric: tabular-nums;
+  circle[fill="#FF0000"] {
+    fill: var(--sl-red);
   }
 
-  .l {
-    margin-top: 3px;
-    color: var(--subtle);
-    font-size: 12px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+  circle[fill="#F8A400"] {
+    fill: var(--hover);
   }
 }
 
@@ -1039,8 +1149,8 @@ body {
   font-size: var(--fs-xs);
 }
 
-/* The footer sits at the bottom of the content column, so the map and the
-   copyright lines share one center axis. */
+/* The footer sits at the bottom of the content column: a rule, the visitor map,
+   then the copyright lines, all on the column's center axis. */
 .site-footer {
   clear: both;
 }
@@ -1050,12 +1160,17 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin: 56px 0 0;
-  padding: 40px 0 44px;
+  margin: 48px 0 0;
+  padding: 32px 0 44px;
   border-top: 1px solid var(--rule);
   color: var(--subtle);
   font-size: var(--fs-xs);
   text-align: center;
+}
+
+/* total views: hidden until busuanzi answers (see site.js) */
+.site-views[hidden] {
+  display: none;
 }
 
 /* ---------- Reveal on scroll ----------
@@ -1099,7 +1214,7 @@ body {
   }
 
   .news-card {
-    padding: 18px 18px 16px;
+    padding: 12px 16px;
   }
 
   /* the date gets its own line instead of a hanging column */
@@ -1125,6 +1240,36 @@ body {
 
   .pub-list {
     padding: 2px 16px;
+  }
+
+  /* no room for the timeline column: the year becomes a small heading above
+     the first paper of each year, and hairlines separate the papers */
+  .pub-list li {
+    padding-left: 0;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .pub-list li:not([hidden]) ~ li:not([hidden]) {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .pub-list li.is-year-first:not(.is-first) {
+    padding-top: 16px;
+  }
+
+  .pub-list li.is-year-first .pub-year {
+    position: static;
+    width: auto;
+    margin: 0 0 4px;
+    color: var(--accent);
+    font-size: var(--fs-sm);
+    letter-spacing: .06em;
+    line-height: 1.4;
+    text-align: left;
   }
 
   .pub-tab {

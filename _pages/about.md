@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-# Biography
+# 👨🏻‍🎓 Biography
 
 I am currently a Second-year Ph.D. student at the [Show Lab](https://sites.google.com/view/showlab/home), <span style="color: #E67C46;">National University of Singapore</span>, advised by [Prof. Mike Zheng Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
 
@@ -32,9 +32,9 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='news'></span>
 
-<div class="news-card" data-show="10" markdown="1">
+# 🔥 News
 
-# News
+<div class="news-card" data-show="10" markdown="1">
 
 - `Sep. 2026` 🦾 We released <span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness [[Website](https://showlab.github.io/Show-Harness/), [Code](https://github.com/showlab/Show-Harness)], and a [Survey](https://showlab.github.io/Awesome-Multimodal-Embodied-Agent/) on robot-use agent.
 - `Sep. 2026` 🎉 Three papers got accepted by **CoRL 2026**.
@@ -47,7 +47,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='publications'></span>
 
-# Publications
+# 📝 Publications
 
 ## ⭐ Selected Publications
 
@@ -117,7 +117,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='education'></span>
 
-# Education
+# 🏫 Education
 
 <div class="edu-card">
   <img class="edu-logo" src="images/logo-nus.png" alt="National University of Singapore" loading="lazy">
@@ -154,7 +154,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <span class='anchor' id='service'></span>
 
-# Service
+# 📖 Service
 
 <div class="info-card" markdown="1">
 
