@@ -1,0 +1,1078 @@
+/* ==========================================================================
+   REDESIGN
+   Visual language after caozhijun.top: Charis SIL throughout, a Morandi
+   blue-gray palette, white rounded cards, a floating pill navigation, a News
+   timeline card, and a visitor map + footer at the bottom. The template's
+   left profile sidebar is kept.
+
+   Imported last in assets/css/main.scss, so it overrides the template
+   partials instead of editing them. Fonts are declared in
+   _includes/head/custom.html; page scripts live in assets/js/site.js.
+   ========================================================================== */
+
+:root {
+  --accent:   #4d6e8a;   /* Morandi haze blue: dates, subtitles, hover */
+  --heading:  #34526b;   /* one step darker: section titles, News border */
+  --high:     #c4876e;   /* terracotta: venues, co-first stars */
+  --link:     #5c8299;
+  --rule:     #c9d3dd;
+  --hairline: #e8edf2;   /* dividers inside cards */
+  --subtle:   #7b8794;   /* secondary text */
+  --bg:       #f3f6f9;
+  --fg:       #232a31;
+  --card:     #ffffff;
+  --card-b:   #dbe3eb;   /* every rounded box shares this border */
+
+  /* Show Lab logo colors, for the "Show" in Show-Harness */
+  --sl-blue:   #669ED3;
+  --sl-green:  #67A651;
+  --sl-red:    #D85E5D;
+  --sl-orange: #F3AA68;
+
+  --glass-cast: rgba(35, 52, 70, .09);
+  --card-rest:  0 1px 2px rgba(35, 52, 70, .05);
+  --card-lift:  0 6px 20px rgba(35, 52, 70, .09);
+
+  /* Five font sizes only; pick new styles from these */
+  --fs-xs: 13px;   /* footer, "show all" */
+  --fs-sm: 15px;   /* authors, venues, dates, nav, links */
+  --fs-md: 17px;   /* body text, titles */
+  --fs-lg: 20px;   /* section titles */
+  --fs-xl: 24px;   /* name in the sidebar */
+
+  color-scheme: light;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* very long URLs or words never push a narrow screen into horizontal scroll */
+  overflow-wrap: break-word;
+}
+
+/* ---------- Layout ----------
+   The template floats Susy columns sized in proportion to the window, so on
+   wide screens a line of body text ran to ~1000px. A grid keeps the sidebar at
+   a fixed width and caps the content column near 880px. */
+@include breakpoint($large) {
+  #main {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    column-gap: 64px;
+    max-width: 1240px;
+    margin-top: 28px;
+    padding-left: 32px;
+    padding-right: 32px;
+
+    /* the clearfix pseudo-elements would otherwise become grid items */
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    > .sidebar,
+    > .page {
+      float: none;
+      width: auto;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .sidebar.sticky {
+    top: 88px;
+    align-self: start;
+  }
+}
+
+/* ---------- Floating pill navigation ----------
+   An opaque white pill. The masthead around it is transparent and
+   click-through; only the pill
+   (.visible-links), the overflow button and its dropdown take the pointer. */
+.masthead {
+  padding-top: 12px;
+  background: transparent;
+  border-bottom: 0;
+  pointer-events: none;
+
+  /* A band of page color behind the pill that fades out below it, so text
+     scrolling up disappears under the nav instead of showing around it. */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(100% + 18px);
+    background: linear-gradient(to bottom, var(--bg) 0%, var(--bg) 70%, rgba(243, 246, 249, 0) 100%);
+    z-index: -1;
+  }
+}
+
+.masthead__inner-wrap {
+  padding: 0 16px;
+
+  @include breakpoint($x-large) {
+    max-width: 1240px;
+  }
+}
+
+.greedy-nav {
+  min-width: 0;
+  background: transparent;
+
+  .visible-links {
+    margin: 0 auto;
+    padding: 5px 7px;
+    border: 1px solid var(--card-b);
+    border-radius: 999px;
+    background: var(--card);
+    box-shadow: 0 8px 30px var(--glass-cast);
+    pointer-events: auto;
+
+    li:first-child a,
+    li:last-child a {
+      margin: 0;
+    }
+
+    a {
+      margin: 0;
+      padding: 6px 14px;
+      border-radius: 999px;
+      color: var(--fg);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      letter-spacing: .02em;
+      transition: background .2s ease, box-shadow .2s ease, color .2s ease;
+
+      /* the template's sliding underline */
+      &::before {
+        display: none;
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--accent);
+        background: var(--bg);
+        box-shadow: inset 0 0 0 1px var(--card-b);
+      }
+    }
+  }
+
+  /* Once links overflow into the dropdown, the button sits at the right edge;
+     pull the pill left so the two never overlap. */
+  button:not(.hidden) ~ .visible-links {
+    margin-left: 0;
+  }
+
+  .masthead__menu-item--lg {
+    padding-right: 0;
+  }
+
+  button {
+    width: 50px;
+    padding: 0;
+    border: 1px solid var(--card-b);
+    border-radius: 999px;
+    background: var(--card);
+    box-shadow: 0 8px 30px var(--glass-cast);
+    color: var(--fg);
+    pointer-events: auto;
+  }
+
+  .navicon,
+  .navicon::before,
+  .navicon::after {
+    background: var(--fg);
+  }
+
+  button.close .navicon {
+    background: transparent;
+  }
+
+  .hidden-links {
+    margin-top: 10px;
+    padding: 6px;
+    border-color: var(--card-b);
+    border-radius: 14px;
+    box-shadow: 0 8px 30px var(--glass-cast);
+    pointer-events: auto;
+
+    li {
+      border-bottom: 0;
+    }
+
+    a {
+      padding: 8px 16px;
+      border-radius: 10px;
+      color: var(--fg);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+
+      &:hover,
+      &:focus {
+        color: var(--accent);
+        background: var(--bg);
+      }
+    }
+  }
+}
+
+/* ---------- Sidebar (photo + profile) ---------- */
+.sidebar {
+  .author__name {
+    color: var(--fg);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+  }
+
+  .author__bio {
+    color: var(--subtle);
+    letter-spacing: .08em;
+  }
+}
+
+/* the compact icon row shown next to the name on narrow screens */
+.author__urls_sm {
+  font-size: 20px;
+  white-space: nowrap;
+
+  a {
+    color: var(--accent);
+  }
+
+  a + a {
+    margin-left: 6px;
+  }
+}
+
+@include breakpoint($large) {
+  .author__avatar img {
+    width: 100%;
+    max-width: 190px;
+    background: var(--card);
+    border-color: var(--card-b);
+    box-shadow: 0 8px 24px var(--glass-cast);
+  }
+
+  .sidebar .author__name {
+    margin: 18px 0 4px;
+    font-size: var(--fs-xl);
+    white-space: nowrap;
+  }
+
+  .sidebar .author__bio {
+    margin: 0 0 14px;
+    font-size: var(--fs-md);
+  }
+
+  /* one color for all four icons; the template gives GitHub etc. brand colors */
+  .sidebar .author__urls li i {
+    margin-right: 4px;
+    color: var(--accent);
+  }
+
+  /* description, then location / email / GitHub / Scholar as plain icon + text
+     lines (the links look like the location line and light up on hover) */
+  .author__urls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+
+    li {
+      margin: 0;
+      color: var(--subtle);
+      font-size: var(--fs-sm);
+      line-height: 1.5;
+    }
+
+    .author__desc {
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-weight: 600;
+      white-space: normal;
+    }
+
+    li > a {
+      margin: 0;
+      padding: 0;
+      color: var(--subtle);
+      font-size: var(--fs-sm);
+      transition: color .18s ease;
+
+      &:hover,
+      &:focus {
+        color: var(--accent);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    }
+  }
+}
+
+/* ---------- Content column ---------- */
+.page__content {
+  font-size: var(--fs-md);
+  line-height: 1.68;
+
+  p {
+    margin: 0 0 12px;
+  }
+
+  a {
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+
+  h1 {
+    margin: 52px 0 16px;
+    padding: 0;
+    border: 0;
+    color: var(--heading);
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  /* Only Biography keeps a heavy rule under its title; the other sections
+     are grouped by their cards. */
+  > h1:first-of-type {
+    margin-top: 6px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  h2 {
+    margin: 30px 0 14px;
+    color: var(--fg);
+    font-size: var(--fs-md);
+    font-weight: 700;
+  }
+
+  h3 {
+    margin: 28px 0 10px;
+    color: var(--accent);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  h2 + h3 {
+    margin-top: 14px;
+  }
+}
+
+/* Nav targets are empty spans before each section; shift them up so a section
+   title lands below the floating pill instead of under it. */
+.anchor {
+  display: block;
+  position: relative;
+  top: -64px;
+  visibility: hidden;
+}
+
+.page__content p:has(> .anchor:only-child) {
+  margin: 0;
+}
+
+/* Colored "Show" in Show-Harness. The four spans must touch (no whitespace
+   between them), or the word renders as "S h o w". */
+.show-S { color: var(--sl-blue); }
+.show-h { color: var(--sl-green); }
+.show-o { color: var(--sl-red); }
+.show-w { color: var(--sl-orange); }
+
+/* ---------- Cards ---------- */
+.news-card,
+.pub-card,
+.pub-list,
+.edu-card,
+.info-card {
+  background: var(--card);
+  border: 1px solid var(--card-b);
+  border-radius: 14px;
+  box-shadow: var(--card-rest);
+  transition: border-color .22s ease, box-shadow .22s ease;
+}
+
+.pub-card:hover,
+.pub-list:hover,
+.edu-card:hover,
+.info-card:hover {
+  border-color: var(--rule);
+  box-shadow: var(--card-lift);
+}
+
+/* A leading `code` span in a list item becomes a date column hanging in the
+   left gutter (News). */
+%date-column {
+  position: relative;
+  padding-left: 92px;
+
+  > code:first-child {
+    position: absolute;
+    /* top: auto keeps the label on the item's first line, whatever its padding */
+    top: auto;
+    left: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--accent);
+    font-family: inherit;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    /* same line box as the 17px / 1.68 text next to it, so the baselines meet */
+    line-height: 1.904;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+}
+
+/* ---------- News ---------- */
+.news-card {
+  margin: 44px 0 0;
+  padding: 22px 26px 18px;
+  border: 2px solid var(--heading);
+  border-radius: 18px;
+
+  h1 {
+    margin: 0 0 12px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    @extend %date-column;
+    margin: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  /* consecutive items from the same month share one date label */
+  li.news-same-date > code:first-child {
+    visibility: hidden;
+  }
+
+  li.news-extra {
+    display: none;
+  }
+
+  &.news-open li.news-extra {
+    display: block;
+  }
+}
+
+.news-more {
+  margin: 8px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--subtle);
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+}
+
+/* ---------- Publications ---------- */
+.pub-card {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  margin: 0 0 14px;
+  padding: 18px 20px;
+}
+
+.pub-thumb {
+  overflow: hidden;
+  border: 1px solid var(--card-b);
+  border-radius: 8px;
+  background: var(--card);
+  transition: transform .28s ease, box-shadow .28s ease;
+
+  video,
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.pub-card:hover .pub-thumb {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(35, 52, 70, .10);
+}
+
+/* One gap value spaces title, authors, venue, summary and links evenly */
+.pub-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+
+  > * {
+    line-height: 1.45;
+  }
+}
+
+.page__content .pub-info > * {
+  margin: 0;
+}
+
+.page__content .pub-title {
+  margin: 0;
+  color: var(--fg);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  letter-spacing: normal;
+  text-transform: none;
+  text-wrap: pretty;
+}
+
+.pub-summary {
+  color: var(--accent);
+  font-size: var(--fs-sm);
+}
+
+.authors {
+  color: var(--subtle);
+  font-size: var(--fs-sm);
+  text-wrap: pretty;
+
+  u {
+    border-bottom: 0;
+    text-decoration: none;
+  }
+
+  u,
+  b {
+    color: var(--fg);
+    font-weight: 700;
+  }
+
+  sup {
+    color: var(--high);
+    font-weight: 700;
+  }
+}
+
+/* Accepted venues: upright terracotta. Preprints: plain italic. */
+.venue {
+  color: var(--high);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+
+  &.preprint {
+    color: var(--fg);
+    font-style: italic;
+    font-weight: 400;
+  }
+}
+
+.award {
+  margin-left: 4px;
+  color: var(--sl-red);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+/* Resource links read as [Paper] [Code] …: square brackets instead of tags */
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+
+.page__content .pub-links a,
+.page__content .pub-list li a {
+  color: var(--link);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+
+  &::before {
+    content: "[";
+    opacity: .5;
+  }
+
+  &::after {
+    content: "]";
+    opacity: .5;
+  }
+
+  &:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+}
+
+.page__content .pub-list li a {
+  margin-left: 10px;
+}
+
+/* GitHub star count appended by site.js */
+.gh-stars {
+  margin-left: 6px;
+  padding-left: 6px;
+  border-left: 1px solid var(--rule);
+  color: var(--subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+/* All Publications: tabs (First & Co-first / Collaborations) on the left and
+   topic chips on the right, built by site.js from the markup below them. */
+.pub-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px 16px;
+  margin: 0 0 14px;
+}
+
+.pub-tablist {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--card-b);
+  /* a pill on one row; if a very narrow screen wraps it, a rounded box */
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: var(--card-rest);
+}
+
+.pub-tab {
+  padding: 6px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--subtle);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+
+  &:hover,
+  &:focus {
+    color: var(--accent);
+  }
+
+  /* after :hover so the selected tab keeps its white text */
+  &[aria-selected="true"] {
+    background: var(--accent);
+    color: #fff;
+  }
+}
+
+/* topic chips: outlined, lighter than the tabs; the chosen one is tinted */
+.pub-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pub-chip {
+  padding: 5px 12px;
+  border: 1px solid var(--card-b);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--subtle);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+
+  &:hover,
+  &:focus {
+    border-color: var(--rule);
+    color: var(--accent);
+  }
+
+  &[aria-pressed="true"] {
+    border-color: var(--accent);
+    background: #eaf0f5;
+    color: var(--accent);
+  }
+}
+
+.pub-empty {
+  margin: 0;
+  padding: 18px 0;
+  color: var(--subtle);
+  font-size: var(--fs-sm);
+  font-style: italic;
+  text-align: center;
+}
+
+.pub-tabs [hidden] {
+  display: none !important;
+}
+
+/* All Publications lists: entries split by hairlines */
+.pub-list {
+  margin: 0 0 12px;
+  padding: 2px 22px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 14px 0;
+    font-size: var(--fs-md);
+    line-height: 1.55;
+  }
+
+  /* a divider above every shown item that follows another shown item, so a
+     filtered list never starts with a stray line */
+  li:not([hidden]) ~ li:not([hidden]) {
+    border-top: 1px solid var(--hairline);
+  }
+
+  strong {
+    color: var(--fg);
+    font-weight: 700;
+  }
+}
+
+/* ---------- Education, Honors, Service ---------- */
+/* LinkedIn-style: school logo on the left; honors earned there listed inside */
+.edu-card {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin: 0 0 12px;
+  padding: 18px 22px;
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 2px 16px;
+  }
+
+  .t {
+    color: var(--fg);
+    font-size: var(--fs-md);
+    font-weight: 700;
+  }
+
+  .d {
+    color: var(--subtle);
+    font-size: var(--fs-sm);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .s {
+    margin-top: 2px;
+    color: var(--subtle);
+    font-size: var(--fs-sm);
+  }
+}
+
+.edu-logo {
+  display: block;
+  width: 60px;
+  height: 60px;
+  padding: 5px;
+  border: 1px solid var(--card-b);
+  border-radius: 12px;
+  background: var(--card);
+  object-fit: contain;
+}
+
+.edu-body {
+  min-width: 0;
+}
+
+.page__content .edu-honors {
+  margin: 12px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--hairline);
+  list-style: none;
+
+  /* title wraps in its own column; the date stays on the first line */
+  li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 16px;
+    align-items: baseline;
+    margin: 4px 0;
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+  }
+
+  .h {
+    position: relative;
+    padding-left: 22px;
+    color: var(--fg);
+
+    /* Font Awesome "award", hanging in front of the title */
+    &::before {
+      content: "\f559";
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: var(--high);
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+    }
+  }
+}
+
+.info-card {
+  margin: 0 0 12px;
+  padding: 14px 22px;
+
+  ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 3px 0;
+
+    &::marker {
+      color: var(--accent);
+    }
+  }
+}
+
+/* ---------- Visitor map and footer ---------- */
+.visitor-map {
+  /* .page__content is floated by the template; without this the map would
+     slide up to the top of the column */
+  clear: both;
+  width: 80%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-top: 64px;
+
+  /* mapmyvisitors bakes (inactive) zoom buttons into the bottom-left corner of
+     its background image; cover them with the page color. The buttons scale
+     with the map, so the patch is sized in percent. */
+  .mapmyvisitors-map::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 6%;
+    height: 21%;
+    background: var(--bg);
+  }
+}
+
+/* Total views and visitors under the map (busuanzi). Hidden until site.js
+   has the numbers, so a failed counter shows nothing rather than blanks. */
+.site-stats {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0;
+
+  &[hidden] {
+    display: none;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 28px;
+  }
+
+  .stat + .stat {
+    border-left: 1px solid var(--rule);
+  }
+
+  .n {
+    color: var(--heading);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .l {
+    margin-top: 3px;
+    color: var(--subtle);
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+}
+
+.jvectormap-tip {
+  padding: 4px 9px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--fg);
+  color: var(--bg);
+  font-family: $serif;
+  font-size: var(--fs-xs);
+}
+
+/* The footer sits at the bottom of the content column, so the map and the
+   copyright lines share one center axis. */
+.site-footer {
+  clear: both;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 56px 0 0;
+  padding: 40px 0 44px;
+  border-top: 1px solid var(--rule);
+  color: var(--subtle);
+  font-size: var(--fs-xs);
+  text-align: center;
+}
+
+/* ---------- Reveal on scroll ----------
+   site.js adds .rise only to blocks that start below the fold, so nothing on
+   the first screen is ever hidden, and without JavaScript nothing is hidden. */
+.rise {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s cubic-bezier(.32, .72, 0, 1), transform .8s cubic-bezier(.32, .72, 0, 1),
+              border-color .22s ease, box-shadow .22s ease;
+  transition-delay: var(--d, 0ms), var(--d, 0ms), 0s, 0s;
+
+  &.in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .pub-card:hover .pub-thumb,
+  .author__urls li > a:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 700px) {
+  .page__content {
+    font-size: 16px;
+  }
+
+  .news-card {
+    padding: 18px 18px 16px;
+  }
+
+  /* the date gets its own line instead of a hanging column */
+  .news-card li {
+    padding-left: 0;
+
+    > code:first-child {
+      display: block;
+      position: static;
+      line-height: 1.5;
+    }
+  }
+
+  .news-card li.news-same-date > code:first-child {
+    display: none;
+  }
+
+  .pub-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .pub-list {
+    padding: 2px 16px;
+  }
+
+  .pub-tab {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  /* four topic chips fit on one row of a 360px phone */
+  .pub-chip {
+    padding: 4px 10px;
+    font-size: 13px;
+  }
+
+  /* e.g. "First & Co-first Author" -> "First & Co-first" on a phone */
+  .wide-only {
+    display: none;
+  }
+
+  .edu-card {
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .edu-logo {
+    width: 44px;
+    height: 44px;
+    padding: 4px;
+    border-radius: 10px;
+  }
+
+  .info-card {
+    padding-left: 18px;
+    padding-right: 16px;
+  }
+
+  .visitor-map {
+    width: 100%;
+  }
+}

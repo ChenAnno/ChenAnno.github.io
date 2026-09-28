@@ -1,0 +1,8 @@
+{% comment %} "Last Update" is the build time, so it moves forward on every push. {% endcomment %}
+{% assign month = site.time | date: "%b" %}
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>Copyright © {{ site.author.name }}. All Rights Reserved.</span>
+    <span>Last Update: {% if month == "May" %}May{% else %}{{ month }}.{% endif %} {{ site.time | date: "%Y" }}</span>
+  </div>
+</footer>

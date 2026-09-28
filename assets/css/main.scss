@@ -38,6 +38,8 @@
 @import "vendor/font-awesome/solid";
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
+
+@import "redesign"; // overrides the partials above
 @import "print";
 
 .paper-box {

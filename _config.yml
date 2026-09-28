@@ -111,6 +111,7 @@ kramdown:
   input: GFM
   hard_wrap: false
   auto_ids: true
+  auto_id_prefix: "h-" # heading ids must not clash with the nav anchors (#news, #publications, ...)
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
