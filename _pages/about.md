@@ -60,7 +60,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
     <p class="authors"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zechen Bai<sup>*</sup>, Zhijun Cao<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Qinghong Lin, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Qiming Huang, Mike Zheng Shou</p>
     <p class="venue preprint">arXiv 2026</p>
     <p class="pub-summary">Show-Harness is an embodied harness that lets <mark>VLMs <em>play</em> robots</mark> through a <mark>compact semantic action interface</mark>.</p>
-    <p class="pub-links"><a href="https://showlab.github.io/Show-Harness/">Project</a> <a href="https://arxiv.org/abs/2609.10522">Paper</a> <a href="https://github.com/showlab/Show-Harness" data-gh-stars="showlab/Show-Harness">Code</a> <a href="https://huggingface.co/showlab/Show-Harness-VLMs">Models</a> <a href="https://huggingface.co/datasets/showlab/Show-Harness-Data">Dataset</a></p>
+    <p class="pub-links"><a href="https://showlab.github.io/Show-Harness/">Website</a> <a href="https://arxiv.org/abs/2609.10522">Paper</a> <a href="https://github.com/showlab/Show-Harness" data-gh-stars="showlab/Show-Harness">Code</a> <a href="https://huggingface.co/showlab/Show-Harness-VLMs">Models</a> <a href="https://huggingface.co/datasets/showlab/Show-Harness-Data">Dataset</a></p>
   </div>
 </div>
 
@@ -73,7 +73,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
     <p class="authors"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Kevin Qinghong Lin<sup>*</sup>, Mike Zheng Shou</p>
     <p class="venue">ICML 2026</p>
     <p class="pub-summary">Code2Video is an <mark>agentic, code-centric framework</mark> that generates <mark>high-quality educational videos</mark> from tutorial topics.</p>
-    <p class="pub-links"><a href="https://showlab.github.io/Code2Video/">Project</a> <a href="https://arxiv.org/abs/2510.01174">Paper</a> <a href="https://github.com/showlab/Code2Video" data-gh-stars="showlab/Code2Video">Code</a> <a href="https://huggingface.co/datasets/YanzheChen/MMMC">Dataset</a></p>
+    <p class="pub-links"><a href="https://showlab.github.io/Code2Video/">Website</a> <a href="https://arxiv.org/abs/2510.01174">Paper</a> <a href="https://github.com/showlab/Code2Video" data-gh-stars="showlab/Code2Video">Code</a> <a href="https://huggingface.co/datasets/YanzheChen/MMMC">Dataset</a></p>
   </div>
 </div>
 
@@ -149,7 +149,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <div class="info-card" markdown="1">
 
-- Conference Reviewer: NeurIPS, CoRL, ICML, ICLR, AAAI, ACM MM, etc.
+- Conference Reviewer: ICLR, CoRL, ICML, AAAI, ACM MM, etc.
 - Teaching Assistant: [NUS EE4309 Robot Perception](https://sites.google.com/view/nus-ee4309-2627)
 
 </div>
