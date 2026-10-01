@@ -1345,8 +1345,9 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
 /* The map sits in the footer, between its top rule and the copyright lines: a
    dot matrix of land (images/visitor-map.svg) with a marker for each place the
    visitors came from, drawn by site.js from the site's own counter (worker/).
-   Red for earlier visits, orange for the last week. Hidden until the data
-   arrives. */
+   Blue like the rest of the page (red and orange looked like an outbreak map):
+   site.js shades each marker by its number of visits, from this light blue to
+   the headings' blue. Hidden until the data arrives. */
 .visitor-map {
   position: relative;
   width: 72%;
@@ -1373,15 +1374,11 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
   }
 
   circle {
-    fill: var(--sl-red);
+    fill: #7aa7d9;   // one visit; site.js sets the shade
     fill-opacity: .9;
     stroke: #fff;
     stroke-width: 1.4;
     transition: fill-opacity .2s ease, stroke-width .2s ease;
-
-    &.is-recent {
-      fill: var(--hover);
-    }
 
     @include hover {
       fill-opacity: 1;

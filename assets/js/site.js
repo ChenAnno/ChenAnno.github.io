@@ -440,12 +440,13 @@ function pageScale() {
 
 /* Visitor map and Total Views in the footer, from the site's own counter: a
    Cloudflare Worker on the site's domain (worker/; /api/visit, /api/visitors).
-   Cloudflare locates each request by city, so visits from mainland China count
+   The Worker locates each visit by city, so visits from mainland China count
    too, which the third-party map widget used before missed. Each page load counts
    as a view, and once per browser per day as a visit from its place; only on the
-   published domain, so previews do not count. The land is images/visitor-map.svg
-   and the markers use its projection. Map and views stay hidden until the
-   numbers arrive. */
+   published domain, so previews do not count. The map shows every place since
+   counting began; the more visits, the larger and deeper blue its marker. The
+   land is images/visitor-map.svg and the markers use its projection. Map and
+   views stay hidden until the numbers arrive. */
 (function () {
   var map = document.getElementById('visitor-map');
   var views = document.querySelector('.site-views');
@@ -494,6 +495,13 @@ function pageScale() {
     function country(cc) {
       try { return (names && names.of(cc)) || cc; } catch (e) { return cc; }
     }
+    // from the light blue of a single visit to the headings' blue at 50 or more,
+    // on a log scale, so one busy place does not wash out all the others
+    var LIGHT = [122, 167, 217], DEEP = [34, 75, 119];   // #7aa7d9, #224b77
+    function shade(n) {
+      var t = Math.min(1, Math.log(Math.max(1, n)) / Math.log(50));
+      return 'rgb(' + LIGHT.map(function (c, i) { return Math.round(c + (DEEP[i] - c) * t); }).join(',') + ')';
+    }
     // larger markers first, so the small ones stay on top and can be hovered
     places.slice().sort(function (a, b) { return b.n - a.n; }).forEach(function (p) {
       var at = project(p.lat, p.lon);
@@ -502,7 +510,7 @@ function pageScale() {
       dot.setAttribute('cx', at[0].toFixed(1));
       dot.setAttribute('cy', at[1].toFixed(1));
       dot.setAttribute('r', (3 + Math.min(4, Math.log(p.n + 1) / Math.LN10 * 2.4)).toFixed(1));
-      if (p.days <= 7) dot.setAttribute('class', 'is-recent');
+      dot.style.fill = shade(p.n);
       var where = country(p.cc);
       if (p.city && p.city !== where) where = p.city + ', ' + where;
       var label = where + ' · ' + p.n + (p.n > 1 ? ' visits' : ' visit');
