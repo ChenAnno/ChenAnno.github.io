@@ -1,0 +1,16 @@
+# Visitor counter for chenyanzhe.page (see src/index.js). Deploy from this folder:
+#   npx wrangler deploy
+name = "chenyanzhe-visitors"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+
+# only /api/*; every other path on the domain goes on to GitHub Pages
+routes = [
+  { pattern = "chenyanzhe.page/api/*", zone_name = "chenyanzhe.page" },
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "chenyanzhe-visitors"
+database_id = "a4864ca3-6ae1-4bbf-aa58-f4a049bb18b1"   # from `wrangler d1 create` (region APAC)

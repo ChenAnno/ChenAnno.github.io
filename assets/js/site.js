@@ -438,33 +438,86 @@ function pageScale() {
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 })();
 
-/* Total views in the footer: busuanzi fills #busuanzi_value_site_pv with a plain
-   number. Show the line only once the number has arrived (if the counter service
-   is down it stays hidden), with thousands separators. */
+/* Visitor map and Total Views in the footer, from the site's own counter: a
+   Cloudflare Worker on the site's domain (worker/; /api/visit, /api/visitors).
+   Cloudflare locates each request by city, so visits from mainland China count
+   too, which the third-party map widget used before missed. Each page load counts
+   as a view, and once per browser per day as a visit from its place; only on the
+   published domain, so previews do not count. The land is images/visitor-map.svg
+   and the markers use its projection. Map and views stay hidden until the
+   numbers arrive. */
 (function () {
-  var box = document.querySelector('.site-views');
-  if (!box) return;
-  var values = box.querySelectorAll('[id^="busuanzi_value_"]');
+  var map = document.getElementById('visitor-map');
+  var views = document.querySelector('.site-views');
+  if (!window.fetch || (!map && !views)) return;
 
-  function update() {
-    var ready = true;
-    Array.prototype.forEach.call(values, function (el) {
-      var n = parseInt(el.textContent.replace(/[^\d]/g, ''), 10);
-      if (isNaN(n)) { ready = false; return; }
-      var text = n.toLocaleString('en-US');
-      if (el.textContent !== text) el.textContent = text;
-    });
-    if (ready) box.hidden = false;
-    return ready;
+  if (location.hostname === 'chenyanzhe.page') {
+    var first = true;
+    try {
+      first = Date.now() - (+localStorage.getItem('visit:last') || 0) > 864e5;
+      if (first) localStorage.setItem('visit:last', Date.now());
+    } catch (e) {}
+    fetch('/api/visit', {
+      method: 'POST',
+      keepalive: true,
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ first: first }),
+    }).catch(function () {});
   }
 
-  if (update() || !window.MutationObserver) return;
-  var observer = new MutationObserver(function () {
-    if (update()) observer.disconnect();
-  });
-  Array.prototype.forEach.call(values, function (el) {
-    observer.observe(el, { childList: true, characterData: true, subtree: true });
-  });
+  fetch('/api/visitors', { headers: { accept: 'application/json' } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data) return;
+      if (views && data.pageviews > 0) {
+        views.querySelector('.site-views__n').textContent = data.pageviews.toLocaleString('en-US');
+        views.hidden = false;
+      }
+      if (map && data.places && data.places.length) draw(data.places);
+    })
+    .catch(function () {});
+
+  // jVectorMap's world_mill frame: Miller projection, central meridian 11.5,
+  // 900 x 440.7 (the land image is cropped to 409 high)
+  function project(lat, lon) {
+    var R = 6381372, D = Math.PI / 180;
+    if (lon < -168.5) lon += 360;
+    var x = R * (lon - 11.5) * D;
+    var y = -R * Math.log(Math.tan((45 + 0.4 * lat) * D)) / 0.8;
+    return [(x + 20004297.151525836) / 40030869.546275226 * 900,
+            (y + 12671671.123330014) / 19602063.148465134 * 440.70631074413296];
+  }
+
+  function draw(places) {
+    var svg = map.querySelector('svg'), tip = map.querySelector('.visitor-map__tip');
+    var names = window.Intl && Intl.DisplayNames ? new Intl.DisplayNames(['en'], { type: 'region' }) : null;
+    function country(cc) {
+      try { return (names && names.of(cc)) || cc; } catch (e) { return cc; }
+    }
+    // larger markers first, so the small ones stay on top and can be hovered
+    places.slice().sort(function (a, b) { return b.n - a.n; }).forEach(function (p) {
+      var at = project(p.lat, p.lon);
+      if (at[1] > 409) return;
+      var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot.setAttribute('cx', at[0].toFixed(1));
+      dot.setAttribute('cy', at[1].toFixed(1));
+      dot.setAttribute('r', (3 + Math.min(4, Math.log(p.n + 1) / Math.LN10 * 2.4)).toFixed(1));
+      if (p.days <= 7) dot.setAttribute('class', 'is-recent');
+      var where = country(p.cc);
+      if (p.city && p.city !== where) where = p.city + ', ' + where;
+      var label = where + ' · ' + p.n + (p.n > 1 ? ' visits' : ' visit');
+      dot.addEventListener('mouseenter', function () {
+        tip.textContent = label;
+        tip.style.left = at[0] / 9 + '%';
+        tip.style.top = at[1] / 4.09 + '%';
+        tip.hidden = false;
+      });
+      dot.addEventListener('mouseleave', function () { tip.hidden = true; });
+      svg.appendChild(dot);
+    });
+    map.setAttribute('aria-label', 'Visitor map: visits from ' + places.length + ' places');
+    map.hidden = false;
+  }
 })();
 
 /* Reveal on scroll: blocks that start below the fold fade up as they come into

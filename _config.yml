@@ -7,6 +7,7 @@
 
 # Site Settings
 title                    : "Anno Yanzhe Chen"
+url                      : "https://chenyanzhe.page"   # custom domain (CNAME); chenanno.github.io redirects here
 description              : "2nd-year Ph.D. student at NUS, focusing on Agent, Robotics, and Multimedia"
 repository               : "ChenAnno/ChenAnno.github.io"
 google_scholar_stats_use_cdn : true
@@ -93,6 +94,7 @@ exclude:
   - package.json
   - tmp
   - vendor
+  - worker                # the visitor counter (a Cloudflare Worker), not part of the site
 keep_files:
   - .git
   - .svn

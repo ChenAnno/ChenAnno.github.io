@@ -1342,67 +1342,71 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
 }
 
 /* ---------- Visitor map and footer ---------- */
-/* The map sits in the footer, between its top rule and the copyright lines,
-   drawn as a dot matrix like caozhijun.top. The widget paints land (its cl
-   parameter) on an ocean of page color (co = --bg); a screen of page color with
-   round holes lies over that painting, so land shows only through the holes.
-   The visitor markers are the widget's SVG layer and stay above the screen. */
+/* The map sits in the footer, between its top rule and the copyright lines: a
+   dot matrix of land (images/visitor-map.svg) with a marker for each place the
+   visitors came from, drawn by site.js from the site's own counter (worker/).
+   Red for earlier visits, orange for the last week. Hidden until the data
+   arrives. */
 .visitor-map {
-  overflow: hidden;
-  aspect-ratio: 2.2;   /* the widget draws at 2.04; this trims the empty southern ocean */
+  position: relative;
   width: 72%;
   max-width: 620px;
   margin: 0 auto 20px;
 
-  .mapmyvisitors-map::after {
-    content: "";
+  &[hidden] {
+    display: none;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  svg {
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    z-index: 0;
-    pointer-events: none;
-    /* layer 1 covers the inactive zoom buttons mapmyvisitors bakes into the
-       bottom-left corner (they scale with the map, hence percent);
-       layer 2 is the dotted screen */
-    background-image:
-      linear-gradient(var(--bg), var(--bg)),
-      radial-gradient(circle, transparent 1.1px, var(--bg) 1.6px);
-    background-position: left bottom, 0 0;
-    background-size: 6% 21%, 4px 4px;
-    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
   }
 
-  .jvectormap-container {
-    z-index: 1;
-  }
-
-  /* markers in the site palette: the widget draws older visits red and recent
-     ones orange */
   circle {
-    stroke: rgba(43, 42, 41, .35);
-    stroke-width: 1px;
-    fill-opacity: .9;
-  }
-
-  circle[fill="#FF0000"] {
     fill: var(--sl-red);
-  }
+    fill-opacity: .9;
+    stroke: #fff;
+    stroke-width: 1.4;
+    transition: fill-opacity .2s ease, stroke-width .2s ease;
 
-  circle[fill="#F8A400"] {
-    fill: var(--hover);
+    &.is-recent {
+      fill: var(--hover);
+    }
+
+    @include hover {
+      fill-opacity: 1;
+      stroke-width: 2.4;
+    }
   }
 }
 
-.jvectormap-tip {
-  padding: 4px 9px;
-  border: 0;
+/* the place under the pointer, just above its marker */
+.visitor-map__tip {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, calc(-100% - 10px));
+  padding: 3px 8px;
   border-radius: 6px;
   background: var(--fg);
   color: var(--bg);
-  font-family: $serif;
   font-size: var(--fs-xs);
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 /* The footer sits at the bottom of the content column: a rule, the visitor map,
