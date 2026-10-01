@@ -4,8 +4,10 @@
    POST /api/visit      records a page view; with {"first": true} (the page sends
                         it once per browser per day) also a visit from the
                         visitor's place. Cloudflare puts the city and its
-                        coordinates on every request (request.cf), so no IP
-                        address is looked up or stored.
+                        coordinates on every request (request.cf); for visitors
+                        from mainland China the address is looked up in a bundled
+                        Chinese IP table instead (cn-geo.js), which places their
+                        mobile networks far better. No IP address is stored.
    GET  /api/visitors   the places and totals, for the map on the page; cached
                         for a minute.
 
@@ -13,7 +15,12 @@
    China and are not stopped by tracker blockers, unlike a third-party widget.
    Storage: the D1 database in wrangler.toml, tables in schema.sql. */
 
+import { makeLocator } from './cn-geo.js';
+import cnRanges from './cn-ip.bin';
+import cnPlaces from './cn-places.json';
+
 const SITE = 'https://chenyanzhe.page';
+const locateCN = makeLocator(cnRanges, cnPlaces);
 const BOTS = /bot|crawl|spider|slurp|preview|headless|lighthouse|monitor|curl|wget|python/i;
 
 export default {
@@ -44,8 +51,11 @@ async function visit(request, env) {
   const writes = [env.DB.prepare("UPDATE totals SET n = n + 1 WHERE name = 'pageviews'")];
   if (first) {
     const cf = request.cf || {};
-    const lat = round(cf.latitude), lon = round(cf.longitude);
-    const cc = cf.country || 'XX', city = cf.city || '';
+    // Cloudflare put a visitor in Beijing in Shanghai and one in Mianyang in Jiaxing;
+    // the Chinese table had both right. Without an answer there, Cloudflare's place.
+    const cn = cf.country === 'CN' ? locateCN(request.headers.get('CF-Connecting-IP') || '') : null;
+    const lat = cn ? cn.lat : round(cf.latitude), lon = cn ? cn.lon : round(cf.longitude);
+    const cc = cf.country || 'XX', city = cn ? cn.city : cf.city || '';
     writes.push(env.DB.prepare(
       'INSERT INTO places (key, city, cc, lat, lon, n, last) VALUES (?1, ?2, ?3, ?4, ?5, 1, ?6) ' +
       'ON CONFLICT (key) DO UPDATE SET n = n + 1, last = ?6'
