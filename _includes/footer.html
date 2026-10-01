@@ -2,7 +2,7 @@
 {% assign month = site.time | date: "%b" %}
 <footer class="site-footer">
   <div class="site-footer__inner">
-    {% include visitor-globe.html %}
+    {% include visitor-map.html %}
     <span>Copyright © {{ site.author.name }}. All Rights Reserved.</span>
     <span>Last Update: {% if month == "May" %}May{% else %}{{ month }}.{% endif %} {{ site.time | date: "%Y" }}</span>
     <!-- Total views from busuanzi (不蒜子), counted per site; site.js shows the line

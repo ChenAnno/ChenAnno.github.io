@@ -113,7 +113,7 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
     justify-content: center;
     column-gap: $main-gap;
     max-width: none;
-    margin-top: 16px;
+    margin-top: 50px;   /* no nav pill above on wide screens: the outline is in the sidebar */
     margin-left: 0;
     margin-right: 0;
     padding-left: 32px;
@@ -135,7 +135,7 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
   }
 
   .sidebar.sticky {
-    top: 88px;
+    top: 56px;
     align-self: start;
   }
 }
@@ -334,10 +334,13 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
 }
 
 @include breakpoint($large) {
+  /* as wide as the name under it (212px) and centered on it, as the user asked;
+     square before the photo loads, so site.js can measure the sidebar */
   .author__avatar img {
+    display: block;
     width: 100%;
     max-width: 212px;
-    /* square before the photo loads, so site.js can measure the sidebar */
+    margin: 0 auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     background: var(--card);
@@ -351,27 +354,15 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
     }
   }
 
-  /* Windows 775-949px tall: the photo shrinks (130px at the least) so that it,
-     the profile (304px with the X line) and the globe below it (as wide as the
-     photo, 1.14x as tall) fit with 84px above and below; site.js places the
-     sidebar and sizes the globe. Shorter windows put the globe in the footer
-     and keep the photo at 212px. 496 = 2 x 84 + 304 + the 24px gap; 2.14 = the
-     photo plus the globe's 1.14. Adding a line to the profile moves these. */
-  @media (min-height: 775px) and (max-height: 949px) {
-    .author__avatar img {
-      max-width: calc((100vh - 496px) / 2.14);
-    }
-  }
-
   .sidebar .author__name {
     margin: 18px 0 4px;
     font-size: var(--fs-xl);
     white-space: nowrap;
   }
 
-  /* --gap-profile and --gap-globe: spare window height that site.js spreads
-     between the name and the profile, and the profile and the globe, so that a
-     tall window does not push the photo down (see the globe in site.js).
+  /* --gap-profile and --gap-nav: spare window height that site.js spreads
+     between the name and the profile, and the profile and the outline, so that
+     a tall window does not push the photo down (see the sidebar in site.js).
      The template animates every p ("all 0.2s"), which made this margin lag
      behind site.js measuring the sidebar. */
   .sidebar .author__bio {
@@ -426,6 +417,114 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
         color: var(--hover);
         text-decoration: underline;
         text-underline-offset: 2px;
+      }
+    }
+  }
+}
+
+/* ---------- Outline in the sidebar (wide screens) ----------
+   On wide screens the nav moves from the pill at the top into the sidebar,
+   under the profile (the user asked for the outline there); narrow screens
+   keep the pill. A rail with a dot per section: site.js marks the current
+   section (.is-current) and the ones above it (.is-passed), and fills the rail
+   as far as the reader has come (--fill on each item: 0 to 1 of the stretch to
+   the next dot). The labels echo the uppercase section titles. */
+.side-nav {
+  display: none;
+}
+
+@include breakpoint($large) {
+  /* Out of the flow and invisible (so not focusable either), but laid out: the
+     template's greedy-nav script measures it, and with display: none it saw a
+     zero width and recursed until the stack overflowed, which stopped the rest
+     of site.js. */
+  .masthead {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .sidebar .side-nav {
+    display: block;
+    margin: calc(26px + var(--gap-nav, 0px)) 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+
+    ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      margin: 0;
+      padding: 0;
+
+      /* the rail from this dot to the next, blue as far as the reader has come */
+      &:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        top: 17px;
+        left: 4px;
+        width: 2px;
+        height: 34px;
+        background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 0 / 100% calc(var(--fill, 0) * 100%), var(--card-b);
+        transition: background-size .25s ease;
+      }
+    }
+
+    a {
+      position: relative;
+      display: block;
+      padding-left: 24px;
+      color: #5b6672;     /* darker than --subtle: small capitals need the contrast */
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: .1em;
+      line-height: 34px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s ease;
+
+      /* the dot on the rail */
+      &::before {
+        content: "";
+        position: absolute;
+        top: 12px;
+        left: 0;
+        width: 10px;
+        height: 10px;
+        box-sizing: border-box;
+        border: 2px solid var(--rule);
+        border-radius: 50%;
+        background: var(--bg);
+        transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+      }
+
+      &.is-passed::before {
+        border-color: var(--accent);
+      }
+
+      &.is-current {
+        color: var(--accent);
+
+        &::before {
+          border-color: var(--accent);
+          background: var(--accent);
+          box-shadow: 0 0 0 4px rgba(48, 113, 181, .16);
+        }
+      }
+
+      @include hover-focus {
+        color: var(--hover);
+
+        &::before {
+          border-color: var(--hover);
+        }
       }
     }
   }
@@ -1197,74 +1296,72 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
   }
 }
 
-/* ---------- Visitor globe and footer ---------- */
-/* A desk globe drawn by site.js on a canvas (see the comment there), under the
-   profile in the sidebar or, on narrow screens, in the footer. The slot is as
-   wide as the photo above it, and the canvas is centered in it. */
-.visitor-globe {
-  position: relative;
-  margin: calc(24px + var(--gap-globe, 0px)) 0 0;
+/* ---------- Visitor map and footer ---------- */
+/* The map sits in the footer, between its top rule and the copyright lines,
+   drawn as a dot matrix like caozhijun.top. The widget paints land (its cl
+   parameter) on an ocean of page color (co = --bg); a screen of page color with
+   round holes lies over that painting, so land shows only through the holes.
+   The visitor markers are the widget's SVG layer and stay above the screen. */
+.visitor-map {
+  overflow: hidden;
+  aspect-ratio: 2.2;   /* the widget draws at 2.04; this trims the empty southern ocean */
+  width: 72%;
+  max-width: 620px;
+  margin: 0 auto 20px;
 
-  /* the slot that site.js did not use */
-  &:empty {
-    display: none;
+  .mapmyvisitors-map::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* layer 1 covers the inactive zoom buttons mapmyvisitors bakes into the
+       bottom-left corner (they scale with the map, hence percent);
+       layer 2 is the dotted screen */
+    background-image:
+      linear-gradient(var(--bg), var(--bg)),
+      radial-gradient(circle, transparent 1.1px, var(--bg) 1.6px);
+    background-position: left bottom, 0 0;
+    background-size: 6% 21%, 4px 4px;
+    background-repeat: no-repeat, repeat;
   }
 
-  canvas {
-    display: block;
-    margin: 0 auto;
+  .jvectormap-container {
+    z-index: 1;
+  }
+
+  /* markers in the site palette: the widget draws older visits red and recent
+     ones orange */
+  circle {
+    stroke: rgba(43, 42, 41, .35);
+    stroke-width: 1px;
+    fill-opacity: .9;
+  }
+
+  circle[fill="#FF0000"] {
+    fill: var(--sl-red);
+  }
+
+  circle[fill="#F8A400"] {
+    fill: var(--hover);
   }
 }
 
-.visitor-globe__link {
-  display: block;
-  border-radius: 12px;
-
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-/* the place under the pointer, just above its dot */
-.visitor-globe__tip {
-  position: absolute;
-  z-index: 2;
-  transform: translate(-50%, calc(-100% - 10px));
-  padding: 3px 8px;
+.jvectormap-tip {
+  padding: 4px 9px;
+  border: 0;
   border-radius: 6px;
   background: var(--fg);
   color: var(--bg);
+  font-family: $serif;
   font-size: var(--fs-xs);
-  line-height: 1.4;
-  white-space: nowrap;
-  pointer-events: none;
-
-  &[hidden] {
-    display: none;
-  }
 }
 
-/* The mapmyvisitors widget is kept only to count the visit and list the places;
-   it waits until it is in full view before animating, so it is parked out of
-   sight below the window, where it never is. */
-.visitor-globe__widget {
-  position: fixed;
-  top: 200vh;
-  left: 0;
-  width: 200px;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* narrow screens: in the footer, centered above the copyright lines */
-.visitor-globe--foot {
-  margin: 0 0 14px;
-}
-
-/* The footer sits at the bottom of the content column: a rule (with the visitor
-   globe under it on narrow screens), then the copyright lines, all on the
-   column's center axis.
+/* The footer sits at the bottom of the content column: a rule, the visitor map,
+   then the copyright lines, all on the column's center axis.
    The space above the rule is padding, not margin: the footer clears the
    floated .page__content, and clearance swallowed the margin (the rule ended
    up about 12px under the Service card). 40px here plus the last card's 12px
@@ -1416,6 +1513,10 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
   .info-card {
     padding-left: 18px;
     padding-right: 16px;
+  }
+
+  .visitor-map {
+    width: 100%;
   }
 
 }
