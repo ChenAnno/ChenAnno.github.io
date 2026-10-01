@@ -2,6 +2,17 @@
    Homepage scripts. Plain JS, loaded after the template bundle (main.min.js).
    ========================================================================== */
 
+/* Big screens zoom the whole page (CSS zoom on the root, set in
+   _includes/head/custom.html). Chrome then reports getBoundingClientRect() in
+   zoomed pixels and Safari in CSS pixels, while innerHeight and scroll offsets
+   stay window pixels. rectPerCss / rectPerWindow convert between them. */
+function pageScale() {
+  var zoom = parseFloat(getComputedStyle(document.documentElement).zoom) || 1;
+  var body = document.body;
+  var rectPerCss = body.getBoundingClientRect().width / body.offsetWidth || 1;
+  return { zoom: zoom, rectPerCss: rectPerCss, rectPerWindow: rectPerCss / zoom };
+}
+
 /* Greedy navigation (template code in main.min.js) moves links that do not fit
    into the menu button all at once, but moves them back only one per resize
    event, so after rotating a phone or zooming the browser the pill could stay
@@ -122,10 +133,12 @@
   var LINE = 140, pending = false;
   function update() {
     pending = false;
-    var y = window.pageYOffset, last = sections.length - 1;
-    var end = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    // all in the units of getBoundingClientRect (see pageScale)
+    var k = pageScale().rectPerWindow, page = document.documentElement.getBoundingClientRect();
+    var y = -page.top, line = LINE * k, last = sections.length - 1;
+    var end = Math.max(0, page.height - window.innerHeight * k);
     // the scroll position at which each section begins
-    var starts = sections.map(function (s, i) { return i ? s.title.getBoundingClientRect().top + y - LINE : 0; });
+    var starts = sections.map(function (s, i) { return i ? s.title.getBoundingClientRect().top + y - line : 0; });
     var j = last;
     while (j > 0 && starts[j] > end) j--;
     for (var k = j + 1; k <= last; k++) starts[k] = starts[j] + (end - starts[j]) * (k - j) / (last - j);
@@ -352,42 +365,64 @@
   apply();
 })();
 
-/* Sidebar on wide screens: sticky, with the photo AIR from the top of the window
-   (level with the first section title). The user wanted the photo high up and
-   about as much room under the outline as above the photo (a little more is
-   fine): spare height first adds up to BELOW under the outline, then goes
-   between the name and the profile and between the profile and the outline
-   (1 : 3, at most 140px together, via --gap-* in CSS; not between photo and
-   name, which looked too far apart), and only the rest above and below.
-   Without room for AIR above and below, the sidebar is centered; if it does
-   not fit at all, it scrolls until its end shows, then sticks. */
+/* Sidebar on wide screens: sticky, and it never moves (the user asked): it
+   starts where it sticks, its margin-top set so. The photo sits AIR from the
+   top of the window (level with the first section title). Spare height first
+   adds up to BELOW under the outline, then goes between the name and the
+   profile and between the profile and the outline (1 : 3, at most 96px
+   together on laptops and 32px on zoomed big screens, via --gap-* in CSS: more
+   left the outline adrift; none between photo and name, which looked too far
+   apart), and the rest above and below. Without room for AIR above and below, the sidebar is centered,
+   and if it does not fit with EDGE above and below, the photo gets smaller
+   (130px at the least). Only a window too short even for that lets the
+   sidebar scroll until its end shows. Everything here is in CSS pixels, which
+   the big-screen zoom scales (see pageScale). */
 (function () {
   var sidebar = document.querySelector('.sidebar.sticky');
   var avatar = sidebar && sidebar.querySelector('.author__avatar img');
   var nav = sidebar && sidebar.querySelector('.side-nav');
-  if (!avatar || !nav) return;
+  var main = document.getElementById('main');
+  if (!avatar || !nav || !main) return;
   var wide = window.matchMedia('(min-width: 925px)');
-  var AIR = 56, BELOW = 24, GAPS = ['--gap-profile', '--gap-nav'], SHARES = [0.25, 0.75];
+  var AIR = 56, BELOW = 24, EDGE = 16, SMALLEST = 130;
+  var GAPS = ['--gap-profile', '--gap-nav'], SHARES = [0.25, 0.75];
 
   function layout() {
     GAPS.forEach(function (name) { sidebar.style.setProperty(name, '0px'); });
+    avatar.style.maxWidth = '';
+    sidebar.style.marginTop = '';
     if (!wide.matches) {
       sidebar.style.top = '';
       GAPS.forEach(function (name) { sidebar.style.removeProperty(name); });
       return;
     }
-    var h = window.innerHeight;
-    var column = nav.getBoundingClientRect().bottom - avatar.getBoundingClientRect().top;
-    var spare = h - 2 * AIR - column;
-    if (spare < 0) {
-      var top = Math.floor((h - column) / 2);
-      sidebar.style.top = (top >= 16 ? top : Math.floor(h - column - 16)) + 'px';
-      return;
+    var scale = pageScale();
+    var h = window.innerHeight / scale.zoom;
+    function column() {
+      return (nav.getBoundingClientRect().bottom - avatar.getBoundingClientRect().top) / scale.rectPerCss;
     }
-    spare -= Math.min(spare, BELOW);
-    var spread = Math.min(140, spare);
-    GAPS.forEach(function (name, i) { sidebar.style.setProperty(name, spread * SHARES[i] + 'px'); });
-    sidebar.style.top = AIR + Math.floor((spare - spread) / 2) + 'px';
+    var height = column(), spare = h - 2 * AIR - height, top;
+    if (spare >= 0) {
+      spare -= Math.min(spare, BELOW);
+      var spread = Math.min(scale.zoom > 1 ? 32 : 96, spare);
+      GAPS.forEach(function (name, i) { sidebar.style.setProperty(name, spread * SHARES[i] + 'px'); });
+      top = AIR + Math.floor((spare - spread) / 2);
+    } else {
+      var short = height + 2 * EDGE - h;
+      if (short > 0) {
+        avatar.style.maxWidth = Math.max(SMALLEST, avatar.offsetWidth - Math.ceil(short)) + 'px';
+        height = column();
+      }
+      top = Math.floor((h - height) / 2);
+    }
+    if (top >= EDGE) {
+      // where it starts is where it sticks: no move when the page scrolls
+      var natural = (main.getBoundingClientRect().top - document.documentElement.getBoundingClientRect().top) / scale.rectPerCss;
+      sidebar.style.marginTop = top - natural + 'px';
+    } else {
+      top = Math.floor(h - height - EDGE);
+    }
+    sidebar.style.top = top + 'px';
   }
 
   // again when the web fonts and the photo are in, and while (and once after)
@@ -456,7 +491,7 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
 
-  var fold = window.innerHeight;
+  var fold = window.innerHeight * pageScale().rectPerWindow;
   Array.prototype.forEach.call(blocks, function (el) {
     if (el.getBoundingClientRect().top > fold) {
       el.classList.add('rise');

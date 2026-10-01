@@ -9,6 +9,23 @@
 <meta name="theme-color" content="#f3f6f9">
 <link rel="stylesheet" href="assets/css/academicons.css"/>
 
+<!-- Big screens: the whole page is drawn larger (CSS zoom on the root), so a large monitor shows
+     it the way a laptop does instead of small and empty (the user's request). Laptops, up to about
+     1750px wide, are not zoomed; the zoom also leaves at least 830px of height, so the sidebar fits.
+     It runs here, before the page is drawn, and again when the window is resized. site.js works in
+     CSS pixels under the zoom (pageScale). -->
+<script>
+  (function () {
+    var root = document.documentElement;
+    function fit() {
+      var zoom = Math.min(window.innerWidth / 1680, window.innerHeight / 830, 2);
+      root.style.zoom = zoom >= 1.04 ? zoom.toFixed(3) : '';
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+</script>
+
 <!-- Charis SIL, self-hosted: fonts.googleapis.com is unreachable from mainland China and would block
      rendering there. Latin / latin-ext subsets from Google Fonts (OFL, see assets/fonts/charis/OFL.txt);
      unicode-range lets the browser download only the subsets the page actually uses. -->

@@ -100,17 +100,23 @@ body {
    a margin (the user asked for equal margins, then for a slightly smaller gap).
    The sidebar column is exactly as wide as what shows in it, the name in 24px
    Charis bold (212px); with a wider column the gap looked larger than the
-   margins. With W - 1084px to share (212px + 872px of columns), the gap is
-   0.85 / 2.85 of it: 106px at 1440px (margins 125px), 128px at 1512px, 193px at
-   1728px. The gap stops at 220px, after which the margins take the extra
-   width; the tracks are centered, so the two margins always match. Below
-   1250px the gap is 48px and the content column narrows. */
-$main-gap: unquote("clamp(48px, calc((100vw - 1084px) * .2982), 220px)");
+   margins. With W - 212px - C to share (W the window, C the content column),
+   the gap is 0.85 / 2.85 of it: 106px at 1440px (margins 125px), 128px at
+   1512px, 193px at 1728px. The gap stops at 220px, after which the margins take
+   the extra width; the tracks are centered, so the two margins always match.
+   Below 1250px the gap is 48px and the content column narrows.
+   C is 872px up to 1728px windows; wider, it takes half the extra width, up to
+   1040px. Big monitors are mostly handled by zooming the whole page (see
+   _includes/head/custom.html); this is for what is left after that.
+   Percentages here are of #main's content box (W - 64px), not vw: vw does not
+   follow the zoom. */
+$main-content: unquote("clamp(872px, calc(872px + (100% - 1664px) / 2), 1040px)");
+$main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (100% - 1664px) / 2), 1040px)) * .2982), 220px)");
 
 @include breakpoint($large) {
   #main {
     display: grid;
-    grid-template-columns: 212px minmax(0, 872px);
+    grid-template-columns: 212px minmax(0, $main-content);
     justify-content: center;
     column-gap: $main-gap;
     max-width: none;
