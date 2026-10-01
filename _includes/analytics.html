@@ -1,13 +1,30 @@
+{% comment %}
+  Visitor statistics: Google Analytics 4 (google_analytics_id) and Baidu Tongji
+  (baidu_analytics_id; mainland China cannot reach Google), both set in
+  _config.yml. They load only on the published site, so local previews and test
+  runs are not counted.
+{% endcomment %}
 {% if page.analytics != false %}
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', "{{ site.google_analytics_id }}");
+  (function () {
+    if (location.hostname !== 'chenanno.github.io') return;
+    function load(src) {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = src;
+      document.head.appendChild(s);
+    }
+    {% if site.google_analytics_id %}
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics_id }}');
+    load('https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}');
+    {% endif %}
+    {% if site.baidu_analytics_id %}
+    window._hmt = window._hmt || [];
+    load('https://hm.baidu.com/hm.js?{{ site.baidu_analytics_id }}');
+    {% endif %}
+  })();
 </script>
-
 {% endif %}

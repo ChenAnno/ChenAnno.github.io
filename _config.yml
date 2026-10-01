@@ -11,8 +11,10 @@ description              : "2nd-year Ph.D. student at NUS, focusing on Agent, Ro
 repository               : "ChenAnno/ChenAnno.github.io"
 google_scholar_stats_use_cdn : true
 
-# google analytics
-google_analytics_id      :  9lIMS-EAAAAJ
+# Visitor statistics (see _includes/analytics.html): Google Analytics 4, and
+# Baidu Tongji for mainland China, which cannot reach Google
+google_analytics_id      : G-214P5E0X79
+baidu_analytics_id       : 7312ce461f1600c2c38510f1a5d255a4
 
 # SEO Related
 google_site_verification :  # get google_site_verification from https://search.google.com/search-console/about
