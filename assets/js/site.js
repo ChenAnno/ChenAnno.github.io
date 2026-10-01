@@ -525,6 +525,72 @@ function pageScale() {
     });
     map.setAttribute('aria-label', 'Visitor map: visits from ' + places.length + ' places');
     map.hidden = false;
+
+    night();
+    setInterval(night, 6e5);
+  }
+
+  // Day and night as they are now: the land dots on the night side are shaded,
+  // fading in through the twilight (sun 0 to 12 degrees below the horizon), and a
+  // fine line marks the terminator across land and sea. Redrawn every ten
+  // minutes, as the earth turns.
+  function night() {
+    var SHADE = .45;   // opacity of the shade over the land at full night
+    var canvas = map.querySelector('canvas');
+    if (!canvas || !canvas.getContext) return;
+    var D = Math.PI / 180, sun = subsolar(Date.now());
+    var sinDec = Math.sin(sun.dec * D), cosDec = Math.cos(sun.dec * D);
+
+    // how dark it is, on a coarse grid that the browser smooths as it scales the
+    // canvas up; the CSS masks it to the land dots
+    var gw = canvas.width, gh = canvas.height, g = canvas.getContext('2d'), px = g.createImageData(gw, gh);
+    for (var j = 0; j < gh; j++) {
+      var lat = unproject(0, (j + 0.5) / gh * 409)[0] * D;
+      for (var i = 0; i < gw; i++) {
+        var lon = unproject((i + 0.5) / gw * 900, 0)[1];
+        var alt = Math.asin(Math.sin(lat) * sinDec + Math.cos(lat) * cosDec * Math.cos((lon - sun.lon) * D)) / D;
+        var k = Math.min(1, Math.max(0, -alt / 12));
+        var o = (j * gw + i) * 4;
+        px.data[o] = 31;          // #1f3a5f
+        px.data[o + 1] = 58;
+        px.data[o + 2] = 95;
+        px.data[o + 3] = Math.round(k * k * (3 - 2 * k) * SHADE * 255);
+      }
+    }
+    g.putImageData(px, 0, 0);
+
+    // the terminator: where the sun is on the horizon, for each longitude
+    // (tan of the declination is never quite 0, so the line stays a function)
+    var line = map.querySelector('.visitor-map__dusk');
+    if (!line) return;
+    var tanDec = Math.tan(Math.max(Math.abs(sun.dec), .01) * D) * (sun.dec < 0 ? -1 : 1), d = '';
+    for (var x = 0; x <= 900; x += 3) {
+      var lo = unproject(x, 0)[1];
+      var la = Math.atan(-Math.cos((lo - sun.lon) * D) / tanDec) / D;
+      var y = project(Math.max(-89, Math.min(89, la)), lo)[1];
+      d += (x ? 'L' : 'M') + x + ' ' + y.toFixed(1);
+    }
+    line.setAttribute('d', d);
+  }
+
+  // the inverse of project(): [lat, lon] at a point of the 900-wide frame
+  function unproject(x, y) {
+    var R = 6381372, D = Math.PI / 180;
+    var mx = x / 900 * 40030869.546275226 - 20004297.151525836;
+    var my = y / 440.70631074413296 * 19602063.148465134 - 12671671.123330014;
+    return [(Math.atan(Math.exp(-0.8 * my / R)) / D - 45) / 0.4, mx / R / D + 11.5];
+  }
+
+  // where the sun is overhead at time t (ms): declination and longitude, degrees
+  // (the low-precision formulas of the Astronomical Almanac, good to about 0.01°)
+  function subsolar(t) {
+    var D = Math.PI / 180, d = t / 864e5 - 10957.5;     // days since J2000.0
+    var g = (357.529 + 0.98560028 * d) * D;
+    var L = (280.459 + 0.98564736 * d + 1.915 * Math.sin(g) + 0.020 * Math.sin(2 * g)) * D;
+    var e = (23.439 - 0.00000036 * d) * D;
+    var ra = Math.atan2(Math.cos(e) * Math.sin(L), Math.cos(L)) / D;
+    var gmst = 280.46061837 + 360.98564736629 * d;
+    return { dec: Math.asin(Math.sin(e) * Math.sin(L)) / D, lon: ((ra - gmst) % 360 + 540) % 360 - 180 };
   }
 })();
 

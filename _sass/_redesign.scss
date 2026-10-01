@@ -1364,6 +1364,24 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
     height: auto;
   }
 
+  // the night side (site.js), between the land and the markers: a coarse canvas
+  // the browser smooths as it scales it up, masked by the land dots themselves,
+  // so the shaded dots are as crisp as the dots at any size
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    -webkit-mask-image: url("../../images/visitor-map.svg");
+    mask-image: url("../../images/visitor-map.svg");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
   svg {
     position: absolute;
     top: 0;
@@ -1385,6 +1403,17 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
       stroke-width: 2.4;
     }
   }
+}
+
+// the terminator, a fine line under the markers (site.js; the gradient that
+// fades its ends is in visitor-map.html)
+.visitor-map__dusk {
+  fill: none;
+  stroke: url(#visitor-map-fade);
+  stroke-width: 1.2;
+  pointer-events: none;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }
 
 /* the place under the pointer, just above its marker */
