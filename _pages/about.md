@@ -19,13 +19,13 @@ redirect_from:
 
 # 👨🏻‍🎓 Biography
 
-I am currently a Second-year Ph.D. student at the [Show Lab](https://sites.google.com/view/showlab/home), <span style="color: #E67C46;">National University of Singapore</span>, advised by [Prof. Mike Zheng Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
+I am currently a Second-year Ph.D. student at the [Show Lab](https://sites.google.com/view/showlab/home), **<span style="color: #E67C46; white-space: nowrap;"><img class="inline-logo" src="images/logo-nus.png" alt="">National University of Singapore</span>**, advised by [Prof. Mike Zheng Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
 
-I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.cn/) at <span style="color: #A62B24;">Peking University</span>, advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl/pengyuxin/). 
+I obtained my Master of Science degree from the [AAIS](http://www.aais.pku.edu.cn/) at **<span style="color: #A62B24; white-space: nowrap;"><img class="inline-logo" src="images/logo-pku.png" alt="">Peking University</span>**, advised by [Prof. Yuxin Peng](http://39.108.48.32/mipl/pengyuxin/). 
 
-Previously, I have interned at TikTok and Kuaishou.
+Previously, I have interned at **TikTok** and **Kuaishou**.
 
-My research interests include **Agent**, **Robotics**, and **Multimedia**.
+My research interests include 🤖&nbsp;**Agent**, 🦾&nbsp;**Robotics**, and 🖼️&nbsp;**Multimedia**.
 
 I’m open to collaborations and discussions. Feel free to drop me an [email](mailto:chenyanzhe@u.nus.edu)~
 
@@ -36,7 +36,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
 
 <div class="news-card" data-show="10" markdown="1">
 
-- `Sep. 2026` 🦾 We released <span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness [[Website](https://showlab.github.io/Show-Harness/), [Code](https://github.com/showlab/Show-Harness)], and a [Survey](https://showlab.github.io/Awesome-Multimodal-Embodied-Agent/) on robot-use agent.
+- `Sep. 2026` 🦾 We released **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** [[Website](https://showlab.github.io/Show-Harness/), [Code](https://github.com/showlab/Show-Harness)], and a [Survey](https://showlab.github.io/Awesome-Multimodal-Embodied-Agent/) on robot-use agent.
 - `Sep. 2026` 🎉 Three papers got accepted by **CoRL 2026**.
 - `May 2026` 🎉 [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by **ICML 2026**.
 - `Jan. 2026` 🎉 We won the third place in [RoCo Challenge](https://rocochallenge.github.io/RoCo2026/) @AAAI Embodied AI Workshop 2026.
@@ -59,7 +59,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
     <h3 class="pub-title"><span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness: Just a VLM Agent Can Play Robots</h3>
     <p class="authors"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zechen Bai<sup>*</sup>, Zhijun Cao<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Qinghong Lin, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Qiming Huang, Mike Zheng Shou</p>
     <p class="venue preprint">arXiv 2026</p>
-    <p class="pub-summary">Show-Harness is an embodied harness that lets <mark>VLMs <em>play</em> robots</mark> through a <mark>compact semantic action interface</mark>.</p>
+    <p class="pub-summary"><b>Show-Harness</b> is an embodied harness that lets <mark>VLMs <em>play</em> robots</mark> through a <mark>compact semantic action interface</mark>.</p>
     <p class="pub-links"><a href="https://showlab.github.io/Show-Harness/">Website</a> <a href="https://arxiv.org/abs/2609.10522">Paper</a> <a href="https://github.com/showlab/Show-Harness" data-gh-stars="showlab/Show-Harness">Code</a> <a href="https://huggingface.co/showlab/Show-Harness-VLMs">Models</a> <a href="https://huggingface.co/datasets/showlab/Show-Harness-Data">Dataset</a></p>
   </div>
 </div>
@@ -72,7 +72,7 @@ I’m open to collaborations and discussions. Feel free to drop me an [email](ma
     <h3 class="pub-title">Code2Video: A Code-centric Paradigm for Educational Video Generation</h3>
     <p class="authors"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Kevin Qinghong Lin<sup>*</sup>, Mike Zheng Shou</p>
     <p class="venue">ICML 2026</p>
-    <p class="pub-summary">Code2Video is an <mark>agentic, code-centric framework</mark> that generates <mark>high-quality educational videos</mark> from tutorial topics.</p>
+    <p class="pub-summary"><b>Code2Video</b> is an <mark>agentic, code-centric framework</mark> that generates <mark>high-quality educational videos</mark> from tutorial topics.</p>
     <p class="pub-links"><a href="https://showlab.github.io/Code2Video/">Website</a> <a href="https://arxiv.org/abs/2510.01174">Paper</a> <a href="https://github.com/showlab/Code2Video" data-gh-stars="showlab/Code2Video">Code</a> <a href="https://huggingface.co/datasets/YanzheChen/MMMC">Dataset</a></p>
   </div>
 </div>
