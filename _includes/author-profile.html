@@ -219,9 +219,11 @@
   </div>
 
   <!-- The outline, on wide screens (where it replaces the nav pill at the top):
-       a rail with a dot per section; site.js marks the current one and fills the
-       rail as far as the reader has come. Same links as _data/navigation.yml. -->
-  <nav class="side-nav" aria-label="Sections">
+       a card with a rail and a dot per section; site.js marks the current one and
+       fills the rail as far as the reader has come. Same links as
+       _data/navigation.yml. -->
+  <nav class="side-nav" aria-labelledby="side-nav-title">
+    <div class="side-nav__title" id="side-nav-title"><span aria-hidden="true">📘</span> Outline</div>
     <ol>
       {% for link in site.data.navigation.main %}
         <li><a href="{{ link.url }}">{{ link.title }}</a></li>

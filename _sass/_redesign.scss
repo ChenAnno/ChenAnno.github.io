@@ -95,16 +95,17 @@ body {
    wide screens a line of body text ran to ~1000px. A grid keeps the sidebar at
    212px and caps the content column at 872px.
 
-   Equal thirds: the margin left of the sidebar, the gap between sidebar and
-   content, and the margin right of the content are the same width (the user
-   asked for that). The sidebar column is exactly as wide as what shows in it,
-   the name in 24px Charis bold (212px), with the photo and the globe as wide;
-   with a wider column the gap looked larger than the margins. That width is
-   (100vw - 212px - 872px) / 3: 119px at 1440px, 143px at 1512px, 215px at
-   1728px. The gap stops at 240px, after which the outer margins take the extra
-   width; the tracks are centered, so the two outer margins always match. Below
-   1228px the gap is 48px and the content column narrows. */
-$main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
+   The margin left of the sidebar and the margin right of the content are
+   equal, and the gap between sidebar and content is a little narrower, 0.85 of
+   a margin (the user asked for equal margins, then for a slightly smaller gap).
+   The sidebar column is exactly as wide as what shows in it, the name in 24px
+   Charis bold (212px); with a wider column the gap looked larger than the
+   margins. With W - 1084px to share (212px + 872px of columns), the gap is
+   0.85 / 2.85 of it: 106px at 1440px (margins 125px), 128px at 1512px, 193px at
+   1728px. The gap stops at 220px, after which the margins take the extra
+   width; the tracks are centered, so the two margins always match. Below
+   1250px the gap is 48px and the content column narrows. */
+$main-gap: unquote("clamp(48px, calc((100vw - 1084px) * .2982), 220px)");
 
 @include breakpoint($large) {
   #main {
@@ -334,12 +335,13 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
 }
 
 @include breakpoint($large) {
-  /* as wide as the name under it (212px) and centered on it, as the user asked;
-     square before the photo loads, so site.js can measure the sidebar */
+  /* centered on the name under it, a little narrower than it (the user asked
+     for about the name's width, then slightly smaller); square before the
+     photo loads, so site.js can measure the sidebar */
   .author__avatar img {
     display: block;
     width: 100%;
-    max-width: 212px;
+    max-width: 196px;
     margin: 0 auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -425,10 +427,10 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
 /* ---------- Outline in the sidebar (wide screens) ----------
    On wide screens the nav moves from the pill at the top into the sidebar,
    under the profile (the user asked for the outline there); narrow screens
-   keep the pill. A rail with a dot per section: site.js marks the current
-   section (.is-current) and the ones above it (.is-passed), and fills the rail
-   as far as the reader has come (--fill on each item: 0 to 1 of the stretch to
-   the next dot). The labels echo the uppercase section titles. */
+   keep the pill. A card titled "Outline" with a rail and a dot per section:
+   site.js marks the current section (.is-current: a tinted row, a filled dot)
+   and the ones above it (.is-passed), and fills the rail as far as the reader
+   has come (--fill on each item: 0 to 1 of the stretch to the next dot). */
 .side-nav {
   display: none;
 }
@@ -447,11 +449,16 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
     pointer-events: none;
   }
 
+  /* A card of its own, like the others on the page, with a title, so that it
+     stands out (the user found the bare list too quiet). */
   .sidebar .side-nav {
     display: block;
     margin: calc(26px + var(--gap-nav, 0px)) 0 0;
-    padding-top: 20px;
-    border-top: 1px solid var(--hairline);
+    padding: 14px 10px 10px;
+    border: 1px solid var(--card-b);
+    border-radius: 14px;
+    background: var(--card);
+    box-shadow: var(--card-rest);
 
     ol {
       margin: 0;
@@ -464,12 +471,14 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
       margin: 0;
       padding: 0;
 
-      /* the rail from this dot to the next, blue as far as the reader has come */
+      /* the rail from this dot to the next, blue as far as the reader has
+         come; above the row tints, below the dots */
       &:not(:last-child)::before {
         content: "";
         position: absolute;
+        z-index: 1;
         top: 17px;
-        left: 4px;
+        left: 16px;
         width: 2px;
         height: 34px;
         background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 0 / 100% calc(var(--fill, 0) * 100%), var(--card-b);
@@ -480,28 +489,28 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
     a {
       position: relative;
       display: block;
-      padding-left: 24px;
-      color: #5b6672;     /* darker than --subtle: small capitals need the contrast */
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      letter-spacing: .1em;
+      padding: 0 8px 0 32px;
+      border-radius: 8px;
+      color: #4f5a66;
+      font-size: var(--fs-sm);
+      font-weight: 600;
       line-height: 34px;
-      text-transform: uppercase;
       text-decoration: none;
-      transition: color .2s ease;
+      transition: color .2s ease, background .2s ease;
 
       /* the dot on the rail */
       &::before {
         content: "";
         position: absolute;
+        z-index: 2;
         top: 12px;
-        left: 0;
+        left: 12px;
         width: 10px;
         height: 10px;
         box-sizing: border-box;
         border: 2px solid var(--rule);
         border-radius: 50%;
-        background: var(--bg);
+        background: var(--card);
         transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
       }
 
@@ -510,16 +519,19 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
       }
 
       &.is-current {
+        background: #e7eff9;
         color: var(--accent);
+        font-weight: 700;
 
         &::before {
           border-color: var(--accent);
           background: var(--accent);
-          box-shadow: 0 0 0 4px rgba(48, 113, 181, .16);
+          box-shadow: 0 0 0 3px rgba(48, 113, 181, .18);
         }
       }
 
       @include hover-focus {
+        background: var(--hover-tint);
         color: var(--hover);
 
         &::before {
@@ -527,6 +539,18 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) / 3), 240px)");
         }
       }
     }
+  }
+
+  .side-nav__title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 8px 8px;
+    color: var(--heading);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
   }
 }
 
