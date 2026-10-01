@@ -320,6 +320,11 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) * .2982), 220px)");
   }
 }
 
+/* the description shows only in the wide sidebar (styled there) */
+.author__desc {
+  display: none;
+}
+
 /* the compact icon row shown next to the name on narrow screens */
 .author__urls_sm {
   font-size: 20px;
@@ -356,9 +361,12 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) * .2982), 220px)");
     }
   }
 
+  /* name, Chinese name and description are centered under the photo (the user
+     asked); the links below stay aligned on their icons, as a centered group */
   .sidebar .author__name {
     margin: 18px 0 4px;
     font-size: var(--fs-xl);
+    text-align: center;
     white-space: nowrap;
   }
 
@@ -371,6 +379,19 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) * .2982), 220px)");
     transition: none;
     margin: 0 0 calc(14px + var(--gap-profile, 0px));
     font-size: var(--fs-md);
+    text-align: center;
+  }
+
+  /* lines of about equal width instead of a short last line */
+  .sidebar .author__desc {
+    display: block;
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    text-wrap: balance;
   }
 
   /* one color for all the icons; the template gives GitHub etc. brand colors */
@@ -379,28 +400,22 @@ $main-gap: unquote("clamp(48px, calc((100vw - 1084px) * .2982), 220px)");
     color: var(--accent);
   }
 
-  /* description, then location / email / GitHub / Scholar as plain icon + text
-     lines (the links look like the location line and light up on hover) */
+  /* location / email / GitHub / X / Scholar as plain icon + text lines (the
+     links look like the location line and light up on hover), left-aligned on
+     their icons, the group as wide as its longest line and centered */
   .author__urls {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    width: fit-content;
+    margin: 0 auto;
 
     li {
       margin: 0;
       color: var(--subtle);
       font-size: var(--fs-sm);
       line-height: 1.5;
-    }
-
-    /* lines of about equal width instead of a short last line */
-    .author__desc {
-      margin-bottom: 4px;
-      color: var(--accent);
-      font-weight: 600;
-      white-space: normal;
-      text-wrap: balance;
     }
 
     li > a {
