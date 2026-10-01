@@ -1,21 +1,8 @@
-<!-- Visitor map: land dots (images/visitor-map.svg), the night side (canvas) and a
-     marker per place the visitors came from, drawn by site.js from the site's own
-     counter (worker/, served at /api/visitors). Hidden until the data arrives. -->
+<!-- Visitor map: land dots (images/visitor-map.svg) and a marker per place the
+     visitors came from, drawn by site.js from the site's own counter (worker/,
+     served at /api/visitors). Hidden until the data arrives. -->
 <div class="visitor-map" id="visitor-map" role="img" aria-label="Visitor map" hidden>
   <img src="images/visitor-map.svg" alt="" width="900" height="409">
-  <canvas width="180" height="82" aria-hidden="true"></canvas>
-  <svg viewBox="0 0 900 409" aria-hidden="true">
-    <defs>
-      <clipPath id="visitor-map-frame"><rect width="900" height="409"/></clipPath>
-      <!-- the terminator line fades out towards the top and bottom of the map -->
-      <linearGradient id="visitor-map-fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="409">
-        <stop offset="0" stop-color="#1f3a5f" stop-opacity="0"/>
-        <stop offset=".16" stop-color="#1f3a5f" stop-opacity=".32"/>
-        <stop offset=".84" stop-color="#1f3a5f" stop-opacity=".32"/>
-        <stop offset="1" stop-color="#1f3a5f" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <path class="visitor-map__dusk" clip-path="url(#visitor-map-frame)"/>
-  </svg>
+  <svg viewBox="0 0 900 409" aria-hidden="true"></svg>
   <span class="visitor-map__tip" hidden></span>
 </div>
