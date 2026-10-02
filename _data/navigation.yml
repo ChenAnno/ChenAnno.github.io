@@ -1,11 +1,17 @@
+# emoji: as in the section titles in about.md; shown in the sidebar outline
 main:
   - title: "Biography"
+    emoji: "👨🏻‍🎓"
     url: "/#about-me"
   - title: "News"
+    emoji: "🔥"
     url: "/#news"
   - title: "Publications"
+    emoji: "📝"
     url: "/#publications"
   - title: "Education"
+    emoji: "🏫"
     url: "/#education"
   - title: "Service"
+    emoji: "📖"
     url: "/#service"

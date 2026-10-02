@@ -559,6 +559,17 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
     }
   }
 
+  /* the section's emoji, as in its title (the user asked), in a fixed width so
+     the labels line up */
+  .side-nav__emoji {
+    display: inline-block;
+    width: 20px;
+    margin-right: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+  }
+
   .side-nav__title {
     display: flex;
     align-items: center;

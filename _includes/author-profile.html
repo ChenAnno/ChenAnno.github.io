@@ -226,7 +226,7 @@
     <div class="side-nav__title" id="side-nav-title"><span aria-hidden="true">📘</span> Outline</div>
     <ol>
       {% for link in site.data.navigation.main %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        <li><a href="{{ link.url }}">{% if link.emoji %}<span class="side-nav__emoji" aria-hidden="true">{{ link.emoji }}</span>{% endif %}{{ link.title }}</a></li>
       {% endfor %}
     </ol>
   </nav>
