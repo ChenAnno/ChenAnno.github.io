@@ -364,12 +364,7 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
     background: var(--card);
     border-color: var(--card-b);
     box-shadow: 0 8px 24px var(--glass-cast);
-    transition: transform .35s ease, box-shadow .35s ease;
-
-    @include hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 30px rgba(35, 52, 70, .14);
-    }
+    transition: none;   /* the template animates every img; the photo stays still (the user asked) */
   }
 
   /* name, Chinese name and description are centered under the photo (the user
@@ -1461,8 +1456,7 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
   }
 
   .pub-card:hover .pub-thumb,
-  .edu-card:hover .edu-logo,
-  .author__avatar img:hover {
+  .edu-card:hover .edu-logo {
     transform: none;
   }
 
