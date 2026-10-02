@@ -367,16 +367,15 @@ function pageScale() {
 
 /* Sidebar on wide screens: sticky, and it never moves (the user asked): it
    starts where it sticks, its margin-top set so. The photo sits AIR from the
-   top of the window (level with the first section title). Spare height first
-   adds up to BELOW under the outline, then goes between the name and the
-   profile and between the profile and the outline (1 : 3, at most 96px
-   together on laptops and 32px on zoomed big screens, via --gap-* in CSS: more
-   left the outline adrift; none between photo and name, which looked too far
-   apart), and the rest above and below. Without room for AIR above and below, the sidebar is centered,
-   and if it does not fit with EDGE above and below, the photo gets smaller
-   (130px at the least). Only a window too short even for that lets the
-   sidebar scroll until its end shows. Everything here is in CSS pixels, which
-   the big-screen zoom scales (see pageScale). */
+   top of the window and the rest follows at its own spacing, the outline right
+   under the links; what height is left stays below it (the user wanted the
+   outline close up, not the sidebar spread out or centered). Without EDGE left
+   below, the sidebar moves up, to EDGE from the top at most, and then the photo
+   gets smaller (130px at the least). Only a window too short even for that lets
+   the sidebar scroll until its end shows. The content column follows the photo
+   (--content-shift on #main), so the first section title stays level with the
+   top of the photo. Everything here is in CSS pixels, which the big-screen
+   zoom scales (see pageScale). */
 (function () {
   var sidebar = document.querySelector('.sidebar.sticky');
   var avatar = sidebar && sidebar.querySelector('.author__avatar img');
@@ -384,16 +383,14 @@ function pageScale() {
   var main = document.getElementById('main');
   if (!avatar || !nav || !main) return;
   var wide = window.matchMedia('(min-width: 925px)');
-  var AIR = 56, BELOW = 24, EDGE = 16, SMALLEST = 130;
-  var GAPS = ['--gap-profile', '--gap-nav'], SHARES = [0.25, 0.75];
+  var AIR = 32, EDGE = 16, SMALLEST = 130;   // AIR: where #main's margin puts the first title
 
   function layout() {
-    GAPS.forEach(function (name) { sidebar.style.setProperty(name, '0px'); });
     avatar.style.maxWidth = '';
     sidebar.style.marginTop = '';
     if (!wide.matches) {
+      main.style.removeProperty('--content-shift');
       sidebar.style.top = '';
-      GAPS.forEach(function (name) { sidebar.style.removeProperty(name); });
       return;
     }
     var scale = pageScale();
@@ -401,26 +398,19 @@ function pageScale() {
     function column() {
       return (nav.getBoundingClientRect().bottom - avatar.getBoundingClientRect().top) / scale.rectPerCss;
     }
-    var height = column(), spare = h - 2 * AIR - height, top;
-    if (spare >= 0) {
-      spare -= Math.min(spare, BELOW);
-      var spread = Math.min(scale.zoom > 1 ? 32 : 96, spare);
-      GAPS.forEach(function (name, i) { sidebar.style.setProperty(name, spread * SHARES[i] + 'px'); });
-      top = AIR + Math.floor((spare - spread) / 2);
-    } else {
-      var short = height + 2 * EDGE - h;
-      if (short > 0) {
-        avatar.style.maxWidth = Math.max(SMALLEST, avatar.offsetWidth - Math.ceil(short)) + 'px';
-        height = column();
-      }
-      top = Math.floor((h - height) / 2);
+    var height = column(), top = Math.min(AIR, Math.floor(h - height - EDGE));
+    if (top < EDGE) {
+      avatar.style.maxWidth = Math.max(SMALLEST, avatar.offsetWidth - (EDGE - top)) + 'px';
+      height = column();
+      top = Math.min(AIR, Math.floor(h - height - EDGE));
     }
+    // where it starts is where it sticks: no move when the page scrolls
+    var natural = (main.getBoundingClientRect().top - document.documentElement.getBoundingClientRect().top) / scale.rectPerCss;
     if (top >= EDGE) {
-      // where it starts is where it sticks: no move when the page scrolls
-      var natural = (main.getBoundingClientRect().top - document.documentElement.getBoundingClientRect().top) / scale.rectPerCss;
       sidebar.style.marginTop = top - natural + 'px';
+      main.style.setProperty('--content-shift', top - AIR + 'px');
     } else {
-      top = Math.floor(h - height - EDGE);
+      main.style.setProperty('--content-shift', natural - AIR + 'px');
     }
     sidebar.style.top = top + 'px';
   }

@@ -120,7 +120,7 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
     justify-content: center;
     column-gap: $main-gap;
     max-width: none;
-    margin-top: 50px;   /* no nav pill above on wide screens: the outline is in the sidebar */
+    margin-top: 26px;   /* no nav pill above on wide screens; the photo and the first title sit 32px from the top (site.js) */
     margin-left: 0;
     margin-right: 0;
     padding-left: 32px;
@@ -139,10 +139,15 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
       margin: 0;
       padding: 0;
     }
+
+    /* level with the photo, which site.js may lift on short windows */
+    > .page {
+      margin-top: var(--content-shift, 0px);
+    }
   }
 
   .sidebar.sticky {
-    top: 56px;
+    top: 32px;
     align-self: start;
   }
 }
@@ -376,14 +381,11 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
     white-space: nowrap;
   }
 
-  /* --gap-profile and --gap-nav: spare window height that site.js spreads
-     between the name and the profile, and the profile and the outline, so that
-     a tall window does not push the photo down (see the sidebar in site.js).
-     The template animates every p ("all 0.2s"), which made this margin lag
-     behind site.js measuring the sidebar. */
+  /* The template animates every p ("all 0.2s"); not this one, which site.js
+     measures to place the sidebar. */
   .sidebar .author__bio {
     transition: none;
-    margin: 0 0 calc(14px + var(--gap-profile, 0px));
+    margin: 0 0 14px;
     font-size: var(--fs-md);
     text-align: center;
   }
@@ -474,7 +476,7 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
      stands out (the user found the bare list too quiet). */
   .sidebar .side-nav {
     display: block;
-    margin: calc(26px + var(--gap-nav, 0px)) 0 0;
+    margin: 26px 0 0;
     padding: 14px 10px 10px;
     border: 1px solid var(--card-b);
     border-radius: 14px;
