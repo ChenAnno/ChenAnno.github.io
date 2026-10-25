@@ -56,10 +56,13 @@ async function visit(request, env) {
     const cn = cf.country === 'CN' ? locateCN(request.headers.get('CF-Connecting-IP') || '') : null;
     const lat = cn ? cn.lat : round(cf.latitude), lon = cn ? cn.lon : round(cf.longitude);
     const cc = cf.country || 'XX', city = cn ? cn.city : cf.city || '';
+    // one row per city (or per country, without one): Cloudflare gives a city
+    // slightly different coordinates from one address block to the next, which
+    // once made Los Angeles five places on the map; the first coordinates stay
     writes.push(env.DB.prepare(
       'INSERT INTO places (key, city, cc, lat, lon, n, last) VALUES (?1, ?2, ?3, ?4, ?5, 1, ?6) ' +
-      'ON CONFLICT (key) DO UPDATE SET n = n + 1, last = ?6'
-    ).bind(`${cc}|${city}|${lat}|${lon}`, city, cc, lat, lon, Date.now()));
+      'ON CONFLICT (key) DO UPDATE SET n = n + 1, last = ?6, lat = COALESCE(lat, ?4), lon = COALESCE(lon, ?5)'
+    ).bind(`${cc}|${city}`, city, cc, lat, lon, Date.now()));
   }
   await env.DB.batch(writes);
   return new Response(null, { status: 204 });

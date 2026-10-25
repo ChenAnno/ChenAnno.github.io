@@ -434,7 +434,7 @@ function pageScale() {
    too, which the third-party map widget used before missed. Each page load counts
    as a view, and once per browser per day as a visit from its place; only on the
    published domain, so previews do not count. The map shows every place since
-   counting began; the more visits, the larger and deeper blue its marker. The
+   counting began; the more visits, the darker its marker. The
    land is images/visitor-map.svg and the markers use its projection. Map and
    views stay hidden until the numbers arrive. */
 (function () {
@@ -482,28 +482,52 @@ function pageScale() {
   function draw(places) {
     var svg = map.querySelector('svg'), tip = map.querySelector('.visitor-map__tip');
     var names = window.Intl && Intl.DisplayNames ? new Intl.DisplayNames(['en'], { type: 'region' }) : null;
+    // Hong Kong, Macao and Taiwan as parts of China (the user asked)
+    var REGIONS = { HK: 'Hong Kong, China', MO: 'Macao, China', TW: 'Taiwan, China' };
     function country(cc) {
+      if (REGIONS[cc]) return REGIONS[cc];
       try { return (names && names.of(cc)) || cc; } catch (e) { return cc; }
     }
-    // from the light blue of a single visit to the headings' blue at 50 or more,
-    // on a log scale, so one busy place does not wash out all the others
-    var LIGHT = [122, 167, 217], DEEP = [34, 75, 119];   // #7aa7d9, #224b77
+    // Every marker the same size; only its colour says how many visits, from the
+    // light end of RAMP (one visit) to the dark end (50 or more), on a log scale
+    // so that one busy place does not wash out all the others. The site's blue,
+    // but vivid (OKLCH chroma .13 to .17), so it stands out from the grey-blue
+    // land and its dark end is a bright royal blue: the earlier ramp (chroma .09,
+    // down to navy) looked dull, and teal did not match the page.
+    var RAMP = ['#72adfb', '#5b9aed', '#4386de', '#2973d0', '#0160c1'];
     function shade(n) {
-      var t = Math.min(1, Math.log(Math.max(1, n)) / Math.log(50));
-      return 'rgb(' + LIGHT.map(function (c, i) { return Math.round(c + (DEEP[i] - c) * t); }).join(',') + ')';
+      var t = Math.min(1, Math.log(Math.max(1, n)) / Math.log(50)) * (RAMP.length - 1);
+      var i = Math.min(RAMP.length - 2, Math.floor(t)), f = t - i;
+      var a = parseInt(RAMP[i].slice(1), 16), b = parseInt(RAMP[i + 1].slice(1), 16);
+      return 'rgb(' + [16, 8, 0].map(function (s) {
+        return Math.round(((a >> s) & 255) * (1 - f) + ((b >> s) & 255) * f);
+      }).join(',') + ')';
     }
-    // larger markers first, so the small ones stay on top and can be hovered
-    places.slice().sort(function (a, b) { return b.n - a.n; }).forEach(function (p) {
+    // one marker per name: rows that read the same (a city Cloudflare gave
+    // slightly different coordinates, or Hong Kong with and without a city) are
+    // added up, at the busiest row's place
+    var byName = {};
+    places.forEach(function (p) {
+      var where = country(p.cc);
+      if (p.city && where.split(', ')[0] !== p.city) where = p.city + ', ' + where;
+      var q = byName[where];
+      if (!q) byName[where] = { where: where, lat: p.lat, lon: p.lon, n: p.n, top: p.n };
+      else {
+        if (p.n > q.top) { q.lat = p.lat; q.lon = p.lon; q.top = p.n; }
+        q.n += p.n;
+      }
+    });
+    places = Object.keys(byName).map(function (k) { return byName[k]; });
+    // the busiest last, on top where markers overlap
+    places.sort(function (a, b) { return a.n - b.n; }).forEach(function (p) {
       var at = project(p.lat, p.lon);
       if (at[1] > 409) return;
       var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       dot.setAttribute('cx', at[0].toFixed(1));
       dot.setAttribute('cy', at[1].toFixed(1));
-      dot.setAttribute('r', (3 + Math.min(4, Math.log(p.n + 1) / Math.LN10 * 2.4)).toFixed(1));
+      dot.setAttribute('r', '4.6');
       dot.style.fill = shade(p.n);
-      var where = country(p.cc);
-      if (p.city && p.city !== where) where = p.city + ', ' + where;
-      var label = where + ' · ' + p.n + (p.n > 1 ? ' visits' : ' visit');
+      var label = p.where + ' · ' + p.n + (p.n > 1 ? ' visits' : ' visit');
       dot.addEventListener('mouseenter', function () {
         tip.textContent = label;
         tip.style.left = at[0] / 9 + '%';

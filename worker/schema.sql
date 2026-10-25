@@ -3,7 +3,7 @@
 
 -- one row per place: city-level coordinates from Cloudflare, visits, last visit (ms)
 CREATE TABLE IF NOT EXISTS places (
-  key  TEXT PRIMARY KEY,          -- "country|city|lat|lon"
+  key  TEXT PRIMARY KEY,          -- "country|city" (until 2026-10: "country|city|lat|lon")
   city TEXT NOT NULL,
   cc   TEXT NOT NULL,             -- ISO country code, XX if unknown
   lat  REAL,
