@@ -1,0 +1,9 @@
+{%- comment -%}
+  A link to the author's email that keeps the address out of the page source, where
+  spam harvesters read it: it carries the two halves from author.mail (each reversed),
+  and site.js joins them and shows the address, with a copy button, when it is clicked.
+  text: the link text; icon=true: an envelope before it; label: an aria-label (for an
+  icon alone); inline=true: inside running text (wraps it in a span for the card).
+{%- endcomment -%}
+{%- capture link -%}<a href="#" class="js-mail" data-u="{{ site.author.mail[0] }}" data-d="{{ site.author.mail[1] }}" aria-haspopup="true" aria-expanded="false"{% if include.label %} aria-label="{{ include.label }}"{% endif %}>{% if include.icon %}<i class="fas fa-fw fa-envelope" aria-hidden="true"></i>{% endif %}{{ include.text }}</a>{%- endcapture -%}
+{%- if include.inline -%}<span class="mail-anchor">{{ link }}</span>{%- else -%}{{ link }}{%- endif -%}

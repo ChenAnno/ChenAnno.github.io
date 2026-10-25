@@ -27,7 +27,7 @@ Previously, I have interned at **TikTok** and **Kuaishou**.
 
 My research interests include 🤖&nbsp;**Agent**, 🦾&nbsp;**Robotics**, and 🖼️&nbsp;**Multimedia**.
 
-I’m open to collaborations and discussions. Feel free to drop me an [email](mailto:chenyanzhe@u.nus.edu)~
+I’m open to collaborations and discussions. Feel free to drop me an {% include email-link.html text="email" inline=true %}~
 
 
 <span class='anchor' id='news'></span>

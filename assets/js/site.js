@@ -542,6 +542,93 @@ function pageScale() {
   }
 })();
 
+/* Email links (_includes/email-link.html): the address is not in the page, where
+   spam harvesters read it. Each link carries its two halves, reversed; a click
+   joins them and shows the address in a small card under the link, with a button
+   to copy it (many visitors have no mail app for the mailto link). The card
+   closes on a click elsewhere, Escape, or a second click on the link. */
+(function () {
+  var links = document.querySelectorAll('.js-mail');
+  if (!links.length) return;
+  var flip = function (s) { return (s || '').split('').reverse().join(''); };
+  var COPY = '<i class="fas fa-copy" aria-hidden="true"></i> Copy';
+  var DONE = '<i class="fas fa-check" aria-hidden="true"></i> Copied';
+  var card = document.createElement('span');
+  card.className = 'mail-pop';
+  card.setAttribute('role', 'group');
+  card.setAttribute('aria-label', 'Email address');
+  card.innerHTML = '<a class="mail-pop__addr"></a><button type="button" class="mail-pop__copy"></button>';
+  var addr = card.firstChild, copy = card.lastChild, owner = null, reset = 0;
+
+  function close(refocus) {
+    if (!owner) return;
+    owner.setAttribute('aria-expanded', 'false');
+    if (refocus) owner.focus();
+    card.remove();
+    owner = null;
+  }
+
+  function open(link) {
+    var mail = flip(link.dataset.u) + '@' + flip(link.dataset.d);
+    addr.textContent = mail;
+    addr.href = 'mailto:' + mail;
+    copy.innerHTML = COPY;
+    copy.classList.remove('is-done');
+    // Under the link, inside the window (on a phone the link can sit near an
+    // edge, or in a row of icons): the card hangs from its holder, centered, and
+    // --shift moves it, --arrow points its arrow back at the link. It is measured
+    // while fixed and hidden first, since even a moment past the edge widens the
+    // page on a phone (and the window then reads wider too).
+    var holder = link.closest('.mail-anchor, li, .author__urls_sm');
+    var scale = pageScale(), width = document.documentElement.clientWidth;
+    card.style.cssText = 'position: fixed; left: 0; top: 0; visibility: hidden; animation: none';
+    holder.appendChild(card);
+    var px = function (r) { return (r.left + r.right) / 2 / scale.rectPerWindow; };
+    var w = card.getBoundingClientRect().width / scale.rectPerWindow;
+    var at = px(link.getBoundingClientRect()), base = px(holder.getBoundingClientRect());
+    var center = Math.min(Math.max(at, 8 + w / 2), width - 8 - w / 2);
+    card.style.cssText = '--shift: ' + (center - base) / scale.zoom + 'px; --arrow: ' + (at - center) / scale.zoom + 'px';
+    link.setAttribute('aria-expanded', 'true');
+    owner = link;
+  }
+
+  Array.prototype.forEach.call(links, function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (owner === link) return close();
+      close();
+      open(link);
+    });
+  });
+
+  copy.addEventListener('click', function () {
+    function done() {
+      copy.innerHTML = DONE;
+      copy.classList.add('is-done');
+      clearTimeout(reset);
+      reset = setTimeout(function () { copy.innerHTML = COPY; copy.classList.remove('is-done'); }, 1800);
+    }
+    function select() {   // no clipboard access: select the address for Cmd/Ctrl+C
+      var range = document.createRange();
+      range.selectNodeContents(addr);
+      getSelection().removeAllRanges();
+      getSelection().addRange(range);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr.textContent).then(done, select);
+    else select();
+  });
+
+  // by the path at the time of the click: Copy swaps its icon, so the clicked
+  // icon is no longer in the card by the time the click gets here
+  document.addEventListener('click', function (e) {
+    var path = e.composedPath ? e.composedPath() : [e.target];
+    if (owner && path.indexOf(card) < 0 && path.indexOf(owner) < 0) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close(true);
+  });
+})();
+
 /* Reveal on scroll: blocks that start below the fold fade up as they come into
    view, in document order. Blocks already on screen are never hidden, so the
    first screen does not flash, and without this script nothing is hidden. */

@@ -31,7 +31,8 @@ author:
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com.hk/citations?user=9lIMS-EAAAAJ&hl=zh-CN&oi=sra"
-  email            : "chenyanzhe@u.nus.edu"
+  email            :   # left empty so the address is in neither the page nor the feed (spam): see mail
+  mail             : ["ehznaynehc", "ude.sun.u"]   # the two halves of the address around the @, each reversed; site.js joins them on a click
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :

@@ -1349,6 +1349,111 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
   }
 }
 
+/* ---------- Email card ----------
+   The address is not in the page (spam); clicking an email link shows it in this
+   small card under the link, with a copy button (site.js). The card hangs from
+   the link's list item, the icon row or the .mail-anchor around a link in text. */
+.mail-anchor,
+.author__urls li,
+.author__urls_sm {
+  position: relative;
+}
+
+.mail-pop {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 9px);
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 6px 6px 12px;
+  border: 1px solid var(--card-b);
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: 0 8px 24px rgba(35, 52, 70, .14);
+  color: var(--fg);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+  white-space: nowrap;
+  transform: translateX(calc(-50% + var(--shift, 0px)));
+  animation: mail-pop-in .16s ease-out;
+
+  /* the little arrow up to the link (site.js shifts the card to stay in the
+     window, and points the arrow back at the link) */
+  &::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: calc(50% + var(--arrow, 0px));
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid var(--card-b);
+    border-left: 1px solid var(--card-b);
+    background: var(--card);
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
+
+@keyframes mail-pop-in {
+  from { opacity: 0; transform: translate(calc(-50% + var(--shift, 0px)), -4px); }
+}
+
+.mail-pop a.mail-pop__addr {   /* (the sidebar's link colour is more specific) */
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  @include hover-focus {
+    color: var(--hover);
+  }
+}
+
+/* (the template sizes and, on wide screens, hides every button in the sidebar's
+   link area, meant for its "Follow" button: hence the longer selector) */
+.mail-pop button.mail-pop__copy {
+  position: static;
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding: 3px 9px;
+  border: 1px solid var(--card-b);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--subtle);
+  font: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .18s ease, background .18s ease, border-color .18s ease;
+
+  @include hover-focus {
+    border-color: var(--hover);
+    background: var(--hover-tint);
+    color: var(--hover);
+  }
+
+  &.is-done {
+    border-color: var(--accent);
+    background: #e7eff9;
+    color: var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mail-pop {
+    animation: none;
+  }
+}
+
 /* ---------- Visitor map and footer ---------- */
 /* The map sits in the footer, between its top rule and the copyright lines: a
    dot matrix of land (images/visitor-map.svg) with a marker for each place the
