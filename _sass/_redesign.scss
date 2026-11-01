@@ -728,6 +728,7 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
     padding: 3px 0 3px 92px;
     font-size: var(--fs-sm);
     line-height: 1.6;
+    text-wrap: pretty;   /* no lone word on a second line */
 
     > code:first-child {
       position: absolute;
