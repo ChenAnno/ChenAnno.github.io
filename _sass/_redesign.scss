@@ -1505,18 +1505,75 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
 .visitor-map__tip {
   position: absolute;
   z-index: 2;
-  transform: translate(-50%, calc(-100% - 10px));
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: var(--fg);
-  color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transform: translate(-50%, calc(-100% - 12px));
+  padding: 7px 12px 8px;
+  border: 1px solid var(--card-b);
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: 0 8px 24px rgba(35, 52, 70, .14);
+  color: var(--fg);
   font-size: var(--fs-xs);
-  line-height: 1.4;
+  line-height: 1.45;
+  text-align: left;
   white-space: nowrap;
   pointer-events: none;
+  transition: none;   /* the template animates every span: it slid over from the last marker */
+
+  /* no room above the marker within the map */
+  &.is-below {
+    transform: translate(-50%, 12px);
+  }
 
   &[hidden] {
     display: none;
+  }
+}
+
+/* the place or region, and its total */
+.visitor-map__head {
+  strong {
+    color: var(--heading);
+    font-weight: 700;
+  }
+
+  em {
+    color: var(--subtle);
+    font-style: normal;
+  }
+}
+
+/* each place of a merged marker: a dot in its marker's shade, the name, the count */
+.visitor-map__rows {
+  display: grid;
+  grid-template-columns: 7px auto auto;
+  align-items: center;
+  gap: 2px 7px;
+  padding-top: 6px;
+  border-top: 1px solid var(--card-b);
+
+  i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  b {
+    color: var(--subtle);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  /* past 8 places, in two columns */
+  &.is-wide {
+    grid-template-columns: 7px auto auto 21px auto auto;
+
+    > :nth-child(6n + 4) {
+      justify-self: end;   /* the wider column keeps the two halves apart */
+    }
   }
 }
 

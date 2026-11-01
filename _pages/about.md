@@ -36,7 +36,7 @@ I’m open to collaborations and discussions. Feel free to drop me an {% include
 
 <div class="news-card" data-show="10" markdown="1">
 
-- `Oct. 2026` 🎤 Thanks to **Lorong AI** for inviting me to give [a talk](https://luma.com/peyttz0v) on **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** on behalf of [Prof.&nbsp;Mike&nbsp;Zheng&nbsp;Shou](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
+- `Oct. 2026` 🎤 Thanks to **Lorong AI** for inviting me to give [a talk](https://luma.com/peyttz0v) on **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** on behalf of [Prof.&nbsp;Mike](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
 - `Sep. 2026` 🦾 We released **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** [[Website](https://showlab.github.io/Show-Harness/), [Code](https://github.com/showlab/Show-Harness)], and a [Survey](https://showlab.github.io/Awesome-Multimodal-Embodied-Agent/) on robot-use agent.
 - `Sep. 2026` 🎉 Three papers got accepted by **CoRL 2026**.
 - `May 2026` 🎉 [Code2Video](https://showlab.github.io/Code2Video/) and [ACA](https://arxiv.org/abs/2605.07381) got accepted by **ICML 2026**.

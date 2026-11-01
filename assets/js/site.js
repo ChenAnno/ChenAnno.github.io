@@ -503,40 +503,128 @@ function pageScale() {
         return Math.round(((a >> s) & 255) * (1 - f) + ((b >> s) & 255) * f);
       }).join(',') + ')';
     }
-    // one marker per name: rows that read the same (a city Cloudflare gave
-    // slightly different coordinates, or Hong Kong with and without a city) are
-    // added up, at the busiest row's place
-    var byName = {};
+    var visits = function (n) { return n + (n > 1 ? ' visits' : ' visit'); };
+
+    // One place per city: rows of the same city (Cloudflare gives it slightly
+    // different coordinates, or a district's name) are added up, at the busiest
+    // row's spot. Hong Kong, Macao and Singapore count as one city each, whatever
+    // district a visit was put in; ALIAS joins names that mean the same city.
+    var WHOLE = { HK: 'Hong Kong', MO: 'Macao', SG: 'Singapore' };
+    var ALIAS = { 'US|New York': 'New York City' };
+    var byCity = {}, list = [];
     places.forEach(function (p) {
-      var where = country(p.cc);
-      if (p.city && where.split(', ')[0] !== p.city) where = p.city + ', ' + where;
-      var q = byName[where];
-      if (!q) byName[where] = { where: where, lat: p.lat, lon: p.lon, n: p.n, top: p.n };
-      else {
-        if (p.n > q.top) { q.lat = p.lat; q.lon = p.lon; q.top = p.n; }
-        q.n += p.n;
-      }
+      var city = WHOLE[p.cc] || ALIAS[p.cc + '|' + p.city] || p.city || '';
+      var key = p.cc + '|' + city, q = byCity[key];
+      if (!q) list.push(q = byCity[key] = { cc: p.cc, city: city, lat: p.lat, lon: p.lon, n: 0, top: 0 });
+      if (p.n > q.top) { q.lat = p.lat; q.lon = p.lon; q.top = p.n; }
+      q.n += p.n;
     });
-    places = Object.keys(byName).map(function (k) { return byName[k]; });
-    // the busiest last, on top where markers overlap
-    places.sort(function (a, b) { return a.n - b.n; }).forEach(function (p) {
-      var at = project(p.lat, p.lon);
-      if (at[1] > 409) return;
+
+    // Places whose markers would overlap become one marker, as caozhijun.top does:
+    // from the busiest place down, each joins the first marker within NEAR of it
+    // (compared with that marker's first place only, so no chains form) or starts
+    // one; the marker stays on its busiest place and is shaded by the total.
+    var NEAR = 2 * 4.6 + 2, groups = [];
+    list.sort(function (a, b) { return b.n - a.n; }).forEach(function (p) {
+      p.at = project(p.lat, p.lon);
+      if (p.at[1] > 409) return;
+      for (var i = 0; i < groups.length; i++) {
+        var g = groups[i];
+        if (Math.hypot(p.at[0] - g.at[0], p.at[1] - g.at[1]) < NEAR) { g.list.push(p); g.n += p.n; return; }
+      }
+      groups.push({ at: p.at, n: p.n, list: [p] });
+    });
+
+    // A marker of several places is named after the region around its busiest
+    // place (caozhijun.top lists the cities only): the first AREAS entry within
+    // reach of it and in its country, else the country they share, else the
+    // countries.
+    var AREAS = [   // name, countries, latitude, longitude, km
+      ['Yangtze River Delta, China', 'CN', 31.0, 120.6, 280], ['Greater Bay Area, China', 'CN HK MO', 22.6, 113.8, 150],
+      ['North China', 'CN', 39.4, 116.6, 220], ['Sichuan Basin, China', 'CN', 30.6, 104.6, 260],
+      ['Singapore', 'SG MY', 1.35, 103.82, 60], ['Greater Jakarta, Indonesia', 'ID', -6.25, 106.9, 80],
+      ['San Francisco Bay Area, United States', 'US', 37.6, -122.1, 120],
+      ['Greater Los Angeles, United States', 'US', 34.05, -118.25, 120],
+      ['Pacific Northwest, United States', 'US', 46.5, -121.5, 350],
+      ['Northeastern United States', 'US', 41.5, -73.5, 400],
+      ['Virginia & the Carolinas, United States', 'US', 36.5, -78.5, 350],
+      ['South Central United States', 'US', 32.0, -97.0, 450],
+      ['Great Lakes region', 'CA US', 43.0, -80.0, 400], ['Metro Vancouver, Canada', 'CA', 49.25, -123.0, 60],
+      ['Central Europe', 'DE CH AT CZ PL HU SK SI LI', 49.5, 9.5, 450],
+    ];
+    function km(a, b) {   // great-circle distance
+      var D = Math.PI / 180, dLat = (b[0] - a[0]) * D, dLon = (b[1] - a[1]) * D;
+      var h = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(a[0] * D) * Math.cos(b[0] * D) * Math.pow(Math.sin(dLon / 2), 2);
+      return 12742 * Math.asin(Math.sqrt(h));
+    }
+    var nation = function (cc) { return REGIONS[cc] ? 'China' : country(cc); };
+    function placeName(p) {
+      var where = country(p.cc);
+      return p.city && where.split(', ')[0] !== p.city ? p.city + ', ' + where : where;
+    }
+    function describe(g) {
+      if (g.list.length === 1) return { title: placeName(g.list[0]), total: visits(g.n), rows: [] };
+      var seed = g.list[0], nations = [];
+      g.list.forEach(function (p) { if (nations.indexOf(nation(p.cc)) < 0) nations.push(nation(p.cc)); });
+      var area = AREAS.filter(function (a) {
+        return a[1].split(' ').indexOf(seed.cc) >= 0 && km([seed.lat, seed.lon], [a[2], a[3]]) <= a[4];
+      })[0];
+      var name = area ? area[0]
+        : nations.length === 1 ? (g.list.every(function (p) { return p.cc === seed.cc; }) ? country(seed.cc) : nations[0])
+        : nations.slice(0, -1).join(', ') + ' & ' + nations[nations.length - 1];
+      return { title: name, total: visits(g.n), rows: g.list.map(function (p) {   // every place, busiest first
+        var city = p.city || 'City unknown', of = nation(p.cc);
+        return { name: nations.length > 1 && city !== of ? city + ', ' + of : city, n: p.n };
+      }) };
+    }
+
+    // A white card like the page's others: the place or region in the headings'
+    // blue with its total, then each place with a dot in its marker's shade and
+    // its count (two columns past 8 places). Above the marker, or below it when
+    // there is no room above in the map; kept inside the map's width (the map is
+    // as wide as a phone's screen).
+    function showTip(d, at) {
+      tip.textContent = '';
+      var head = document.createElement('span');
+      head.className = 'visitor-map__head';
+      head.innerHTML = '<strong></strong> <em></em>';
+      head.firstChild.textContent = d.title;
+      head.lastChild.textContent = d.total;
+      tip.appendChild(head);
+      if (d.rows.length) {
+        var rows = document.createElement('span');
+        rows.className = 'visitor-map__rows' + (d.rows.length > 8 ? ' is-wide' : '');
+        d.rows.forEach(function (r) {
+          var dot = document.createElement('i'), name = document.createElement('span'), n = document.createElement('b');
+          dot.style.background = shade(r.n);
+          name.textContent = r.name;
+          n.textContent = r.n;
+          rows.appendChild(dot);
+          rows.appendChild(name);
+          rows.appendChild(n);
+        });
+        tip.appendChild(rows);
+      }
+      tip.hidden = false;
+      var w = map.clientWidth, x = at[0] / 900 * w, y = at[1] / 409 * map.clientHeight, half = tip.offsetWidth / 2;
+      tip.classList.toggle('is-below', y - tip.offsetHeight - 12 < 0);
+      tip.style.left = Math.max(half, Math.min(w - half, x)) + 'px';
+      tip.style.top = y + 'px';
+    }
+
+    // the busiest last, on top where markers come close
+    groups.sort(function (a, b) { return a.n - b.n; }).forEach(function (g) {
       var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      dot.setAttribute('cx', at[0].toFixed(1));
-      dot.setAttribute('cy', at[1].toFixed(1));
+      dot.setAttribute('cx', g.at[0].toFixed(1));
+      dot.setAttribute('cy', g.at[1].toFixed(1));
       dot.setAttribute('r', '4.6');
-      dot.style.fill = shade(p.n);
-      var label = p.where + ' · ' + p.n + (p.n > 1 ? ' visits' : ' visit');
-      dot.addEventListener('mouseenter', function () {
-        tip.textContent = label;
-        tip.style.left = at[0] / 9 + '%';
-        tip.style.top = at[1] / 4.09 + '%';
-        tip.hidden = false;
-      });
+      dot.style.fill = shade(g.n);
+      var d = describe(g);
+      dot.addEventListener('mouseenter', function () { showTip(d, g.at); });
       dot.addEventListener('mouseleave', function () { tip.hidden = true; });
       svg.appendChild(dot);
     });
+    places = list;
     map.setAttribute('aria-label', 'Visitor map: visits from ' + places.length + ' places');
     map.hidden = false;
   }
