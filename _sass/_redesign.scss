@@ -1498,6 +1498,16 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
       fill-opacity: 1;
       stroke-width: 2.4;
     }
+
+    /* the soft halo behind a marker visited in the last three days (site.js), like
+       the current section's dot in the outline; yellow and green outlines looked
+       foreign on this all-blue map */
+    &.visitor-map__halo {
+      fill: var(--accent);
+      fill-opacity: .22;
+      stroke: none;
+      pointer-events: none;
+    }
   }
 }
 
@@ -1558,6 +1568,11 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
     width: 7px;
     height: 7px;
     border-radius: 50%;
+
+    /* the halo of its marker on the map */
+    &.is-recent {
+      box-shadow: 0 0 0 3px rgba(48, 113, 181, .22);
+    }
   }
 
   b {

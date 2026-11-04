@@ -434,7 +434,8 @@ function pageScale() {
    too, which the third-party map widget used before missed. Each page load counts
    as a view, and once per browser per day as a visit from its place; only on the
    published domain, so previews do not count. The map shows every place since
-   counting began; the more visits, the darker its marker. The
+   counting began; the more visits, the darker its marker, and a soft halo means
+   a visit in the last three days. The
    land is images/visitor-map.svg and the markers use its projection. Map and
    views stay hidden until the numbers arrive. */
 (function () {
@@ -491,10 +492,10 @@ function pageScale() {
     // Every marker the same size; only its colour says how many visits, from the
     // light end of RAMP (one visit) to the dark end (50 or more), on a log scale
     // so that one busy place does not wash out all the others. The site's blue,
-    // but vivid (OKLCH chroma .13 to .17), so it stands out from the grey-blue
-    // land and its dark end is a bright royal blue: the earlier ramp (chroma .09,
-    // down to navy) looked dull, and teal did not match the page.
-    var RAMP = ['#72adfb', '#5b9aed', '#4386de', '#2973d0', '#0160c1'];
+    // but vivid (OKLCH chroma .13 to .165), so it stands out from the grey-blue
+    // land, and never dark: earlier ramps ending in navy and in #0160c1 looked too
+    // heavy, and teal did not match the page.
+    var RAMP = ['#72adfb', '#609ef1', '#4d90e7', '#3a81dd', '#2573d2'];
     function shade(n) {
       var t = Math.min(1, Math.log(Math.max(1, n)) / Math.log(50)) * (RAMP.length - 1);
       var i = Math.min(RAMP.length - 2, Math.floor(t)), f = t - i;
@@ -504,6 +505,8 @@ function pageScale() {
       }).join(',') + ')';
     }
     var visits = function (n) { return n + (n > 1 ? ' visits' : ' visit'); };
+    // visited in the last three days: a soft halo, on the map and in the list
+    var isRecent = function (p) { return p.days < 3; };
 
     // One place per city: rows of the same city (Cloudflare gives it slightly
     // different coordinates, or a district's name) are added up, at the busiest
@@ -515,7 +518,8 @@ function pageScale() {
     places.forEach(function (p) {
       var city = WHOLE[p.cc] || ALIAS[p.cc + '|' + p.city] || p.city || '';
       var key = p.cc + '|' + city, q = byCity[key];
-      if (!q) list.push(q = byCity[key] = { cc: p.cc, city: city, lat: p.lat, lon: p.lon, n: 0, top: 0 });
+      if (!q) list.push(q = byCity[key] = { cc: p.cc, city: city, lat: p.lat, lon: p.lon, n: 0, top: 0, days: Infinity });
+      if (p.days < q.days) q.days = p.days;
       if (p.n > q.top) { q.lat = p.lat; q.lon = p.lon; q.top = p.n; }
       q.n += p.n;
     });
@@ -618,7 +622,7 @@ function pageScale() {
       places.sort(function (a, b) { return (b.city ? 1 : 0) - (a.city ? 1 : 0) || b.n - a.n; });
       var rows = places.map(function (p) {   // every place, busiest first
         var city = p.city || 'City unknown', from = nation(p.cc);
-        return { name: !sameNation && city !== from ? city + ', ' + from : city, n: p.n };
+        return { name: !sameNation && city !== from ? city + ', ' + from : city, n: p.n, recent: isRecent(p) };
       });
       // a marker known only by its country has nothing to list
       if (places.length === 1 && !places[0].city) rows = [];
@@ -644,6 +648,7 @@ function pageScale() {
         d.rows.forEach(function (r) {
           var dot = document.createElement('i'), name = document.createElement('span'), n = document.createElement('b');
           dot.style.background = shade(r.n);
+          if (r.recent) dot.className = 'is-recent';
           name.textContent = r.name;
           n.textContent = r.n;
           rows.appendChild(dot);
@@ -666,6 +671,14 @@ function pageScale() {
       dot.setAttribute('cy', g.at[1].toFixed(1));
       dot.setAttribute('r', '4.6');
       dot.style.fill = shade(g.n);
+      if (g.regions.some(function (r) { return r.list.some(isRecent); })) {
+        var halo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        halo.setAttribute('class', 'visitor-map__halo');
+        halo.setAttribute('cx', g.at[0].toFixed(1));
+        halo.setAttribute('cy', g.at[1].toFixed(1));
+        halo.setAttribute('r', '8.6');
+        svg.insertBefore(halo, svg.firstChild);   // under every marker
+      }
       var d = describe(g);
       dot.addEventListener('mouseenter', function () { showTip(d, g.at); });
       dot.addEventListener('mouseleave', function () { tip.hidden = true; });
