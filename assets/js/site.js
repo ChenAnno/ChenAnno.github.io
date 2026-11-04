@@ -520,62 +520,109 @@ function pageScale() {
       q.n += p.n;
     });
 
-    // Places whose markers would overlap become one marker, as caozhijun.top does:
-    // from the busiest place down, each joins the first marker within NEAR of it
-    // (compared with that marker's first place only, so no chains form) or starts
-    // one; the marker stays on its busiest place and is shaded by the total.
-    var NEAR = 2 * 4.6 + 2, groups = [];
-    list.sort(function (a, b) { return b.n - a.n; }).forEach(function (p) {
-      p.at = project(p.lat, p.lon);
-      if (p.at[1] > 409) return;
-      for (var i = 0; i < groups.length; i++) {
-        var g = groups[i];
-        if (Math.hypot(p.at[0] - g.at[0], p.at[1] - g.at[1]) < NEAR) { g.list.push(p); g.n += p.n; return; }
-      }
-      groups.push({ at: p.at, n: p.n, list: [p] });
-    });
-
-    // A marker of several places is named after the region around its busiest
-    // place (caozhijun.top lists the cities only): the first AREAS entry within
-    // reach of it and in its country, else the country they share, else the
-    // countries.
-    var AREAS = [   // name, countries, latitude, longitude, km
-      ['Yangtze River Delta, China', 'CN', 31.0, 120.6, 280], ['Greater Bay Area, China', 'CN HK MO', 22.6, 113.8, 150],
-      ['North China', 'CN', 39.4, 116.6, 220], ['Sichuan Basin, China', 'CN', 30.6, 104.6, 260],
-      ['Singapore', 'SG MY', 1.35, 103.82, 60], ['Greater Jakarta, Indonesia', 'ID', -6.25, 106.9, 80],
-      ['San Francisco Bay Area, United States', 'US', 37.6, -122.1, 120],
-      ['Greater Los Angeles, United States', 'US', 34.05, -118.25, 120],
-      ['Pacific Northwest, United States', 'US', 46.5, -121.5, 350],
-      ['Northeastern United States', 'US', 41.5, -73.5, 400],
-      ['Virginia & the Carolinas, United States', 'US', 36.5, -78.5, 350],
-      ['South Central United States', 'US', 32.0, -97.0, 450],
-      ['Great Lakes region', 'CA US', 43.0, -80.0, 400], ['Metro Vancouver, Canada', 'CA', 49.25, -123.0, 60],
-      ['Central Europe', 'DE CH AT CZ PL HU SK SI LI', 49.5, 9.5, 450],
-    ];
+    // Every marker is a region, and the tooltip always names the region, with the
+    // cities listed under it (naming only the markers that happened to overlap
+    // left a lone "Kobe, Japan" beside "Japan"). Large countries are split, each
+    // place going to the region of its nearest anchor city; any other country is
+    // one region. All of a region's places share one marker.
+    var AREAS = {   // country: [region, [lat, lon] of its anchor cities...]
+      CN: [
+        ['Yangtze River Delta', [31.23, 121.47], [32.06, 118.8], [30.27, 120.16], [29.87, 121.55], [31.82, 117.23]],
+        ['Greater Bay Area', [23.13, 113.26], [22.54, 114.06], [22.3, 114.17], [22.2, 113.55]],
+        ['South China', [22.82, 108.32], [20.04, 110.32], [23.35, 116.68], [25.27, 110.29]],
+        ['East China', [36.67, 117], [36.07, 120.38], [26.07, 119.3], [24.48, 118.09], [28.68, 115.86]],
+        ['North China', [39.9, 116.4], [39.13, 117.2], [38.04, 114.51], [37.87, 112.55], [40.84, 111.75]],
+        ['Northeast China', [41.8, 123.43], [43.82, 125.32], [45.8, 126.53], [38.91, 121.6]],
+        ['Central China', [34.75, 113.63], [30.59, 114.31], [28.23, 112.94]],
+        ['Sichuan Basin', [30.57, 104.07], [29.56, 106.55], [31.47, 104.68], [30.84, 106.11]],
+        ['Southwest China', [25.04, 102.72], [26.65, 106.63], [29.65, 91.1]],
+        ['Northwest China', [34.34, 108.94], [36.06, 103.83], [38.49, 106.23], [36.62, 101.78], [43.83, 87.62]],
+      ],
+      US: [
+        ['San Francisco Bay Area', [37.77, -122.42], [37.34, -121.89]],
+        ['Southern California', [34.05, -118.24], [32.72, -117.16]],
+        ['Pacific Northwest', [47.61, -122.33], [45.52, -122.68], [45.84, -119.7]],
+        ['Mountain West', [39.74, -104.99], [40.76, -111.89], [33.45, -112.07], [36.17, -115.14], [35.08, -106.65]],
+        ['Midwest', [41.88, -87.63], [41.26, -95.86], [44.98, -93.27], [38.63, -90.2], [42.33, -83.05], [39.96, -83], [39.1, -94.58]],
+        ['South Central', [32.78, -96.8], [29.76, -95.37], [36.15, -95.99], [29.95, -90.07]],
+        ['Southeast', [35.23, -80.84], [35.45, -78.43], [32.85, -79.97], [33.75, -84.39], [25.76, -80.19], [36.16, -86.78]],
+        ['Northeast & Mid-Atlantic', [40.71, -74.01], [42.36, -71.06], [39.95, -75.17], [40.44, -80], [38.9, -77.04]],
+      ],
+      CA: [
+        ['Western Canada', [49.28, -123.12], [51.05, -114.07], [53.55, -113.49]],
+        ['Eastern Canada', [43.65, -79.38], [45.5, -73.57], [45.42, -75.7], [44.65, -63.58]],
+      ],
+      AU: [
+        ['Western Australia', [-31.95, 115.86]],
+        ['Eastern Australia', [-33.87, 151.21], [-37.81, 144.96], [-27.47, 153.03], [-34.93, 138.6], [-12.46, 130.84]],
+      ],
+    };
     function km(a, b) {   // great-circle distance
       var D = Math.PI / 180, dLat = (b[0] - a[0]) * D, dLon = (b[1] - a[1]) * D;
       var h = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(a[0] * D) * Math.cos(b[0] * D) * Math.pow(Math.sin(dLon / 2), 2);
       return 12742 * Math.asin(Math.sqrt(h));
     }
     var nation = function (cc) { return REGIONS[cc] ? 'China' : country(cc); };
-    function placeName(p) {
-      var where = country(p.cc);
-      return p.city && where.split(', ')[0] !== p.city ? p.city + ', ' + where : where;
+    function regionOf(p) {
+      var table = AREAS[p.cc === 'HK' || p.cc === 'MO' ? 'CN' : p.cc];
+      if (!table) return country(p.cc);
+      var best = null, nearest = Infinity;
+      table.forEach(function (region) {
+        region.slice(1).forEach(function (anchor) {
+          var d = km([p.lat, p.lon], anchor);
+          if (d < nearest) { nearest = d; best = region[0]; }
+        });
+      });
+      return best;
     }
+
+    var byRegion = {}, regions = [];
+    list.forEach(function (p) {
+      p.at = project(p.lat, p.lon);
+      if (p.at[1] > 409) return;
+      var name = regionOf(p), r = byRegion[name];
+      if (!r) regions.push(r = byRegion[name] = { name: name, nation: nation(p.cc), n: 0, list: [] });
+      r.list.push(p);
+      r.n += p.n;
+    });
+
+    // A region's marker stands on its busiest city (a row without a city has only
+    // the country's default spot, in the Australian outback, say). Markers that
+    // would overlap join, as on caozhijun.top: from the busiest down, a region
+    // joins the first marker within NEAR of it, compared with that marker's first
+    // region only, so no chains form.
+    var NEAR = 2 * 4.6 + 2, groups = [];
+    regions.sort(function (a, b) { return b.n - a.n; }).forEach(function (r) {
+      r.list.sort(function (a, b) { return (b.city ? 1 : 0) - (a.city ? 1 : 0) || b.n - a.n; });
+      var at = r.list[0].at;
+      for (var i = 0; i < groups.length; i++) {
+        var g = groups[i];
+        if (Math.hypot(at[0] - g.at[0], at[1] - g.at[1]) < NEAR) { g.regions.push(r); g.n += r.n; return; }
+      }
+      groups.push({ at: at, n: r.n, regions: [r] });
+    });
+
+    function join(names) {
+      return names.length < 2 ? names[0] : names.slice(0, -1).join(', ') + ' & ' + names[names.length - 1];
+    }
+    // "Sichuan Basin, China"; joined regions name their country once if they share
+    // it ("Northeast & Southeast, United States"), each their own if not
     function describe(g) {
-      if (g.list.length === 1) return { title: placeName(g.list[0]), total: visits(g.n), rows: [] };
-      var seed = g.list[0], nations = [];
-      g.list.forEach(function (p) { if (nations.indexOf(nation(p.cc)) < 0) nations.push(nation(p.cc)); });
-      var area = AREAS.filter(function (a) {
-        return a[1].split(' ').indexOf(seed.cc) >= 0 && km([seed.lat, seed.lon], [a[2], a[3]]) <= a[4];
-      })[0];
-      var name = area ? area[0]
-        : nations.length === 1 ? (g.list.every(function (p) { return p.cc === seed.cc; }) ? country(seed.cc) : nations[0])
-        : nations.slice(0, -1).join(', ') + ' & ' + nations[nations.length - 1];
-      return { title: name, total: visits(g.n), rows: g.list.map(function (p) {   // every place, busiest first
-        var city = p.city || 'City unknown', of = nation(p.cc);
-        return { name: nations.length > 1 && city !== of ? city + ', ' + of : city, n: p.n };
-      }) };
+      var names = g.regions.map(function (r) { return r.name; }), of = g.regions[0].nation;
+      var sameNation = g.regions.every(function (r) { return r.nation === of; });
+      var title = sameNation
+        ? join(names) + (names.some(function (n) { return n.indexOf(of) >= 0; }) ? '' : ', ' + of)
+        : join(g.regions.map(function (r) { return r.name.indexOf(r.nation) >= 0 ? r.name : r.name + ', ' + r.nation; }));
+      var places = [];
+      g.regions.forEach(function (r) { places = places.concat(r.list); });
+      places.sort(function (a, b) { return (b.city ? 1 : 0) - (a.city ? 1 : 0) || b.n - a.n; });
+      var rows = places.map(function (p) {   // every place, busiest first
+        var city = p.city || 'City unknown', from = nation(p.cc);
+        return { name: !sameNation && city !== from ? city + ', ' + from : city, n: p.n };
+      });
+      // a marker known only by its country has nothing to list
+      if (places.length === 1 && !places[0].city) rows = [];
+      return { title: title, total: visits(g.n), rows: rows };
     }
 
     // A white card like the page's others: the place or region in the headings'
