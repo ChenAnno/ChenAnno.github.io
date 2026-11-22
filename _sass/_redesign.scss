@@ -336,8 +336,14 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
   display: none;
 }
 
-/* the compact icon row shown next to the name on narrow screens */
+/* the compact icon row shown next to the name on narrow screens. A flex row, so
+   the spaces between the links take no room: with four icons, the name next to
+   it still fits on two lines on a 360px phone (on one line from about 430px). */
 .author__urls_sm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;   // the right edge lines up with the menu button and the text above
   font-size: 20px;
   white-space: nowrap;
 
@@ -345,8 +351,13 @@ $main-gap: unquote("clamp(48px, calc((100% - 148px - clamp(872px, calc(872px + (
     color: var(--accent);
   }
 
-  a + a {
-    margin-left: 6px;
+  @media (max-width: 370px) {
+    gap: 6px;
+    font-size: 18px;
+  }
+
+  @include breakpoint($large) {
+    display: none;   // the template hides it there; this rule comes later
   }
 }
 

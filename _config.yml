@@ -55,7 +55,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          :   # the X link was taken out (the user asked); "Anno_YanzheChen" puts it back
+  twitter          : "Anno_YanzheChen"   # the X link, between GitHub and Google Scholar; left empty, it disappears
   vine             :
   weibo            :
   xing             :
