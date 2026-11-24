@@ -36,6 +36,7 @@ I’m open to collaborations and discussions. Feel free to drop me an {% include
 
 <div class="news-card" data-show="10" markdown="1">
 
+- `Nov. 2026` 🦾 We released **RUIBench** [[Website](https://showlab.github.io/RUIBench/), [Code](https://github.com/showlab/RUIBench)], a benchmark on what makes a good robot-use interface.
 - `Oct. 2026` 🎤 Thanks to **Lorong AI** for inviting me to give [a talk](https://luma.com/peyttz0v) on **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** on behalf of [Prof.&nbsp;Mike](https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=zh-CN).
 - `Sep. 2026` 🦾 We released **<span class="show-S">S</span><span class="show-h">h</span><span class="show-o">o</span><span class="show-w">w</span>-Harness** [[Website](https://showlab.github.io/Show-Harness/), [Code](https://github.com/showlab/Show-Harness)], and a [Survey](https://showlab.github.io/Awesome-Multimodal-Embodied-Agent/) on robot-use agent.
 - `Sep. 2026` 🎉 Three papers got accepted by **CoRL 2026**.
@@ -51,6 +52,19 @@ I’m open to collaborations and discussions. Feel free to drop me an {% include
 # 📝 Publications
 
 ## ⭐ Selected Publications
+
+<div class="pub-card">
+  <div class="pub-thumb">
+    <video class="lazy-video" src="images/ruibench.mp4" poster="images/ruibench-poster.jpg" preload="none" muted loop playsinline controls></video>
+  </div>
+  <div class="pub-info">
+    <h3 class="pub-title">RUIBench: What Makes a Good Robot-Use Interface?</h3>
+    <p class="authors"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zhijun Cao<sup>*</sup>, Zechen Bai<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Yuchen Ma, Yiqi Lin, Guoqiang Liang, Xiaokang Liu, Ke Sun, Kevin Qinghong Lin, Mike Zheng Shou</p>
+    <p class="venue preprint">arXiv 2026</p>
+    <p class="pub-summary"><b>RUIBench</b> benchmarks <mark>13 robot-use interfaces</mark>: changing only the interface lifts an agent's success from <mark>45% to 81%</mark>.</p>
+    <p class="pub-links"><a href="https://showlab.github.io/RUIBench/">Website</a> <a href="https://arxiv.org/abs/2611.31115">Paper</a> <a href="https://github.com/showlab/RUIBench" data-gh-stars="showlab/RUIBench">Code</a> <a href="https://huggingface.co/showlab/RUIBench-Qwen">Models</a> <a href="https://huggingface.co/datasets/showlab/RUIBench-Rollouts">Dataset</a></p>
+  </div>
+</div>
 
 <div class="pub-card">
   <div class="pub-thumb">
@@ -94,6 +108,7 @@ I’m open to collaborations and discussions. Feel free to drop me an {% include
 - {: data-group="first" data-topics="agent robotics"} **Show-Harness: Just a VLM Agent Can Play Robots** <br> <span class="authors"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zechen Bai<sup>*</sup>, Zhijun Cao<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Qinghong Lin, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Qiming Huang, Mike Zheng Shou</span> <br> <span class="venue preprint">arXiv 2026</span> [Paper](https://arxiv.org/abs/2609.10522)
 - {: data-group="first" data-topics="agent robotics"} **Survey on Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use** <br> <span class="authors"><u><b>Yanzhe Chen</b></u>, Ziyi Yang, Jifeng Zhu, Qiming Huang, Ruihe An, Peiyao Xu, Hesen Yang, Runda Liu, Chang Gong, Zhijun Cao, Zechen Bai, Wenzheng Zeng, Yiqi Lin, Guoqiang Liang, Kevin Yuchen Ma, Kevin Qinghong Lin, Mike Zheng Shou</span> <br> <span class="venue preprint">arXiv 2026</span> [Paper](https://arxiv.org/abs/2610.30108)
 - {: data-group="first" data-topics="robotics"} **ActionMap: Robot Policy Learning via Voxel Action Heatmap** <br> <span class="authors">Pei Yang<sup>*</sup>, Hai Ci<sup>*</sup>, <u><b>Yanzhe Chen</b></u><sup>*</sup>, Qi Lv, Han Cai, Mike Zheng Shou</span> <br> <span class="venue preprint">arXiv 2026</span> [Paper](https://arxiv.org/pdf/2606.06904)
+- {: data-group="first" data-topics="agent robotics"} **RUIBench: What Makes a Good Robot-Use Interface?** <br> <span class="authors"><u><b>Yanzhe Chen</b></u><sup>*</sup>, Zhijun Cao<sup>*</sup>, Zechen Bai<sup>*</sup>, Wenzheng Zeng<sup>*</sup>, Kevin Yuchen Ma, Yiqi Lin, Guoqiang Liang, Xiaokang Liu, Ke Sun, Kevin Qinghong Lin, Mike Zheng Shou</span> <br> <span class="venue preprint">arXiv 2026</span> [Paper](https://arxiv.org/abs/2611.31115)
 - {: data-group="collab" data-topics="multimedia"} **Kiwi-Edit: Versatile Video Editing via Instruction and Reference Guidance** <br> <span class="authors">Yiqi Lin, Guoqiang Liang, Ziyun Zeng, Zechen Bai, <u><b>Yanzhe Chen</b></u>, Mike Zheng Shou</span> <br> <span class="venue preprint">arXiv 2026</span> [Paper](https://arxiv.org/abs/2603.02175)
 - {: data-group="collab"} **Spectral Surgery: Training-Free Refinement of LoRA via Gradient-Guided Singular Value Reweighting** <br> <span class="authors">Zailong Tian, <u><b>Yanzhe Chen</b></u>, Zhuoheng Han, Lizi Liao</span> <br> <span class="venue preprint">arXiv 2026</span> [Paper](https://arxiv.org/abs/2603.03995)
 - {: data-group="collab" data-topics="agent multimedia"} **Video Generation Meets Agent Harness: Agentic Video Generation, Agentic World Modeling and Recursive Self-Improvement** <br> <span class="authors">Liaoyuan Fan, Yuhao Zheng, Dongxing Mao, Hangyu Ran, Siyuan Hu, Weijia Mao, Rui Zhao, Weijia Wu, Guian Fang, <u><b>Yanzhe Chen</b></u>, Zeyu Zhu, Yuxin Jiang, Yiren Song, Yuchao Gu, Junchao Yi, Qi Hu, Dan Kong, Alex Jinpeng Wang, Kevin Qinghong Lin, Mike Zheng Shou, Wei Liu</span> <br> <span class="venue preprint">arXiv 2026</span> [Paper](https://arxiv.org/abs/2610.40191)
